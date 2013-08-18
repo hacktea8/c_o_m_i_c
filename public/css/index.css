@@ -1,0 +1,61 @@
+/*.body-bg-left, .body-bg-right{
+    display: block;
+    position: absolute;
+    width: 50%;
+    z-index: 0;
+}
+
+.body-bg-left {
+    background: url(/v2.1/nmoneys/webgame/37wan/37wan_l_a.jpg) no-repeat scroll right 0px transparent;
+    left: -498px;
+    height: 700px;
+    top: 0px;
+}
+
+.body-bg-right {
+    background: url(/v2.1/nmoneys/webgame/37wan/37wan_r_a.jpg) no-repeat scroll 498px 0px transparent;
+    right: 0px;
+    height: 700px;
+    top: 0px;
+}
+*/
+
+.main
+{
+    padding: 0 6px;
+}
+
+.main_nav {
+    width: 980px; 
+    margin:0 auto;
+    position: relative;
+    z-index: 10;
+ }
+ 
+ 
+ .top
+ {
+      position: relative;
+      z-index:100;
+      /*background: none;*/
+ }
+
+ 
+.subNav 
+{
+    position: relative;
+    z-index:10;
+}
+ 
+#suggest
+ {
+     position: absolute;
+     z-index:9999;
+ }
+
+ 
+ .pr 
+ {
+     position: relative; 
+     z-index:10;
+ }

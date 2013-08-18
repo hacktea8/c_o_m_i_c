@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+<title>死神 死神漫画 死神在线漫画 爱漫画</title>    
+<meta name="Keywords" content="死神 死神漫画 死神在线漫画">    
+<link href="/public/css/global.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.fr {float:right;}
+.fl {float: left;}
+.none {display: none;}
+.pa {position: absolute;}
+.pr {position: relative;}
+.w220 {width:220px;}
+.bt1px {border-top: 1px solid #999;}
+.share {position: absolute;right: 6px;top: 2px;}
+.right-box {width: 250px;height: 250px;padding-left: 4px;padding-bottom: 4px;}
+.bg-sepr {    height: 8px;border-top: 1px solid #999;border-bottom: 1px solid #999;
+background-color: #fff;clear: both;}
+.duoshuo {width:720px;margin:0 auto;}
+.w720 {width:720px; margin:0 auto;}
+</style>    
+<script type="text/javascript" src="/public/js/common.js"></script>    
+   
+<script type="text/javascript">        
+var i = 0;        
+if (Cookie.read('order') == null) { 
+	Cookie.create('order', String(i), 30); 
+} else { i = parseInt(Cookie.read('order')); 
+}        
+function order(q, r) {            
+	if (!r) { if (q == i) return; i = q; Cookie.create('order', String(q), 30); 
+	}            
+	var el = $('subBookList');            
+	var o = el.getElementsByTagName('li');            
+	var len = o.length;            
+	var asc = $('asc');            
+	var desc = $('desc');            
+	var s = "";            
+	if (q == 0) {                
+		desc.className = 'on';                
+		asc.className = '';            
+		} else {                
+			desc.className = '';                
+			asc.className = 'on';            
+			}            
+	var t = 0;            
+	for (var p = len - 1; p >= 0; p--) {                
+		var li = o[p].innerHTML;                
+		if (li != '') {                    
+			s += '<li' + (t % 6 >= 3 ? ' class="alter"' : '') + '>' + o[p].innerHTML + '</li>';                    
+			t++;                
+			}            
+		}            
+	el.innerHTML = s;        
+	}    
+	</script>
+
+</head>
