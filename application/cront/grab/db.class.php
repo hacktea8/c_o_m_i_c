@@ -21,7 +21,7 @@ class DB_MYSQL{
   var $usepconnect = 1;  //使用 pconnect
   var $num_rows = 0;
 
-  public function  __construct($server = "127.0.0.1",$user = "root",$password = "root",$database = "comics"){
+  public function  __construct($server = "127.0.0.1",$user = "comicweb",$password = "ilove",$database = "comicweb"){
     $this->connect($server,$user,$password,$database);
     mysql_query("set names utf8");
   }
