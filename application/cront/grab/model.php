@@ -20,13 +20,13 @@ class Model{
       return false;
 
     $ptid = $vid%10;
-    return 'pages'.$ptid;
+    return 'page'.$ptid;
   } 
   public function getAllcate(){
     $sql = 'SELECT * FROM `cate` WHERE `flag`=1';
     return $this->db->result_array($sql);
   }
-  public function getCateByname($cname){
+  public function getCateByname($cname,$ourl = ''){
     if(!$cname){
        return null;
     }
@@ -35,35 +35,108 @@ class Model{
     if(isset($row['id']))
       return $row['id'];
 
-    $sql = sprintf("INSERT INTO `cate`( `name`) VALUES ('%s')",mysql_real_escape_string($cname));
+    $sql = sprintf("INSERT INTO `cate`( `name`,`hhourl`) VALUES ('%s','%s')",mysql_real_escape_string($cname),mysql_real_escape_string($ourl));
     $this->db->query($sql);
     return $this->db->insert_id();
+  }
+  public function getComic($data = array()){
+    if(!isset($data['name'])){
+       return false;
+    }
+    $sql = sprintf('SELECT `id` FROM `comic` WHERE `name`=\'%s\' LIMIT 1',mysql_real_escape_string($data['name']));
+    $row = $this->db->row_array($sql);
+    if(isset($row['id'])){
+       return $row['id'];
+    }
+    return false;
   }
   public function addComic($data = array()){
     if(!isset($data['name'])){
        return false;
     }
+    $sql = sprintf('SELECT `id` FROM `comic` WHERE `name`=\'%s\' LIMIT 1',mysql_real_escape_string($data['name']));
+    $row = $this->db->row_array($sql);
+    if(isset($row['id'])){
+       return $row['id'];
+    }
     $sql = $this->db->insert_string('`comic`',$data);
     $this->db->query($sql);
     return $this->db->insert_id();
+  }
+  public function getVol($data = array()){
+    if(!isset($data['vnum'])){
+       return false;
+    }
+    $sql = sprintf('SELECT `vid` FROM `vols` WHERE `vnum`=%d AND `cid`=%d LIMIT 1',$data['vnum'],$data['cid']);
+    $row = $this->db->row_array($sql);
+    if(isset($row['vid'])){
+       return $row['vid'];
+    }
+    return false;
+  }
+  public function addVol($data = array()){
+    if(!isset($data['vnum'])){
+       return false;
+    }
+    $sql = sprintf('SELECT `vid` FROM `vols` WHERE `vnum`=%d AND `cid`=%d LIMIT 1',$data['vnum'],$data['cid']);
+    $row = $this->db->row_array($sql);
+    if(isset($row['vid'])){
+       return $row['vid'];
+    }
+    $sql = $this->db->insert_string('`vols`',$data);
+    $this->db->query($sql);
+    return $this->db->insert_id();
+  }
+  public function getPage($data = array()){
+    if(!isset($data['vid']) || $data['vid'] < 1){
+       return false;
+    }
+    $ptable = $this->getpagestablename($data['vid']);
+    $sql = sprintf('SELECT `pid` FROM %s WHERE `pid`=%d AND `vid`=%d AND `cid`=%d LIMIT 1',$ptable,$data['pid'],$data['vid'],$data['cid']);
+    $row = $this->db->row_array($sql);
+    if(isset($row['pid'])){
+       return $row['pid'];
+    }
+    return false;
+  }
+  public function addPage($data = array()){
+    if(!isset($data['vid']) || $data['vid'] < 1){
+       return false;
+    }
+    $ptable = $this->getpagestablename($data['vid']);
+    $sql = sprintf('SELECT `pid` FROM %s WHERE `pid`=%d AND `vid`=%d AND `cid`=%d LIMIT 1',$ptable,$data['pid'],$data['vid'],$data['cid']);
+    $row = $this->db->row_array($sql);
+    if(isset($row['pid'])){
+       return $row['pid'];
+    }
+    $sql = $this->db->insert_string($ptable,$data);
+    $this->db->query($sql);
+    $this->db->insert_id();
+//var_dump($data['pid'].'  '.$pid);exit;
+    if(1 == $data['pid']){
+       $sql = sprintf('UPDATE `vols` SET `firstpid`=\'%s\' WHERE `vid`=%d LIMIT 1',$data['vid'].'_'.$data['pid'],$data['vid']);
+       echo $sql,"\n";
+       $this->db->query($sql);
+    }
+//    return $pid;
   }
   public function setPreAndNextVol($datas){
     if(!$datas)
       return null;
 
     $sql = sprintf("SELECT * FROM vols
-                 WHERE vid != %d AND comicid = %d
-                 ORDER BY vol DESC LIMIT 1 ",
-         intval($datas['vid']),$datas['comicid']);
+                 WHERE vnum < %d AND cid = %d
+                 ORDER BY vnum DESC LIMIT 1 ",
+         intval($datas['vnum']),$datas['cid']);
 
-    $prevVol = $thi->db->query_first($sql);
-    if($datas['vol'] != 1 && $prevVol['firstpid']){
-      $sql = sprintf("UPDATE vols SET nextpid = %d WHERE id = %d LIMIT 1",$datas['firstpid'],$prevVol['id']);
-      echo "\n$sql\n";
+    $prevVol = $this->db->row_array($sql);
+    if($datas['vnum'] != 1 && $prevVol['firstpid']){
+      $sql = sprintf("UPDATE vols SET nextpid = '%s' WHERE vid = %d LIMIT 1",$datas['firstpid'],$prevVol['vid']);
+//      echo "\n$sql\n";
       $this->db->query($sql);
 
-      $sql = sprintf("UPDATE vols SET prevpid = %d WHERE id = %d LIMIT 1",$prevVol['firstpid'],$datas['id']);
-      echo "\n$sql\n";
+      $sql = sprintf("UPDATE vols SET prepid = '%s' WHERE vid = %d LIMIT 1",$prevVol['firstpid'],$datas['vid']);
+//      echo "\n$sql\n";
       $this->db->query($sql);
     }
     return true;

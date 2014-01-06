@@ -55,6 +55,7 @@ class CurlModel{
     curl_setopt($this->ch, CURLOPT_COOKIEJAR, $this->cookie_file);
     /////把返回来的cookie信息保存在$cookie_jar文件中
     $this->html = curl_exec($this->ch);///执行
+    $this->postval = array();
     $this->config['url'] = $url;
     $this->config['referer'] = $url;
     if(!$this->html){

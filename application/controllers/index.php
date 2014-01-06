@@ -9,7 +9,7 @@ class Index extends Webbase {
 	
 	public function index()
 	{
-		
+die('2222222222222');		
 		$this->smarty->display('index.htm');
 	}
 	
