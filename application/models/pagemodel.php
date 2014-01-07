@@ -2,43 +2,52 @@
 require_once 'modelbase.php';
 
 class Pagemodel extends Modelbase{
-	
+        public $_table = 'page';
+        public $_pagecol = '`pid`, `vid`, `cid`, `img`, `isimg`, `isadult`, `hits`, `rtime`';
+	public $_volcol = '`vid`, `cid`, `vnum`, `pageset`, `isimg`, `firstpid`, `prepid`, `nextpid`, `isadult`, `hits`, `rtime` ';
+        public $_pagesetcol = '`pid`, `img`, `isadult`, `hits`, `rtime`';
 	public function __construct(){
 		parent::__construct();
 		
 	}
-	public function getCateList(){
-		$sql='SELECT `id`, `name`, `flag` FROM `cate` LIMIT 20';
-		return $this->db->query($sql)->result_array();
+	public function getTable($vid){
+		return 'page'.($vid % 10);
 	}
-	public function getCnameById($cid){
-		if(!$cid)
+	public function getPageInfoById($cid, $vid, $pid){
+		if(!$cid || !$vid || !$pid)
 		   return false;
 		   
-		$sql=sprintf('SELECT `id`, `name`, `ctotal`, `flag` FROM `cate` WHERE `id`=%d LIMIT 1',$cid);
+                $table = $this->getTable($vid);
+		$sql=sprintf('SELECT %s FROM %s WHERE `pid`=%d AND `vid`=%d AND `cid`=%d LIMIT 1', $this->_pagecol, $table, $pid, $vid, $cid);
 		return $this->db->query($sql)->row_array(); 
 	}
 
-	public function getCidByname($cname){
-		if(!$cname)
+	public function getPagesetInfoByid($cid, $vid){
+		if(!$cid || !$vid)
 		   return false;
 		   
-		$sql=sprintf('SELECT `id`, `name`, `ctotal`, `flag` FROM `cate` WHERE `name`="%s" LIMIT 1',$cname);
-		return $this->db->query($sql)->row_array(); 
+                $table = $this->getTable($vid);
+		$sql=sprintf('SELECT %s FROM %s WHERE `vid`=%d AND `cid`=%d LIMIT 200',$this->_pagesetcol, $table, $vid, $cid);
+		return $this->db->query($sql)->result_array(); 
 	}
-	public function InsertCate($cname){
-		if(!$cname){
-			//echo 'NULL';
+        public function updateInfoByid($table, $data, $id){
+                if(!$table || !$data || !$id)
+                   return false;
+
+                $where = array();
+                foreach($id as $key => $val){
+                  $where[] = sprintf(" `%s`='%s'",$key, mysql_real_escape_string($val));
+                }
+                $where = implode(' AND ', $where).' LIMIT 1';
+                $sql =  $this->db->update_string($table, $data, $where);
+                return $this->db->query($sql);
+        }
+	public function getVolinfoByid($cid, $vid){
+		if(!$cid || !$vid){
 		   return false;
 		}
-		if($this->getCidByname($cname)){
-			//echo '已存在';
-			return true;
-		}
-		$sql=sprintf('INSERT INTO `cate`(`name`) VALUES ("%s")',$cname);
-		$this->db->query($sql);
-		//echo '已执行';
-		return $this->db->affected_rows(); 
+		$sql=sprintf('SELECT %s FROM vols WHERE `vid`=%d AND `cid`=%d LIMIT 1',$this->_volcol, $vid, $cid);
+		return $this->db->query($sql)->row_array();
 	}
 	public function AddnewComic($info){
 		if(!$info){
