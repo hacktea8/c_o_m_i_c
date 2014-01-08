@@ -4,16 +4,16 @@
 	style="background-color: rgb(255, 255, 255);">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script charset="utf-8" src="./js/main.js" async="" mod_name="tanxssp-main"></script>
-<title>笨女孩 第53话 笨女孩漫画 - 爱漫画</title>
-<link href="./css/detail.min.css" rel="stylesheet" type="text/css">
+<script charset="utf-8" src="<?php echo $js_url;?>main.js" async="" mod_name="tanxssp-main"></script>
+<title><?php echo $comicinfo['title'].' - '.$web_title ?></title>
+<link href="<?php echo $css_url;?>detail.min.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 var cInfo={"cname":"\u7b2c\u0035\u0033\u8bdd","cid":92063,"finished":0,"bid":4191,"bname":"\u7b28\u5973\u5b69","len":6,"files":["001.png","002.png","003.png","004.png","005.png","006.png"],"burl":"/comic/4191/list_92063.html"};
 </script>
-<script src="./js/configs.js"></script>
+<script src="<?php echo $js_url;?>configs.js"></script>
 <!--[if IE 6]>        <script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script>    <![endif]-->
-<link href="./css/bdsstyle.css" rel="stylesheet" type="text/css">
-<script src="./js/logger.js"></script>
+<link href="<?php echo $css_url;?>bdsstyle.css" rel="stylesheet" type="text/css">
+<script src="<?php echo $js_url;?>logger.js"></script>
 </head>
 <body style="background-color: rgb(255, 255, 255);">
 
@@ -236,3 +236,5 @@ var cInfo={"cname":"\u7b2c\u0035\u0033\u8bdd","cid":92063,"finished":0,"bid":419
 		target="_blank"> <span>查看帮助</span> <i></i> </a></li>
 </ul>
 </div>
+
+<?php require_once 'footer.php';?>

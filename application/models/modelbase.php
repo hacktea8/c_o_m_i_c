@@ -8,4 +8,8 @@ class Modelbase extends CI_Model{
                 parent::__construct();
 		$this->db = $this->load->database('default',true);
 	}
+        public function getPicUrl($key){
+               
+               return 'http://img.hacktea8.com/showpic.php?key='.$key;
+        }
 }

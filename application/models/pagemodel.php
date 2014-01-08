@@ -19,7 +19,8 @@ class Pagemodel extends Modelbase{
 		   
                 $table = $this->getTable($vid);
 		$sql=sprintf('SELECT %s FROM %s WHERE `pid`=%d AND `vid`=%d AND `cid`=%d LIMIT 1', $this->_pagecol, $table, $pid, $vid, $cid);
-		return $this->db->query($sql)->row_array(); 
+		$row = $this->db->query($sql)->row_array();
+                $row['cover'] = $this->getPicUrl($row['img']);
 	}
 
 	public function getPagesetInfoByid($cid, $vid){
@@ -28,7 +29,11 @@ class Pagemodel extends Modelbase{
 		   
                 $table = $this->getTable($vid);
 		$sql=sprintf('SELECT %s FROM %s WHERE `vid`=%d AND `cid`=%d LIMIT 200',$this->_pagesetcol, $table, $vid, $cid);
-		return $this->db->query($sql)->result_array(); 
+		$list = $this->db->query($sql)->result_array();
+                foreach($list as &$val){
+                  $val['cover'] = $this->getPicUrl($val['img']);
+                }
+                return $list;
 	}
         public function updateInfoByid($table, $data, $id){
                 if(!$table || !$data || !$id)
