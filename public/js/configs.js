@@ -1,14 +1,14 @@
 var pVars = pVars || {
     'servs': [
-        { 'name': 'µçĞÅ¢Ù', 'host': '' },
-        { 'name': 'µçĞÅ¢Ú', 'host': '' },
-        { 'name': 'µçĞÅ¢Û', 'host': '' },
-        { 'name': '¹ã¶«µçĞÅ', 'host': '' },
-        { 'name': '½­ËÕµçĞÅ', 'host': '' },
-        { 'name': 'ÁªÍ¨', 'host': '' }
+        { 'name': 'ç”µä¿¡â‘ ', 'host': 't4.mangafiles.com' },
+        { 'name': 'ç”µä¿¡â‘¡', 'host': 't5.mangafiles.com' },
+        { 'name': 'ç”µä¿¡â‘¢', 'host': 't6.mangafiles.com' },
+        { 'name': 'å¹¿ä¸œç”µä¿¡', 'host': 't6.mangafiles.com' },
+        { 'name': 'æ±Ÿè‹ç”µä¿¡', 'host': 't5.mangafiles.com' },
+        { 'name': 'è”é€š', 'host': 'c5.mangafiles.com' }
     ],
 	'servsLen': 6,
-    'root': 'http://mh.hacktea8.com',
+    'root': 'http://www.imanhua.com',
     'page': 1,
     'curServ': 0,
     'defServ': 0,
@@ -16,7 +16,7 @@ var pVars = pVars || {
     'curFile': '',
 	'dblClick': 1,
     'skin': 0,
-    'IMG_ERR_MSG': '<div class="img-err-msg"><h3>:( ·Ç³£±§Ç¸£¬Í¼Æ¬ÔØÈëÊ§°ÜÁË¡£</h3><ol><li>Çë³¢ÊÔ°´¼üÅÌF5°´¼ü»ò<a href="javascript:;" onclick="location.reload();">µã»÷´Ë´¦</a>Ë¢ĞÂ±¾Ò³Ãæ¡£</li><li>Çë³¢ÊÔµã»÷ÓÒ²àµÄ·şÎñÆ÷½ÚµãÇĞ»»µ½ËÙ¶È¸ü¿ìµÄ·şÎñÆ÷¡£</li></ol></div>'
+    'IMG_ERR_MSG': '<div class="img-err-msg"><h3>:( éå¸¸æŠ±æ­‰ï¼Œå›¾ç‰‡è½½å…¥å¤±è´¥äº†ã€‚</h3><ol><li>è¯·å°è¯•æŒ‰é”®ç›˜F5æŒ‰é”®æˆ–<a href="javascript:;" onclick="location.reload();">ç‚¹å‡»æ­¤å¤„</a>åˆ·æ–°æœ¬é¡µé¢ã€‚</li><li>è¯·å°è¯•ç‚¹å‡»å³ä¾§çš„æœåŠ¡å™¨èŠ‚ç‚¹åˆ‡æ¢åˆ°é€Ÿåº¦æ›´å¿«çš„æœåŠ¡å™¨ã€‚</li></ol></div>'
 };
 
 

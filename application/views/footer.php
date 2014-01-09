@@ -1,17 +1,5 @@
   
-<script src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=380725" type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=12103"></script>    <script src="http://bdimg.share.baidu.com/static/js/shell_v2.js?t=20" type="text/javascript" id="bdshell_js"></script>            
 <script type="text/javascript">                
-var duoshuoQuery = { short_name: "imanhua" };               
-var _c = createXMLHttp();               
-_c.open("GET", "/v2/user/count.aspx?bid=120", false);               
-_c.send(null);                
-document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000);                (function () {                                                 
-	var ds = document.createElement('script');                    
-ds.type = 'text/javascript'; ds.async = true;                    
-ds.src = 'http://static.duoshuo.com/embed.js';                    
-ds.charset = 'UTF-8';                    
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);                
-})();        
 </script>    
 <div class="main" style="margin-top:8px;">        
 <script type="text/javascript">show(6);</script>    

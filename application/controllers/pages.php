@@ -19,7 +19,11 @@ class Pages extends Webbase {
                 $volinfo['pageset'] = json_decode($volinfo['pageset'], 1);
                 $volinfo['pagesize'] = count($volinfo['pageset']);
                 $volinfo['pageinfo'] = $volinfo['pageset'][$p - 1];
-
+                $volinfo['pagesetimg'] = array();
+                foreach($volinfo['pageset'] as $val){
+                  $volinfo['pagesetimg'][] = '"'.$val['img'].'"';
+                }
+                $volinfo['pagesetimg'] = implode(',',$volinfo['pagesetimg']);
 /*
 echo '<pre>';
 var_dump($volinfo);
