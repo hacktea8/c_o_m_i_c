@@ -10,7 +10,9 @@ class Webbase extends CI_Controller {
 		$this->assign(array('domain'=>$this->config->item('domain'),
 		'base_url'=>$this->config->item('base_url'),'css_url'=>$this->config->item('css_url'),
 		'img_url'=>$this->config->item('img_url'),'js_url'=>$this->config->item('js_url'),
-		'toptips'=>$this->config->item('toptips'),'web_title'=>$this->config->item('web_title')));
+		'toptips'=>$this->config->item('toptips'),'web_title'=>$this->config->item('web_title')
+                ,'version'=>20140109
+                ));
     }
     public function assign($data){
       foreach($data as $key => $val){

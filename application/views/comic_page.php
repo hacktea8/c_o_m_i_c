@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><?php echo $comicinfo['title'],' - ',$web_title;?></title>
 <link href="<?php echo $css_url;?>detail.min.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
-<script type="text/javascript">var cInfo={"cid":<?php echo $comicinfo['volinfo']['vid'];?>,"cname":"\u7b2c\u0035\u0033\u8bdd","burl":"/pages/vol/<?php echo $comicinfo['cid'];?>/<?php echo $comicinfo['volinfo']['vid'];?>","files":[<?php echo $comicinfo['volinfo']['pagesetimg'];?>],"bid":<?php echo $comicinfo['cid'];?>,"len":<?php echo $comicinfo['volinfo']['pagesize'];?>,"bname":"\u8fdb\u51fb\u7684\u5de8\u4eba","finished":0};</script>
+<script type="text/javascript">var cInfo={"cid":<?php echo $comicinfo['volinfo']['vid'];?>,"cname":"<?php echo $comicinfo['volinfo']['name'];?>","burl":"/pages/vol/<?php echo $comicinfo['cid'];?>/<?php echo $comicinfo['volinfo']['vid'];?>","files":[<?php echo $comicinfo['volinfo']['pagesetimg'];?>],"bid":<?php echo $comicinfo['volinfo']['cid'];?>,"len":<?php echo $comicinfo['volinfo']['pagesize'];?>,"bname":"<?php echo $comicinfo['name'];?>","finished":<?php echo $comicinfo['state'];?>};</script>
 <script src="<?php echo $js_url;?>configs.js?v=<?php echo $version;?>"></script>
 <!--[if IE 6]> <script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script> <![endif]-->
 </head>

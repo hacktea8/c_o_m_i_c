@@ -6,6 +6,8 @@ class Pagemodel extends Modelbase{
         public $_pagecol = '`pid`, `vid`, `cid`, `img`, `isimg`, `isadult`, `hits`, `rtime`';
 	public $_volcol = '`vid`, `cid`, `vnum`, `pageset`, `isimg`, `firstpid`, `prepid`, `nextpid`, `isadult`, `hits`, `rtime` ';
         public $_pagesetcol = '`pid`, `img`, `isadult`, `hits`, `rtime`';
+        public $_comiccol = '`name`,`letter`,`state`';
+
 	public function __construct(){
 		parent::__construct();
 		
@@ -54,17 +56,14 @@ class Pagemodel extends Modelbase{
 		$sql=sprintf('SELECT %s FROM vols WHERE `vid`=%d AND `cid`=%d LIMIT 1',$this->_volcol, $vid, $cid);
 		return $this->db->query($sql)->row_array();
 	}
-	public function AddnewComic($info){
-		if(!$info){
+	public function getComicinfoByid($cid){
+		if(!$cid){
 			return false;
 		}
-		if($this->getComicById($info['id'])){
-			return $info['id'];
-		}
-		$this->db->insert('comic', $info); 
+                $sql = sprintf('SELECT %s FROM `comic` WHERE flag=1 AND cid=%d LIMIT 1', $this->_comiccol,$cid);
+		$info = $this->db->query($sql)->row_array(); 
 
-		$this->upcomicupdate($info['id']);
-		return $info['id'];
+		return $info;
 	}
 	public function updateComicDetail($info){
 		if(!$info){

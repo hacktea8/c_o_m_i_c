@@ -1,14 +1,14 @@
 var pVars = pVars || {
     'servs': [
-        { 'name': '电信①', 'host': 't4.mangafiles.com' },
-        { 'name': '电信②', 'host': 't5.mangafiles.com' },
-        { 'name': '电信③', 'host': 't6.mangafiles.com' },
-        { 'name': '广东电信', 'host': 't6.mangafiles.com' },
-        { 'name': '江苏电信', 'host': 't5.mangafiles.com' },
-        { 'name': '联通', 'host': 'c5.mangafiles.com' }
+        { 'name': '电信①', 'host': 'img.hacktea8.com/showpic.php?key=' },
+        { 'name': '电信②', 'host': 'img.hacktea8.com/showpic.php?key=' },
+        { 'name': '电信③', 'host': 'img.hacktea8.com/showpic.php?key=' },
+        { 'name': '广东电信', 'host': 'img.hacktea8.com/showpic.php?key=' },
+        { 'name': '江苏电信', 'host': 'img.hacktea8.com/showpic.php?key=' },
+        { 'name': '联通', 'host': 'img.hacktea8.com/showpic.php?key=' }
     ],
 	'servsLen': 6,
-    'root': 'http://www.imanhua.com',
+    'root': 'http://mh.hacktea8.com',
     'page': 1,
     'curServ': 0,
     'defServ': 0,

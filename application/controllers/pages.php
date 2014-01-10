@@ -11,6 +11,7 @@ class Pages extends Webbase {
 	}
 	
 	public function vol($cid, $vid, $p = 1){
+                $comicinfo = $this->pagemodel->getComicinfoByid($cid);
                 $volinfo = $this->pagemodel->getVolinfoByid($cid, $vid);
                 if(!$volinfo['pageset']){
                    $volinfo['pageset'] = json_encode($this->pagemodel->getPagesetInfoByid($cid, $vid));
@@ -24,11 +25,11 @@ class Pages extends Webbase {
                   $volinfo['pagesetimg'][] = '"'.$val['img'].'"';
                 }
                 $volinfo['pagesetimg'] = implode(',',$volinfo['pagesetimg']);
-/*
+/*/
 echo '<pre>';
-var_dump($volinfo);
+var_dump($comicinfo);
 exit;
-*/
+/**/
                $comicinfo['volinfo'] = $volinfo;
                $this->assign(array('comicinfo' => $comicinfo)); 
 
