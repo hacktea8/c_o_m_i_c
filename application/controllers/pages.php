@@ -24,15 +24,23 @@ class Pages extends Webbase {
                 foreach($volinfo['pageset'] as $val){
                   $volinfo['pagesetimg'][] = '"'.$val['img'].'"';
                 }
+                $tmp = explode('_', $volinfo['nextpid']);
+                $volinfo['n'] = array_shift($tmp);
+                $tmp = explode('_', $volinfo['prepid']);
+                $volinfo['p'] = array_shift($tmp);
+                
                 $volinfo['pagesetimg'] = implode(',',$volinfo['pagesetimg']);
+                $comicinfo['volinfo'] = $volinfo;
 /*/
 echo '<pre>';
 var_dump($comicinfo);
 exit;
 /**/
-               $comicinfo['volinfo'] = $volinfo;
                $this->assign(array('comicinfo' => $comicinfo)); 
 
                $this->load->view('comic_page', $this->viewData);
 	}
+        public function chapter($cb,$cid,$vid){
+               echo $_GET['cb'];;die(json_encode(array('s'=>1,'p'=>1,'n'=>2)));
+        }
 }

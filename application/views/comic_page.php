@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><?php echo $comicinfo['title'],' - ',$web_title;?></title>
 <link href="<?php echo $css_url;?>detail.min.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
-<script type="text/javascript">var cInfo={"cid":<?php echo $comicinfo['volinfo']['vid'];?>,"cname":"<?php echo $comicinfo['volinfo']['name'];?>","burl":"/pages/vol/<?php echo $comicinfo['cid'];?>/<?php echo $comicinfo['volinfo']['vid'];?>","files":[<?php echo $comicinfo['volinfo']['pagesetimg'];?>],"bid":<?php echo $comicinfo['volinfo']['cid'];?>,"len":<?php echo $comicinfo['volinfo']['pagesize'];?>,"bname":"<?php echo $comicinfo['name'];?>","finished":<?php echo $comicinfo['state'];?>};</script>
+<script type="text/javascript">var cInfo={"cid":<?php echo $comicinfo['volinfo']['vid'];?>,"p":"<?php echo $comicinfo['volinfo']['p'];?>","n":"<?php echo $comicinfo['volinfo']['n'];?>","cname":"<?php echo $comicinfo['volinfo']['name'];?>","burl":"/pages/vol/<?php echo $comicinfo['volinfo']['cid'];?>/<?php echo $comicinfo['volinfo']['vid'];?>","files":[<?php echo $comicinfo['volinfo']['pagesetimg'];?>],"bid":<?php echo $comicinfo['volinfo']['cid'];?>,"len":<?php echo $comicinfo['volinfo']['pagesize'];?>,"bname":"<?php echo $comicinfo['name'];?>","finished":<?php echo $comicinfo['state'];?>};</script>
 <script src="<?php echo $js_url;?>configs.js?v=<?php echo $version;?>"></script>
 <!--[if IE 6]> <script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script> <![endif]-->
 </head>
@@ -48,12 +48,12 @@
 <div class="title w980" id="title">
 <div class="page-number fr">第<strong id="pageCurrent"></strong>页 /
 共<strong><?php echo $comicinfo['volinfo']['pagesize'];?></strong>页</div>
-<h1><a href="/comic/<?php echo $comicinfo['cid'];?>/" title="<?php echo $comicinfo['name'];?>"><?php echo $comicinfo['name'];?></a></h1>
+<h1><a href="/comic/<?php echo $comicinfo['volinfo']['cid'];?>/" title="<?php echo $comicinfo['name'];?>"><?php echo $comicinfo['name'];?></a></h1>
 <em>-</em>
 <h2><?php echo $comicinfo['volinfo']['name'];?></h2>
 </div>
 <div class="w980 tc" style="padding: 10px 0 0;">
-<div class="main-btn"><a href="/comic/<?php echo $comicinfo['cid'];?>/" id="viewList"
+<div class="main-btn"><a href="/comic/<?php echo $comicinfo['volinfo']['cid'];?>/" id="viewList"
 	class="btn-red">目录列表</a> <a href="javascript:;" class="prevC btn-red">上一章</a>
 <a href="javascript:;" id="prev" class="prevP btn-red">上一页</a> <select
 	id="pageSelect"
@@ -63,7 +63,7 @@
 <?php } ?>
 </select> <a href="javascript:;" id="next" class="nextP btn-red">下一页</a> <a
 	href="javascript:;" class="nextC btn-red">下一章</a> <a
-	href="/comic/<?php echo $comicinfo['cid'];?>/" class="btn-red">返回目录</a></div>
+	href="/comic/<?php echo $comicinfo['volinfo']['cid'];?>/" class="btn-red">返回目录</a></div>
 </div>
 <div class="tip" id="tips"><span class="fr"> <a
 	href="javascript:;" id="mouseAct" class="mouseAct"

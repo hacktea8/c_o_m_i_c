@@ -10,9 +10,8 @@ class Comic extends Webbase {
 	
 	public function index($comicid=0){
 		if(!$comicid)
-		  // return false;
+		   return false;
 
-		
-		$this->smarty->display('comic.htm');
+	        $this->load->view('comic_index', $this->viewData);	
 	}
 }
