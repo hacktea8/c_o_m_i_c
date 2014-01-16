@@ -56,15 +56,6 @@ class Pagemodel extends Modelbase{
 		$sql=sprintf('SELECT %s FROM vols WHERE `vid`=%d AND `cid`=%d LIMIT 1',$this->_volcol, $vid, $cid);
 		return $this->db->query($sql)->row_array();
 	}
-	public function getComicinfoByid($cid){
-		if(!$cid){
-			return false;
-		}
-                $sql = sprintf('SELECT %s FROM `comic` WHERE flag=1 AND cid=%d LIMIT 1', $this->_comiccol,$cid);
-		$info = $this->db->query($sql)->row_array(); 
-
-		return $info;
-	}
 	public function updateComicDetail($info){
 		if(!$info){
 			return false;

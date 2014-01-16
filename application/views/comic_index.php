@@ -101,7 +101,7 @@
 <body>
 <div class="main">
 <div class="top">
-<div class="logo"><a href="/" title="爱漫画为您提供漫画、在线漫画、最新漫画免费观看">爱漫画网专为您提供漫画、在线漫画
+<div class="logo"><a href="/" title="<?php echo $web_title;?>为您提供漫画、在线漫画、最新漫画免费观看"><?php echo $web_title;?>专为您提供漫画、在线漫画
 、火影忍者漫画、火影漫画 ，并提供死神、海贼王漫画、网球王子、灌蓝高手、七龙珠等漫画在线免费观看</a></div>
 <div class="top_right">
 <div class="hotListText"><script language="javascript">hotComic();</script></div>
@@ -120,7 +120,7 @@
 </div>
 <div class="main_nav">
 <ul class="navList">
-	<li class="first"><a href="/">爱漫画首页</a></li>
+	<li class="first"><a href="/"><?php echo $web_title;?>首页</a></li>
 	<li><a href="/comic/shaonian/" title="少年热血">少年热血</a></li>
 	<li><a href="/comic/wuxia/" title="武侠格斗">武侠格斗</a></li>
 	<li><a href="/comic/kehuan/" title="科幻魔幻">科幻魔幻</a></li>
@@ -246,8 +246,8 @@
 </div>
 <div class="bookInfo pr">
 <h2 class="bar"><strong class="position">您当前的位置 ：<em><a
-	href="/">首页</a> >> <a href="/comic/E/">字母E漫画列表</a> >> <a
-	href="/comic/1119/">恶魔奶爸漫画</a></em></strong></h2>
+	href="/">首页</a> >> <a href="/comic/<?php echo $comicinfo['letter'];?>/">字母<?php echo $comicinfo['letter'];?>漫画列表</a> >> <a
+	href="/comic/<?php echo $comicinfo['id'];?>/"><?php echo $comicinfo['name'];?>漫画</a></em></strong></h2>
 <div class="share"><!-- Baidu Button BEGIN -->
 <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"><span
 	class="bds_more">分享到：</span> <a class="bds_qzone"></a> <a
@@ -255,17 +255,16 @@
 <a class="bds_t163"></a> <a class="shareCount"></a></div>
 <!-- Baidu Button END --></div>
 <h1>恶魔奶爸</h1>
-<p class="bookAttr"><span>完结状态：[ <em>连载中</em> ]</span>原作者：田村隆平 |
-字母索引：<a href="/comic/E">E</a> | 加入时间：2009-03-15 | 更新时间：2013-12-26</p>
+<p class="bookAttr"><span>完结状态：[ <em>连载中<?php echo $comicinfo['status'];?></em> ]</span>原作者：<?php echo $comicinfo['author'];?> |
+字母索引：<a href="/comic/<?php echo $comicinfo['letter'];?>"><?php echo $comicinfo['letter'];?></a> | 加入时间：<?php echo $comicinfo['atime'];?> | 更新时间：<?php echo $comicinfo['rtime'];?></p>
 <span class="blank6"></span>
 <div class="bookMain">
 <div class="bookIntro">
 <div class="fr right-box"><script type="text/javascript">show(1);</script>
 </div>
-<h2>恶魔奶爸漫画</h2>
+<h2><?php echo $comicinfo['name'];?>漫画</h2>
 <div class="intro">
-<p>男鹿辰巳，石矢魔高中的不良学生，打架无败记录，因此被周围人称为恶魔，外号&ldquo;暴走男鹿&rdquo;。动画每一集片头都被称为&ldquo;很久很久以前，有一个不把别人当人看的&hellip;&hellip;&rdquo;由爱漫画收集自互联网－爱漫画，让你爱上漫画！</p>
-<p>某次在河边打架的时候遇见了从上游漂来的大叔（阿兰德龙，次元传送恶魔），男鹿把大叔带上岸之后大叔却突然分成两半，惊魂未定之余又发现了大叔体内有个婴儿，谁知道这个小婴儿竟然是来自魔界未来的大魔王的儿子（次子）！大魔王让自己的次子去毁灭人类？！男鹿也莫名其妙的成为魔王的父亲，从此开始了本来就不平凡的生活。<br />
+<?php echo $comicinfo['intro'];?>
 &nbsp;</p>
 </div>
 <div class="bookSimilar">
@@ -325,446 +324,16 @@
 <script type="text/javascript">show(3);</script></div>
 <div class="subBookList" id="subBookBox"
 	style="border-top: 1px solid #999999;">
-<h2 class="bar"><span class="orderNav">[ 最近更新于：2013-12-26]
+<h2 class="bar"><span class="orderNav">[ 最近更新于：<?php echo $comicinfo['rtime'];?>]
 排序：<a href="javascript:void(0);" onclick="order(0)" class="on" id="desc">降序</a>
 | <a href="javascript:void(0);" onclick="order(1)" id="asc">升序</a>
-&nbsp;</span><strong>恶魔奶爸漫画列表</strong></h2>
+&nbsp;</span><strong><?php echo $comicinfo['name'];?>漫画列表</strong></h2>
 <div class="blank8"></div>
-<div class="clipBox">漫友注意啦：支持<strong>恶魔奶爸漫画</strong>，就赶快把阅读地址：<script
+<div class="clipBox">漫友注意啦：支持<strong><?php echo $comicinfo['name'];?>漫画</strong>，就赶快把阅读地址：<script
 	type="text/javascript">initClipBox();</script>在博客、QQ、论坛签名档上告诉你的好友们</div>
 <ul style="" id='subBookList'>
 	<li><a href="/comic/1119/list_93076.html" title="第234话"
 		target="_blank">第234话</a></li>
-	<li><a href="/comic/1119/list_92701.html" title="第233话"
-		target="_blank">第233话</a></li>
-	<li><a href="/comic/1119/list_92435.html" title="第232话"
-		target="_blank">第232话</a></li>
-	<li class="alter"><a href="/comic/1119/list_92039.html"
-		title="第231话" target="_blank">第231话</a></li>
-	<li class="alter"><a href="/comic/1119/list_91768.html"
-		title="第230话" target="_blank">第230话</a></li>
-	<li class="alter"><a href="/comic/1119/list_91249.html"
-		title="第229话" target="_blank">第229话</a></li>
-	<li><a href="/comic/1119/list_91018.html" title="第228话"
-		target="_blank">第228话</a></li>
-	<li><a href="/comic/1119/list_90590.html" title="第227话"
-		target="_blank">第227话</a></li>
-	<li><a href="/comic/1119/list_89843.html" title="第226话"
-		target="_blank">第226话</a></li>
-	<li class="alter"><a href="/comic/1119/list_89536.html"
-		title="第225话" target="_blank">第225话</a></li>
-	<li class="alter"><a href="/comic/1119/list_89153.html"
-		title="第224话" target="_blank">第224话</a></li>
-	<li class="alter"><a href="/comic/1119/list_88926.html"
-		title="第223话" target="_blank">第223话</a></li>
-	<li><a href="/comic/1119/list_88560.html" title="第222话"
-		target="_blank">第222话</a></li>
-	<li><a href="/comic/1119/list_88190.html" title="第221话"
-		target="_blank">第221话</a></li>
-	<li><a href="/comic/1119/list_87875.html" title="第220话"
-		target="_blank">第220话</a></li>
-	<li class="alter"><a href="/comic/1119/list_87688.html"
-		title="第219话" target="_blank">第219话</a></li>
-	<li class="alter"><a href="/comic/1119/list_87088.html"
-		title="第218话" target="_blank">第218话</a></li>
-	<li class="alter"><a href="/comic/1119/list_86805.html"
-		title="第217话" target="_blank">第217话</a></li>
-	<li><a href="/comic/1119/list_85943.html" title="第216话"
-		target="_blank">第216话</a></li>
-	<li><a href="/comic/1119/list_85655.html" title="第215话"
-		target="_blank">第215话</a></li>
-	<li><a href="/comic/1119/list_85269.html" title="第214话"
-		target="_blank">第214话</a></li>
-	<li class="alter"><a href="/comic/1119/list_84871.html"
-		title="第213话" target="_blank">第213话</a></li>
-	<li class="alter"><a href="/comic/1119/list_84565.html"
-		title="第212话" target="_blank">第212话</a></li>
-	<li class="alter"><a href="/comic/1119/list_84219.html"
-		title="第211话" target="_blank">第211话</a></li>
-	<li><a href="/comic/1119/list_83968.html" title="第210话"
-		target="_blank">第210话</a></li>
-	<li><a href="/comic/1119/list_83586.html" title="第209话"
-		target="_blank">第209话</a></li>
-	<li><a href="/comic/1119/list_83353.html" title="第208话"
-		target="_blank">第208话</a></li>
-	<li class="alter"><a href="/comic/1119/list_82992.html"
-		title="第207话" target="_blank">第207话</a></li>
-	<li class="alter"><a href="/comic/1119/list_82660.html"
-		title="第206话" target="_blank">第206话</a></li>
-	<li class="alter"><a href="/comic/1119/list_82356.html"
-		title="第205话" target="_blank">第205话</a></li>
-	<li><a href="/comic/1119/list_82045.html" title="第204话"
-		target="_blank">第204话</a></li>
-	<li><a href="/comic/1119/list_81732.html" title="第203话"
-		target="_blank">第203话</a></li>
-	<li><a href="/comic/1119/list_81103.html" title="第202话"
-		target="_blank">第202话</a></li>
-	<li class="alter"><a href="/comic/1119/list_80843.html"
-		title="第201话" target="_blank">第201话</a></li>
-	<li class="alter"><a href="/comic/1119/list_80568.html"
-		title="第200话" target="_blank">第200话</a></li>
-	<li class="alter"><a href="/comic/1119/list_80277.html"
-		title="第199话" target="_blank">第199话</a></li>
-	<li><a href="/comic/1119/list_80010.html" title="第198话"
-		target="_blank">第198话</a></li>
-	<li><a href="/comic/1119/list_79733.html" title="第197话"
-		target="_blank">第197话</a></li>
-	<li><a href="/comic/1119/list_79487.html" title="第196话"
-		target="_blank">第196话</a></li>
-	<li class="alter"><a href="/comic/1119/list_79228.html"
-		title="第195话" target="_blank">第195话</a></li>
-	<li class="alter"><a href="/comic/1119/list_78964.html"
-		title="第194话" target="_blank">第194话</a></li>
-	<li class="alter"><a href="/comic/1119/list_78708.html"
-		title="第193话" target="_blank">第193话</a></li>
-	<li><a href="/comic/1119/list_78513.html" title="第192话"
-		target="_blank">第192话</a></li>
-	<li><a href="/comic/1119/list_78293.html" title="第191话"
-		target="_blank">第191话</a></li>
-	<li><a href="/comic/1119/list_78136.html" title="第190话"
-		target="_blank">第190话</a></li>
-	<li class="alter"><a href="/comic/1119/list_77846.html"
-		title="第189话" target="_blank">第189话</a></li>
-	<li class="alter"><a href="/comic/1119/list_77622.html"
-		title="第188话" target="_blank">第188话</a></li>
-	<li class="alter"><a href="/comic/1119/list_76841.html"
-		title="第187话" target="_blank">第187话</a></li>
-	<li><a href="/comic/1119/list_76453.html" title="第186话"
-		target="_blank">第186话</a></li>
-	<li><a href="/comic/1119/list_76264.html" title="第185话"
-		target="_blank">第185话</a></li>
-	<li><a href="/comic/1119/list_76020.html" title="第184话"
-		target="_blank">第184话</a></li>
-	<li class="alter"><a href="/comic/1119/list_75674.html"
-		title="第183话" target="_blank">第183话</a></li>
-	<li class="alter"><a href="/comic/1119/list_75329.html"
-		title="第182话" target="_blank">第182话</a></li>
-	<li class="alter"><a href="/comic/1119/list_75121.html"
-		title="第181话" target="_blank">第181话</a></li>
-	<li><a href="/comic/1119/list_74843.html" title="第180话"
-		target="_blank">第180话</a></li>
-	<li><a href="/comic/1119/list_74576.html" title="第179话"
-		target="_blank">第179话</a></li>
-	<li><a href="/comic/1119/list_74284.html" title="第178话"
-		target="_blank">第178话</a></li>
-	<li class="alter"><a href="/comic/1119/list_73988.html"
-		title="第177话" target="_blank">第177话</a></li>
-	<li class="alter"><a href="/comic/1119/list_73667.html"
-		title="第176话" target="_blank">第176话</a></li>
-	<li class="alter"><a href="/comic/1119/list_73475.html"
-		title="第175话" target="_blank">第175话</a></li>
-	<li><a href="/comic/1119/list_73231.html" title="第174话"
-		target="_blank">第174话</a></li>
-	<li><a href="/comic/1119/list_72977.html" title="第173话"
-		target="_blank">第173话</a></li>
-	<li><a href="/comic/1119/list_72685.html" title="第172话"
-		target="_blank">第172话</a></li>
-	<li class="alter"><a href="/comic/1119/list_72414.html"
-		title="第171话" target="_blank">第171话</a></li>
-	<li class="alter"><a href="/comic/1119/list_72060.html"
-		title="第170话" target="_blank">第170话</a></li>
-	<li class="alter"><a href="/comic/1119/list_71785.html"
-		title="第169话" target="_blank">第169话</a></li>
-	<li><a href="/comic/1119/list_71410.html" title="第168话"
-		target="_blank">第168话</a></li>
-	<li><a href="/comic/1119/list_71025.html" title="第167话"
-		target="_blank">第167话</a></li>
-	<li><a href="/comic/1119/list_70833.html" title="第166话"
-		target="_blank">第166话</a></li>
-	<li class="alter"><a href="/comic/1119/list_70589.html"
-		title="第165话" target="_blank">第165话</a></li>
-	<li class="alter"><a href="/comic/1119/list_70294.html"
-		title="第164话" target="_blank">第164话</a></li>
-	<li class="alter"><a href="/comic/1119/list_70034.html"
-		title="第163话" target="_blank">第163话</a></li>
-	<li><a href="/comic/1119/list_69721.html" title="第162话"
-		target="_blank">第162话</a></li>
-	<li><a href="/comic/1119/list_69598.html" title="JumpNEXT番外篇"
-		target="_blank">JumpNEXT番外篇</a></li>
-	<li><a href="/comic/1119/list_69488.html" title="第161话"
-		target="_blank">第161话</a></li>
-	<li class="alter"><a href="/comic/1119/list_69311.html"
-		title="第160话" target="_blank">第160话</a></li>
-	<li class="alter"><a href="/comic/1119/list_68945.html"
-		title="第159话" target="_blank">第159话</a></li>
-	<li class="alter"><a href="/comic/1119/list_68654.html"
-		title="第158话" target="_blank">第158话</a></li>
-	<li><a href="/comic/1119/list_68410.html" title="第157话"
-		target="_blank">第157话</a></li>
-	<li><a href="/comic/1119/list_68085.html" title="第156话"
-		target="_blank">第156话</a></li>
-	<li><a href="/comic/1119/list_67898.html" title="第155话"
-		target="_blank">第155话</a></li>
-	<li class="alter"><a href="/comic/1119/list_67432.html"
-		title="第154话" target="_blank">第154话</a></li>
-	<li class="alter"><a href="/comic/1119/list_67003.html"
-		title="第153话" target="_blank">第153话</a></li>
-	<li class="alter"><a href="/comic/1119/list_66735.html"
-		title="第152话" target="_blank">第152话</a></li>
-	<li><a href="/comic/1119/list_66469.html" title="第151话"
-		target="_blank">第151话</a></li>
-	<li><a href="/comic/1119/list_66293.html" title="第150话"
-		target="_blank">第150话</a></li>
-	<li><a href="/comic/1119/list_65994.html" title="第149话"
-		target="_blank">第149话</a></li>
-	<li class="alter"><a href="/comic/1119/list_65687.html"
-		title="第148话" target="_blank">第148话</a></li>
-	<li class="alter"><a href="/comic/1119/list_65466.html"
-		title="第147话" target="_blank">第147话</a></li>
-	<li class="alter"><a href="/comic/1119/list_65244.html"
-		title="第146话" target="_blank">第146话</a></li>
-	<li><a href="/comic/1119/list_64879.html" title="第145话"
-		target="_blank">第145话</a></li>
-	<li><a href="/comic/1119/list_64572.html" title="第144话"
-		target="_blank">第144话</a></li>
-	<li><a href="/comic/1119/list_64280.html" title="第143话"
-		target="_blank">第143话</a></li>
-	<li class="alter"><a href="/comic/1119/list_64034.html"
-		title="第142话" target="_blank">第142话</a></li>
-	<li class="alter"><a href="/comic/1119/list_63993.html"
-		title="番外篇7" target="_blank">番外篇7</a></li>
-	<li class="alter"><a href="/comic/1119/list_63875.html"
-		title="第141话" target="_blank">第141话</a></li>
-	<li><a href="/comic/1119/list_63700.html" title="第140话"
-		target="_blank">第140话</a></li>
-	<li><a href="/comic/1119/list_63476.html" title="第139话"
-		target="_blank">第139话</a></li>
-	<li><a href="/comic/1119/list_63125.html" title="番外篇6"
-		target="_blank">番外篇6</a></li>
-	<li class="alter"><a href="/comic/1119/list_62833.html"
-		title="第138话" target="_blank">第138话</a></li>
-	<li class="alter"><a href="/comic/1119/list_62306.html"
-		title="第137话" target="_blank">第137话</a></li>
-	<li class="alter"><a href="/comic/1119/list_62015.html"
-		title="第136话" target="_blank">第136话</a></li>
-	<li><a href="/comic/1119/list_61798.html" title="第135话"
-		target="_blank">第135话</a></li>
-	<li><a href="/comic/1119/list_61612.html" title="第134话"
-		target="_blank">第134话</a></li>
-	<li><a href="/comic/1119/list_61502.html" title="第133话"
-		target="_blank">第133话</a></li>
-	<li class="alter"><a href="/comic/1119/list_61233.html"
-		title="第132话" target="_blank">第132话</a></li>
-	<li class="alter"><a href="/comic/1119/list_60942.html"
-		title="第131话" target="_blank">第131话</a></li>
-	<li class="alter"><a href="/comic/1119/list_60681.html"
-		title="第130话" target="_blank">第130话</a></li>
-	<li><a href="/comic/1119/list_60377.html" title="第129话"
-		target="_blank">第129话</a></li>
-	<li><a href="/comic/1119/list_60052.html" title="第128话"
-		target="_blank">第128话</a></li>
-	<li><a href="/comic/1119/list_59757.html" title="第127话"
-		target="_blank">第127话</a></li>
-	<li class="alter"><a href="/comic/1119/list_59595.html"
-		title="第126话" target="_blank">第126话</a></li>
-	<li class="alter"><a href="/comic/1119/list_59265.html"
-		title="第125话" target="_blank">第125话</a></li>
-	<li class="alter"><a href="/comic/1119/list_58851.html"
-		title="第124话" target="_blank">第124话</a></li>
-	<li><a href="/comic/1119/list_58588.html" title="第123话"
-		target="_blank">第123话</a></li>
-	<li><a href="/comic/1119/list_58248.html" title="第122话"
-		target="_blank">第122话</a></li>
-	<li><a href="/comic/1119/list_57938.html" title="第121话"
-		target="_blank">第121话</a></li>
-	<li class="alter"><a href="/comic/1119/list_57651.html"
-		title="第120话" target="_blank">第120话</a></li>
-	<li class="alter"><a href="/comic/1119/list_57007.html"
-		title="第119话" target="_blank">第119话</a></li>
-	<li class="alter"><a href="/comic/1119/list_56646.html"
-		title="第118话" target="_blank">第118话</a></li>
-	<li><a href="/comic/1119/list_56426.html" title="第117话"
-		target="_blank">第117话</a></li>
-	<li><a href="/comic/1119/list_56227.html" title="第116话"
-		target="_blank">第116话</a></li>
-	<li><a href="/comic/1119/list_55872.html" title="第115话"
-		target="_blank">第115话</a></li>
-	<li class="alter"><a href="/comic/1119/list_55507.html"
-		title="第114话" target="_blank">第114话</a></li>
-	<li class="alter"><a href="/comic/1119/list_55340.html"
-		title="第113话" target="_blank">第113话</a></li>
-	<li class="alter"><a href="/comic/1119/list_55183.html"
-		title="第112话" target="_blank">第112话</a></li>
-	<li><a href="/comic/1119/list_55011.html" title="第111话"
-		target="_blank">第111话</a></li>
-	<li><a href="/comic/1119/list_54831.html" title="第110话"
-		target="_blank">第110话</a></li>
-	<li><a href="/comic/1119/list_54682.html" title="第109话"
-		target="_blank">第109话</a></li>
-	<li class="alter"><a href="/comic/1119/list_54538.html"
-		title="第108话" target="_blank">第108话</a></li>
-	<li class="alter"><a href="/comic/1119/list_54359.html"
-		title="第107话" target="_blank">第107话</a></li>
-	<li class="alter"><a href="/comic/1119/list_54216.html"
-		title="第106话" target="_blank">第106话</a></li>
-	<li><a href="/comic/1119/list_53916.html" title="第105话"
-		target="_blank">第105话</a></li>
-	<li><a href="/comic/1119/list_53752.html" title="第104话"
-		target="_blank">第104话</a></li>
-	<li><a href="/comic/1119/list_53560.html" title="第103话"
-		target="_blank">第103话</a></li>
-	<li class="alter"><a href="/comic/1119/list_53398.html"
-		title="第102话" target="_blank">第102话</a></li>
-	<li class="alter"><a href="/comic/1119/list_53041.html"
-		title="第101话" target="_blank">第101话</a></li>
-	<li class="alter"><a href="/comic/1119/list_52877.html"
-		title="第100话" target="_blank">第100话</a></li>
-	<li><a href="/comic/1119/list_52672.html" title="第99话"
-		target="_blank">第99话</a></li>
-	<li><a href="/comic/1119/list_52449.html" title="第98话"
-		target="_blank">第98话</a></li>
-	<li><a href="/comic/1119/list_52316.html" title="第97话"
-		target="_blank">第97话</a></li>
-	<li class="alter"><a href="/comic/1119/list_52177.html"
-		title="第96话" target="_blank">第96话</a></li>
-	<li class="alter"><a href="/comic/1119/list_52048.html"
-		title="第95话" target="_blank">第95话</a></li>
-	<li class="alter"><a href="/comic/1119/list_51959.html"
-		title="第94话" target="_blank">第94话</a></li>
-	<li><a href="/comic/1119/list_51805.html" title="第93话"
-		target="_blank">第93话</a></li>
-	<li><a href="/comic/1119/list_51658.html" title="第92话"
-		target="_blank">第92话</a></li>
-	<li><a href="/comic/1119/list_51642.html" title="番外篇5"
-		target="_blank">番外篇5</a></li>
-	<li class="alter"><a href="/comic/1119/list_51364.html"
-		title="第91话" target="_blank">第91话</a></li>
-	<li class="alter"><a href="/comic/1119/list_50933.html"
-		title="第90话" target="_blank">第90话</a></li>
-	<li class="alter"><a href="/comic/1119/list_50767.html"
-		title="第89话" target="_blank">第89话</a></li>
-	<li><a href="/comic/1119/list_50583.html" title="第88话"
-		target="_blank">第88话</a></li>
-	<li><a href="/comic/1119/list_50363.html" title="第87话"
-		target="_blank">第87话</a></li>
-	<li><a href="/comic/1119/list_50104.html" title="第86话"
-		target="_blank">第86话</a></li>
-	<li class="alter"><a href="/comic/1119/list_49898.html"
-		title="第85话" target="_blank">第85话</a></li>
-	<li class="alter"><a href="/comic/1119/list_49651.html"
-		title="第84话" target="_blank">第84话</a></li>
-	<li class="alter"><a href="/comic/1119/list_49424.html"
-		title="第83话" target="_blank">第83话</a></li>
-	<li><a href="/comic/1119/list_49261.html" title="第82话"
-		target="_blank">第82话</a></li>
-	<li><a href="/comic/1119/list_49123.html" title="第81话"
-		target="_blank">第81话</a></li>
-	<li><a href="/comic/1119/list_48980.html" title="第80话"
-		target="_blank">第80话</a></li>
-	<li class="alter"><a href="/comic/1119/list_48863.html"
-		title="第79话" target="_blank">第79话</a></li>
-	<li class="alter"><a href="/comic/1119/list_48695.html"
-		title="第78话" target="_blank">第78话</a></li>
-	<li class="alter"><a href="/comic/1119/list_48518.html"
-		title="第77话" target="_blank">第77话</a></li>
-	<li><a href="/comic/1119/list_48353.html" title="第76话"
-		target="_blank">第76话</a></li>
-	<li><a href="/comic/1119/list_48138.html" title="番外篇4"
-		target="_blank">番外篇4</a></li>
-	<li><a href="/comic/1119/list_48137.html" title="第75话"
-		target="_blank">第75话</a></li>
-	<li class="alter"><a href="/comic/1119/list_47867.html"
-		title="第74话" target="_blank">第74话</a></li>
-	<li class="alter"><a href="/comic/1119/list_47659.html"
-		title="番外篇3" target="_blank">番外篇3</a></li>
-	<li class="alter"><a href="/comic/1119/list_47591.html"
-		title="第73话" target="_blank">第73话</a></li>
-	<li><a href="/comic/1119/list_47196.html" title="第72话"
-		target="_blank">第72话</a></li>
-	<li><a href="/comic/1119/list_45919.html" title="第71话"
-		target="_blank">第71话</a></li>
-	<li><a href="/comic/1119/list_45532.html" title="第70话"
-		target="_blank">第70话</a></li>
-	<li class="alter"><a href="/comic/1119/list_45216.html"
-		title="第69话" target="_blank">第69话</a></li>
-	<li class="alter"><a href="/comic/1119/list_44944.html"
-		title="第68话" target="_blank">第68话</a></li>
-	<li class="alter"><a href="/comic/1119/list_44700.html"
-		title="第67话" target="_blank">第67话</a></li>
-	<li><a href="/comic/1119/list_44511.html" title="第66话"
-		target="_blank">第66话</a></li>
-	<li><a href="/comic/1119/list_44315.html" title="第65话"
-		target="_blank">第65话</a></li>
-	<li><a href="/comic/1119/list_44129.html" title="第64话"
-		target="_blank">第64话</a></li>
-	<li class="alter"><a href="/comic/1119/list_43863.html"
-		title="第63话" target="_blank">第63话</a></li>
-	<li class="alter"><a href="/comic/1119/list_43627.html"
-		title="第62话" target="_blank">第62话</a></li>
-	<li class="alter"><a href="/comic/1119/list_43395.html"
-		title="第61话" target="_blank">第61话</a></li>
-	<li><a href="/comic/1119/list_43220.html" title="第60话"
-		target="_blank">第60话</a></li>
-	<li><a href="/comic/1119/list_43051.html" title="第59话"
-		target="_blank">第59话</a></li>
-	<li><a href="/comic/1119/list_42663.html" title="第58话"
-		target="_blank">第58话</a></li>
-	<li class="alter"><a href="/comic/1119/list_42453.html"
-		title="第57话" target="_blank">第57话</a></li>
-	<li class="alter"><a href="/comic/1119/list_42255.html"
-		title="第56话" target="_blank">第56话</a></li>
-	<li class="alter"><a href="/comic/1119/list_42103.html"
-		title="第55话" target="_blank">第55话</a></li>
-	<li><a href="/comic/1119/list_41866.html" title="第54话"
-		target="_blank">第54话</a></li>
-	<li><a href="/comic/1119/list_41687.html" title="第53话"
-		target="_blank">第53话</a></li>
-	<li><a href="/comic/1119/list_41496.html" title="第52话"
-		target="_blank">第52话</a></li>
-	<li class="alter"><a href="/comic/1119/list_41222.html"
-		title="第51话" target="_blank">第51话</a></li>
-	<li class="alter"><a href="/comic/1119/list_41068.html"
-		title="第50话" target="_blank">第50话</a></li>
-	<li class="alter"><a href="/comic/1119/list_40867.html"
-		title="第49话" target="_blank">第49话</a></li>
-	<li><a href="/comic/1119/list_40784.html" title="第48话"
-		target="_blank">第48话</a></li>
-	<li><a href="/comic/1119/list_40621.html" title="第47话"
-		target="_blank">第47话</a></li>
-	<li><a href="/comic/1119/list_40493.html" title="第46话"
-		target="_blank">第46话</a></li>
-	<li class="alter"><a href="/comic/1119/list_40317.html"
-		title="第45话" target="_blank">第45话</a></li>
-	<li class="alter"><a href="/comic/1119/list_40155.html"
-		title="第44话" target="_blank">第44话</a></li>
-	<li class="alter"><a href="/comic/1119/list_40039.html"
-		title="番外篇2" target="_blank">番外篇2</a></li>
-	<li><a href="/comic/1119/list_39866.html" title="第43话"
-		target="_blank">第43话</a></li>
-	<li><a href="/comic/1119/list_39642.html" title="第42话"
-		target="_blank">第42话</a></li>
-	<li><a href="/comic/1119/list_39456.html" title="第41话"
-		target="_blank">第41话</a></li>
-	<li class="alter"><a href="/comic/1119/list_39273.html"
-		title="第40话" target="_blank">第40话</a></li>
-	<li class="alter"><a href="/comic/1119/list_39114.html"
-		title="第39话" target="_blank">第39话</a></li>
-	<li class="alter"><a href="/comic/1119/list_38928.html"
-		title="第38话" target="_blank">第38话</a></li>
-	<li><a href="/comic/1119/list_38795.html" title="第37话"
-		target="_blank">第37话</a></li>
-	<li><a href="/comic/1119/list_38642.html" title="第36话"
-		target="_blank">第36话</a></li>
-	<li><a href="/comic/1119/list_38494.html" title="第35话"
-		target="_blank">第35话</a></li>
-	<li class="alter"><a href="/comic/1119/list_38320.html"
-		title="第34话" target="_blank">第34话</a></li>
-	<li class="alter"><a href="/comic/1119/list_38125.html"
-		title="第33话" target="_blank">第33话</a></li>
-	<li class="alter"><a href="/comic/1119/list_37866.html"
-		title="第32话" target="_blank">第32话</a></li>
-	<li><a href="/comic/1119/list_37713.html" title="第31话"
-		target="_blank">第31话</a></li>
-	<li><a href="/comic/1119/list_37526.html" title="第30话"
-		target="_blank">第30话</a></li>
-	<li><a href="/comic/1119/list_37262.html" title="第29话"
-		target="_blank">第29话</a></li>
-	<li class="alter"><a href="/comic/1119/list_37104.html"
-		title="第28话" target="_blank">第28话</a></li>
-	<li class="alter"><a href="/comic/1119/list_36739.html"
-		title="第27话" target="_blank">第27话</a></li>
-	<li class="alter"><a href="/comic/1119/list_36481.html"
-		title="第26话" target="_blank">第26话</a></li>
 	<li><a href="/comic/1119/list_36230.html" title="第25话"
 		target="_blank">第25话</a></li>
 	<li><a href="/comic/1119/list_35848.html" title="第24话"
@@ -839,7 +408,7 @@
 <div class="main" style="margin-top: 8px;"><script
 	type="text/javascript">show(6);</script></div>
 <div class="blank4"></div>
-<div class="footer">恶魔奶爸漫画来自网友分享和上传，以供漫画爱好者研究恶魔奶爸漫画画法技巧和构图方式。若侵犯到您的权益，请立即<a
+<div class="footer"><?php echo $comicinfo['name'];?>漫画来自网友分享和上传，以供漫画爱好者研究<?php echo $comicinfo['name'];?>漫画画法技巧和构图方式。若侵犯到您的权益，请立即<a
 	target="_blank" class="red" href="/contact.html"><b>联系我们</b></a>删除。本站不负任何相关责任。
 <br />
 <script src="<?php echo $js_url;?>foot.js" language='JavaScript'></script>
