@@ -18,6 +18,7 @@ class Comic extends Webbase {
                 $comicinfo['id'] = $comicid;
                 $comicinfo['atime'] = date('Y-m-d', $comicinfo['atime']);
                 $comicinfo['rtime'] = date('Y-m-d', $comicinfo['rtime']);
+                $comicinfo['status'] = $comicinfo['status'] ? '已完结': '连载中';
 /*/
 echo '<pre>';
 var_dump($comicinfo);exit;

@@ -255,7 +255,7 @@
 <a class="bds_t163"></a> <a class="shareCount"></a></div>
 <!-- Baidu Button END --></div>
 <h1>恶魔奶爸</h1>
-<p class="bookAttr"><span>完结状态：[ <em>连载中<?php echo $comicinfo['status'];?></em> ]</span>原作者：<?php echo $comicinfo['author'];?> |
+<p class="bookAttr"><span>完结状态：[ <em><?php echo $comicinfo['status'];?></em> ]</span>原作者：<?php echo $comicinfo['author'];?> |
 字母索引：<a href="/comic/<?php echo $comicinfo['letter'];?>"><?php echo $comicinfo['letter'];?></a> | 加入时间：<?php echo $comicinfo['atime'];?> | 更新时间：<?php echo $comicinfo['rtime'];?></p>
 <span class="blank6"></span>
 <div class="bookMain">
@@ -264,7 +264,7 @@
 </div>
 <h2><?php echo $comicinfo['name'];?>漫画</h2>
 <div class="intro">
-<?php echo $comicinfo['intro'];?>
+<?php echo $comicinfo['detail'];?>
 &nbsp;</p>
 </div>
 <div class="bookSimilar">
