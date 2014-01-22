@@ -9,8 +9,8 @@ class Index extends Webbase {
 	
 	public function index()
 	{
-die('2222222222222');		
-		$this->smarty->display('index.htm');
+           $this->assign(array('comicinfo' => $comicinfo));
+           $this->load->view('index_index', $this->viewData);	
 	}
 	
 	
