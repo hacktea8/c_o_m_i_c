@@ -21,4 +21,11 @@ class Modelbase extends CI_Model{
 
 		return $info;
 	}
+        public function getNavList(){
+                $sql = sprintf("SELECT * FROM `navlist` WHERE `type`=%d", 1);
+                return $this->db->query($sql)->result_array();
+        }
+        public function getFriendLinks(){
+                
+        }
 }

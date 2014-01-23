@@ -25,21 +25,14 @@
 <div class="top">
 <div class="logo"><a href="/" title="<?php echo $web_title;?>为您提供漫画、在线漫画、最新漫画免费观看"><?php echo $web_title;?>网专为您提供漫画、在线漫画、火影忍者漫画、火影漫画 ，并提供死神、海贼王漫画、网球王子、灌蓝高手、七龙珠等漫画在线观看</a></div>
 <div class="top_right" style="width: 720px;">
-<div class="hotListText">热门漫画：<a href="/comic/54/" target="_blank"
-	title="火影忍者漫画"><strong>火影忍者漫画</strong></a> <a href="/comic/55/"
-	target="_blank" title="海贼王">海贼王漫画</a> <a href="/comic/201/"
-	target="_blank" title="妖精的尾巴">妖精的尾巴</a> <a href="/comic/120/"
-	target="_blank" title="死神">死神漫画</a> <a href="/comic/1110/"
-	target="_blank" title="新网球王子">新网球王子</a> <a href="/comic/177/"
-	target="_blank" title="名侦探柯南">名侦探柯南</a> <a href="/comic/205/"
-	target="_blank" title="家庭教师">家庭教师</a> <a href="/comic/76/"
-	target="_blank" title="猎人">猎人</a> <a href="/comic/46/" target="_blank"
-	title="灌篮高手">灌篮高手</a> <a href="/comic/108/" target="_blank" title="七龙珠">七龙珠</a>
+<div class="hotListText">热门漫画：
+<a href="/comic/54/" target="_blank"
+	title="火影忍者漫画"><strong>火影忍者漫画</strong></a> 
 </div>
 <div class="search" id="search" style="width: 720px;"><a
 	href="#"
 	style="font-size: 14px; font-weight: bold; color: blue; background-color: #fff;"
-	target="_blank">诚聘技术精英，广纳动漫人才加盟！</a> <span id="searchTip">标题或作者：</span><input
+ onclick="return false;";target="_blank">诚聘技术精英，广纳动漫人才加盟！</a> <span id="searchTip">标题或作者：</span><input
 	name="kw" type="text" value="火影忍者" id="kw"
 	onkeydown="fnKeydown(event);" onkeyup="fnKeyup(event);"
 	onfocus="fnFocus();" onblur="fnBlur();" /> <input type="button"
@@ -53,17 +46,8 @@
 <ul class="navList">
 	<li class="first"><a href="/"><?php echo $web_title;?>首页</a></li>
 	<li><a href="/comic/shaonian/" title="少年热血">少年热血</a></li>
-	<li><a href="/comic/wuxia/" title="武侠格斗">武侠格斗</a></li>
-	<li><a href="/comic/kehuan/" title="科幻魔幻">科幻魔幻</a></li>
-	<li><a href="/comic/tiyu/" title="竞技体育">竞技体育</a></li>
-	<li><a href="/comic/xiju/" title="爆笑喜剧">爆笑喜剧</a></li>
-	<li><a href="/comic/tuili/" title="侦探推理">侦探推理</a></li>
-	<li><a href="/comic/kongbu/" title="恐怖灵异">恐怖灵异</a></li>
-	<li><a href="/comic/dalu/" title="大陆漫画">大陆漫画</a></li>
-	<li><a href="/comic/japan/" title="日本漫画">日本漫画</a></li>
 	<li class="mini"><a href="/comic/hk/" title="港台漫画">港台</a></li>
 	<li class="mini"><a href="/comic/oumei/" title="欧美漫画">欧美</a></li>
-	<script language="javascript">otherNav();</script>
 </ul>
 </div>
 <div class="subNav">
@@ -1051,13 +1035,8 @@
 <div class="footer">
 <div class="main" style="line-height: 2.2em;"><?php echo $web_title;?>网站所有漫画均来自网友分享和上传，以便漫画爱好者研究漫画技巧和构图方式。若侵犯到您的权益，请立即<a
 	class="red" target="_blank" href="/contact.html"><b>联系我们</b></a>删除。本站不负任何相关责任。
-<div><span style="float: right; padding-right: 110px;"><a
-	href="http://ulic.baidu.com/client/clientDetailCerInfo.do?id=1965"
-	target="_blank"><img src="<?php echo $img_url;?>baidu_green.gif" alt="百度大联盟认证"
-	border="none" align="absmiddle" /></a></span><span
-	style="float: left; padding-left: 90px;"><a
-	href="http://open.baidu.com/coop/v.html" target="_blank"><img
-	src="<?php echo $img_url;?>baidu_v.jpg" alt="百度V计划" border="none" align="absmiddle" /></a></span><script
+<div>
+<script
 	src="<?php echo $js_url;?>foot.js" language='JavaScript' charset='utf-8'></script><script
 	src='<?php echo $js_url;?>icount.js' language='JavaScript' charset='utf-8'></script></div>
 </div>
