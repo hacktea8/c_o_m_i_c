@@ -6,7 +6,7 @@
 define('API_USER_USERNAME_NOT_UNIQUE', 100);
 
 class User {
-        var $cookie_key = 'Leq_981_Bha_auth';
+        var $cookie_key = 'Leq_668_Hk8_auth';
 	var $base;
 	var $db;
 
@@ -18,7 +18,6 @@ class User {
 	function synlogin($user) {
 		global $timestamp,$uc_key;
 		list($windid, $winduid, $windpwd) = explode("\t", $this->base->strcode($user, false));
-		
 		header('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
 		$safecv = '';
 		$cktime = 31536000;

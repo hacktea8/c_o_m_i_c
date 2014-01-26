@@ -1,12 +1,15 @@
 <?php
-
+define('P_W', '1');
 require_once 'uc_config.php';
 
 class Basecommon{
-  public $uc_api = '';
-  public $cookie_key = '';
+  public $uc_api = 'http://www.hacktea8.com/pw_api.php?';
+  public $cookie_key = 'Leq_668_Hk8_auth';
+  public $master_uckey = 'kazrpp58kz81nnr696tk';
+  public $domain_app =array('mh.hacktea8.com'=>'vc6vd4bw4jc6xl2drrwg');
 
-  public function getSynuserUid($apikey = ''){
+  public function getSynuserUid(){
+    $apikey = $this->getKeyBydomain();
     if(isset($_COOKIE[$this->cookie_key])){
       $code = $_COOKIE[$this->cookie_key];
       $uinfo = $this->strcode($code, false, $apikey);
@@ -15,15 +18,34 @@ class Basecommon{
     }
     return false;
   }
+  public function getKeyBydomain(){
+    $domain = strtolower($_SERVER['HTTP_HOST']);
+    return $this->domain_app[$domain];
+  }
   public function getSynuserInfo($uid){
-    global $master_uckey;
-    $code = $this->strcode("wwww\t".$uid."\t".'eeee', $hash_key = $master_uckey, $encode = true);
     $request = array(
-    'params'=>$code,
+    'params'=>"$uid",
     'type'=>'uc',
     'mode'=>'User',
-    'method'=>'synlogin'
+    'method'=>'getInfo'
     );
+    $url = $this->uc_api.$this->strtrip($request,$this->master_uckey);
+    $ctx = stream_context_create(array(    
+    'http' => array(    
+        'timeout' => 15 
+        )    
+    )    
+    );
+    $uinfo = file_get_contents($url, null, $ctx);
+    $uinfo = unserialize($uinfo);
+    $uinfo = $uinfo['result'][$uid];
+    $groups = explode(',', $uinfo['groups']); 
+    $groups[] = $uinfo['groupid'];
+    $groups = array_unique($groups);
+    $uinfo['groups'] = $groups;
+    return $uinfo;
+  }
+  public function strtrip($request,$uckey){
     ksort($request);
     reset($request);
     $arg = '';
@@ -33,11 +55,10 @@ class Basecommon{
         $arg .= "$key=$value&";
       }
     }
-    $sig = md5($arg.$row['secretkey']);
-    $param = $arg."sig=$sig";
-    $url = $this->uc_api.$param;
-    $uinfo = json_decode(file_get_contents($url), 1);
-    return $uinfo;
+    $sig = md5($arg.$uckey);
+    $return = $arg."sig=$sig";
+    
+    return $return;
   }
   public function strcode($string, $encode = true, $apikey = '') {
     global $uc_key;
@@ -52,6 +73,15 @@ class Basecommon{
       $code  .= $string[$i] ^ $key[$k];
     }
     return ($encode ? base64_encode($code) : $code);
+  }
+  public function getcode($len = 6){
+    $str = 'qwertyuioplkjhgfdsazxcvbnm1234567890,.?;:!@#$%^&*()-=+';
+    $length = strlen($str) - 1;
+    $tmp = '';
+    for($i=0;$i<$len;$i++){
+      $tmp .= $str[mt_rand(0,$length)];
+    }
+    return $tmp;
   }
 }
 
