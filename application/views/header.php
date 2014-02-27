@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php echo $seo['title'],'-',$web_title;?></title>
+<meta name="Keywords"
+	content="火影忍者漫画,漫画,火影忍者662,在线漫画,火影漫画,死神,海贼王漫画,网球王子,灌蓝高手,七龙珠" />
+<meta name="Description"
+	content="火影忍者662于1月22日更新，爱漫画是国内更新火影忍者漫画速度最快、画质最好的火影忍者漫画网，同时每周三以最快速度更新海贼王漫画、死神漫画等热门在线漫画。" />
+<link href="<?php echo $css_url;?>global.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $css_url;?>index.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="favicon.ico">
+<script language="javascript" src="<?php echo $js_url;?>common.js"></script>
+<script language="javascript" src="<?php echo $js_url;?>index.js"></script>
+<base onmouseover="window.status='★--请记住『<?php echo $web_title;?>』永久域名：<?php echo $domain;?> --★';return true;" />
+</head>
+<body>
+<style type="text/css">
+#suggest {
+	top: 27px;
+	left: 272px;
+}
+</style>
+<div class="main">
+<div class="top">
+<div class="logo"><a href="/" title="<?php echo $web_title;?>为您提供漫画、在线漫画、最新漫画免费观看"><?php echo $web_title;?>网专为您提供漫画、在线漫画、火影忍者漫画、火影漫画 ，并提供死神、海贼王漫画、网球王子、灌蓝高手、七龙珠等漫画在线观看</a></div>
+<div class="top_right" style="width: 720px;">
+<div class="hotListText">热门漫画：
+<a href="/comic/54/" target="_blank"
+	title="火影忍者漫画"><strong>火影忍者漫画</strong></a> 
+</div>
+<div class="search" id="search" style="width: 720px;"><a
+	href="#"
+	style="font-size: 14px; font-weight: bold; color: blue; background-color: #fff;"
+ onclick="return false;";target="_blank">诚聘技术精英，广纳动漫人才加盟！</a> <span id="searchTip">标题或作者：</span><input
+	name="kw" type="text" value="火影忍者" id="kw"
+	onkeydown="fnKeydown(event);" onkeyup="fnKeyup(event);"
+	onfocus="fnFocus();" onblur="fnBlur();" /> <input type="button"
+	class="btnBig" name="Submit" value="搜索本站漫画" onclick="searchSend()" />
+<div id="suggest"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="main_nav">
+<ul class="navList">
+<li class="first"><a href="/"><?php echo $web_title;?>首页</a></li>
+<?php foreach($channel as &$row){ ?>
+<li class="mini"><a href="<?php echo $row['url'];?>" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a></li>
+<?php } ?>
+</ul>
+</div>
+<div class="subNav">
+<div class="subNavList">
+<div class="charNav"><strong>
+<img src="<?php echo $img_url;?>btn-chrlist.gif" /></strong><a href="/comic/A/">A</a><a
+	href="/comic/B/">B</a><a href="/comic/C/">C</a><a href="/comic/D/">D</a><a
+	href="/comic/E/">E</a><a href="/comic/F/">F</a><a href="/comic/G/">G</a><a
+	href="/comic/H/">H</a><a href="/comic/I/">I</a><a href="/comic/J/">J</a><a
+	href="/comic/K/">K</a><a href="/comic/L/">L</a><a href="/comic/M/">M</a><a
+	href="/comic/N/">N</a><a href="/comic/O/">O</a><a href="/comic/P/">P</a><a
+	href="/comic/Q/">Q</a><a href="/comic/R/">R</a><a href="/comic/S/">S</a><a
+	href="/comic/T/">T</a><a href="/comic/U/">U</a><a href="/comic/V/">V</a><a
+	href="/comic/W/">W</a><a href="/comic/X/">X</a><a href="/comic/Y/">Y</a><a
+	href="/comic/Z/">Z</a></div>
+<div class="otherNav"><span><a href="/support/tuijian.aspx"
+	onclick="return openWindow(this.href,540,600);">我要推荐漫画</a><a
+	href="/support/jubao.aspx"
+	onclick="return openWindow(this.href,500,520);">举报低俗漫画</a><a
+	href="javascript:void(0);"
+	onClick="window.external.AddFavorite('http://www.imanhua.com/?fav','爱漫画,在线漫画,为您提供最新、最好看的漫画');"
+	class="addFav">收藏<?php echo $web_title;?></a></span><a href="/wanjie.html">完结漫画</a> <a
+	href="/lianzai.html">连载漫画</a> <a href="/all.html">全部漫画</a> <a
+	href="/top.html" class="red">漫画风云榜</a> <a href="/recent.html"
+	class="red">最新更新</a>&nbsp;<strong>火影忍者662</strong> <strong>火影忍者漫画662</strong>
+1月22日更新</div>
+</div>
+</div>
+<div class="main pr">

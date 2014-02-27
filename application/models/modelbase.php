@@ -21,11 +21,29 @@ class Modelbase extends CI_Model{
 
 		return $info;
 	}
-        public function getNavList(){
-                $sql = sprintf("SELECT * FROM `navlist` WHERE `type`=%d", 1);
-                return $this->db->query($sql)->result_array();
+        public function getNavList($flag = 1){
+                $where = $flag < 0 ? '' : sprintf("WHERE `flag`=%d", $flag);
+                $sql = sprintf("SELECT * FROM `cate` %s", $where);
+                $return = $this->db->query($sql)->result_array();
+                foreach($return as &$v){
+                  $v['url'] = $this->getUrl($key = 'cate',$v['id']);
+                }
+                return $return;
         }
         public function getFriendLinks(){
                 
+        }
+        public function getUrl($key = 'cate',$p1='',$p2='',$p3=''){
+                $url = '';
+                if('lists' == $key){
+                   $url = sprintf('/index/cate/%d/%s/%d.shtml',$p1,$p2,$p3);
+                }elseif('cate' == $key){
+                   $url = sprintf('/index/cate/%d.shtml',$p1);
+                }elseif('detail' == $key){
+                   $url = sprintf('/index/comic/%d.shtml',$p1);
+                }elseif('vols' == $key){
+                   
+                }
+                return $url;
         }
 }

@@ -84,5 +84,8 @@ class Basecommon{
     return $tmp;
   }
 }
-
+function get_client_ip(){
+  $ip = $_SERVER['REMOTE_ADDR'];
+  return $ip;
+}
 ?>

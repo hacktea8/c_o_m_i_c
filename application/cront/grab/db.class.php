@@ -217,6 +217,7 @@ function query($query_string, $type= '') {
       $fieldsStr = null;
       $i = 1;
       foreach($fields as $k => $v){
+        $v = mysql_real_escape_string($v);
         if($i<count($fields))
           $fieldsStr  = $fieldsStr." $k = '$v' , ";
         else
@@ -227,6 +228,7 @@ function query($query_string, $type= '') {
 
       $j = 1;
       foreach($where as $k => $v){
+        $v = mysql_real_escape_string($v);
         if($j<count($where))
           $whereStr = $whereStr." $k = '$v' AND ";
         else
@@ -249,6 +251,7 @@ function query($query_string, $type= '') {
       $i = 1;
       $num = count($fields);
      foreach($fields as $k => $v){
+        $v = mysql_real_escape_string($v);
       if($i < $num){
         $fieldsStr = $fieldsStr." `$k` ,";
         $resultStr = $resultStr." '$v' ,";
@@ -270,6 +273,7 @@ function query($query_string, $type= '') {
       $i = 1;
       $num = count($where);
       foreach($where as $k => $v){
+        $v = mysql_real_escape_string($v);
           if($i < $num)
             $whereStr = $whereStr." $k = '$v' AND ";
           else
@@ -295,6 +299,7 @@ function query($query_string, $type= '') {
       $i = 1;
       $num = count($fields);
      foreach($fields as $k => $v){
+        $v = mysql_real_escape_string($v);
       if($i < $num){
         $fieldsStr = $fieldsStr." `$k` ,";
         $resultStr = $resultStr." '$v' ,";

@@ -15,5 +15,7 @@ class Comicmodel extends Modelbase{
         public function getTable($vid){
                 return 'page'.($vid % 10);
         }
-                
+        public function getComicListByLetter($letter,$order,$page){
+                $sql = sprintf("");
+        }                
 }

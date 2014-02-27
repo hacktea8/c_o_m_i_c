@@ -16,6 +16,7 @@
 */
 $config['base_url']	= 'http://mh.hacktea8.com';
 $config['domain']='mh.hacktea8.com';
+$config['login_url']='http://www.hacktea8.com/login.php?jumpurl=';
 $config['js_url']='http://mh.hacktea8.com/public/js/';
 $config['css_url']='http://mh.hacktea8.com/public/css/';
 $config['img_url']='http://mh.hacktea8.com/public/images/';

@@ -1,19 +1,36 @@
-  
-<script type="text/javascript">                
-</script>    
-<div class="main" style="margin-top:8px;">        
-<script type="text/javascript">show(6);</script>    
-</div>    <div class="blank4"></div>    
-<div class="footer">死神漫画来自网友分享和上传，以供漫画爱好者研究死神漫画画法技巧和构图方式。若侵犯到您的权益，请立即
-<a target="_blank" class="red" href="/contact.html"><b>联系我们</b></a>删除。本站不负任何相关责任。 <br>
-<script src="/template/default/foot.js" language="JavaScript" charset="gb2312"></script>
-<a href="/contact.html" target="_blank">联系我们</a> | 
-<a href="/copyright.html" target="_blank">免责声明</a> | 
-<a href="/copyright2.html" target="_blank">知识产权声明</a> | 
-<a href="/support/tuijian.aspx" onclick="return openWindow(this.href,540,600);" class="blue"><strong>推荐漫画</strong></a> | 
-<a href="/support/jubao.aspx" onclick="return openWindow(this.href,500,520);" class="green"><strong>举报低俗内容</strong></a> | 
-<a href="#">返回顶部</a> <br> 
-<a href="http://www.miibeian.gov.cn/" target="_blank">苏ICP备12026739号</a> @2007-2012 爱漫画 <img src="/template/default/images/savely.gif" alt="无病毒 请放心浏览" align="absmiddle" hspace="6">
-<script src="/v2.2/scripts/icount.js" language="JavaScript" charset="gb2312"></script><script src="http://v1.cnzz.com/stat.php?id=565400&amp;web_id=565400" language="JavaScript"></script><script src="http://c.cnzz.com/cnzz_core.php?web_id=565400&amp;l=none" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=565400" target="_blank" title="站长统计">站长统计</a><script src="http://s13.cnzz.com/stat.php?id=263455&amp;web_id=263455" language="JavaScript"></script><script src="http://c.cnzz.com/cnzz_core.php?web_id=263455&amp;l=none" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=263455" target="_blank" title="站长统计">站长统计</a><script src=" http://hm.baidu.com/h.js?6dbc350428237b030c7de3a18ddadfc4" type="text/javascript"></script><script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=6&amp;pos=left&amp;uid=12103"></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript">document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();</script></div>
+<div class="border1" style="width: 978px; margin: 8px auto 0;">
+<h2 class="bar"><span>定期清理不符合要求的链接，未能通知，请见谅！链接要求：百度权重8以上，ALEXA综合排名5000名以内，并且PR≥6的优秀站点</span><strong>友情链接</strong></h2>
+<div class="blank8"></div>
+<ul class="friendLink">
+	<li><a title="" href="http://dongman.hao123.com/" target="_blank">hao123网址</a></li>
+</ul>
+<div class="blank8"></div>
+</div>
+<div class="blank4"></div>
+<div style="text-align: center; line-height: 1.8em;">热门漫画：<a
+	href="/comic/54/" title="火影忍者漫画"><strong><font
+	color="#FF0000">火影忍者漫画</font></strong></a> <a href="http://www.imanhua.com/"
+	title="海贼王漫画">海贼王漫画</a> <a href="/comic/696/" target="_blank"
+	title="食梦者">食梦者</a> <a href="/comic/619/" target="_blank" title="滑头鬼之孙">滑头鬼之孙</a>
+<a href="/comic/120/" target="_blank" title="死神">死神漫画</a> <a
+	href="/comic/201/" target="_blank" title="妖精的尾巴">妖精的尾巴</a> <a
+	href="/comic/1998/" target="_blank" title="进击的巨人">进击的巨人</a> <a
+	href="/comic/1110/" target="_blank" title="新网球王子">新网球王子</a> <a
+	href="/comic/177/" target="_blank" title="名侦探柯南">名侦探柯南</a> <a
+	href="/comic/205/" target="_blank" title="家庭教师">家庭教师</a> <a
+	href="/comic/76/" target="_blank" title="猎人">猎人</a> <a
+	href="/comic/46/" target="_blank" title="灌篮高手">灌篮高手</a> <a
+	href="/comic/108/" target="_blank" title="七龙珠">七龙珠</a> <a
+	href="/comic/54/" title="火影忍者662"><strong>火影忍者662</strong></a></div>
+<div class="blank4"></div>
+<div class="main" style=""><script language="javascript">show(2);</script></div>
+<div class="footer">
+<div class="main" style="line-height: 2.2em;"><?php echo $web_title;?>网站所有漫画均来自网友分享和上传，以便漫画爱好者研究漫画技巧和构图方式。若侵犯到您的权益，请立即<a
+	class="red" target="_blank" href="/contact.html"><b>联系我们</b></a>删除。本站不负任何相关责任。
+<div>
+<script
+	src="<?php echo $js_url;?>foot.js" language='JavaScript' charset='utf-8'></script><script
+	src='<?php echo $js_url;?>icount.js' language='JavaScript' charset='utf-8'></script></div>
+</div>
 </body>
 </html>

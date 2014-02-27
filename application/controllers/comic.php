@@ -26,4 +26,10 @@ var_dump($comicinfo);exit;
                 $this->assign(array('comicinfo' => $comicinfo));
 	        $this->load->view('comic_index', $this->viewData);	
 	}
+        public function letter($letter = 'A', $order = 'index', $page = 1){
+                $letter = strtoupper($letter);
+                $lists = $this->comicmodel->getComicListByLetter($letter,$order,$page);
+                $this->assign(array('comiclist' => $lists));
+                $this->load->view('comic_letter', $this->viewData);
+        }
 }

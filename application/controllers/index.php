@@ -1,19 +1,22 @@
 <?php 
-require_once 'webbase.php';
+require_once 'usrbase.php';
 
-class Index extends Webbase {
-
-	public function __construct(){
-		parent::__construct();
-	}
+class Index extends Usrbase {
+  public function __construct(){
+    parent::__construct();
+  }
 	
-	public function index()
-	{
-           $this->assign(array('comicinfo' => $comicinfo));
-           $this->load->view('index_index', $this->viewData);	
-	}
+  public function index(){
+    $this->assign(array('comicinfo' => $comicinfo));
+//var_dump($this->viewData);exit;
+    $this->view('index_index');	
+  }
 	
-	
+  public function onechar($char = 'A'){
+    $this->assign(array('comicinfo' => $comicinfo));
+//var_dump($this->viewData);exit;
+    $this->view('index_onechar'); 
+  }
 	
 	
 }
