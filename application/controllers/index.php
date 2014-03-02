@@ -7,17 +7,43 @@ class Index extends Usrbase {
   }
 	
   public function index(){
-    $this->assign(array('comicinfo' => $comicinfo));
+    $indexData = $this->mhmodel->getIndexData();
+    $this->assign(array('indexData'=>$indexData,'comicinfo' => $comicinfo));
 //var_dump($this->viewData);exit;
     $this->view('index_index');	
   }
 	
-  public function onechar($char = 'A'){
+  public function comicletter($char = 'A',$order = 'new',$page = 1){
+    
+    $letter = strtoupper($letter);
+    $lists = $this->comicmodel->getComicListByLetter($letter,$order,$page);
+    $this->assign(array('letterLists' => $lists));
+//var_dump($this->viewData);exit;
+    $this->view('index_comicletter'); 
+  }
+  
+  public function cate($cid,$order='new',$page=1){
     $this->assign(array('comicinfo' => $comicinfo));
 //var_dump($this->viewData);exit;
-    $this->view('index_onechar'); 
+    $this->view('index_cate');
   }
-	
-	
+
+  public function comic($comicid){
+    if(!$comicid)
+      return false;
+
+    $comicinfo = $this->mhmodel->getComicinfoByid($comicid);
+
+    $comicinfo['id'] = $comicid;
+    $comicinfo['atime'] = date('Y-m-d', $comicinfo['atime']);
+    $comicinfo['rtime'] = date('Y-m-d', $comicinfo['rtime']);
+    $comicinfo['status'] = $comicinfo['status'] ? '已完结': '连载中';
+/*/
+echo '<pre>';
+var_dump($comicinfo);exit;
+/**/
+    $this->assign(array('comicinfo' => $comicinfo));
+    $this->view('index_comic');
+  }
 }
 

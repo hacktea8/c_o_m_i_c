@@ -30,6 +30,14 @@ class Modelbase extends CI_Model{
                 }
                 return $return;
         }
+        public function getLetterList(){
+                $sql = sprintf("SELECT * FROM  `letters` ORDER BY  `sort`");
+                $return = $this->db->query($sql)->result_array($sql);
+                foreach($return as &$v){
+                  $v['url'] = $this->getUrl($key = 'letter',$v['id']);
+                }
+                return $return;
+        }
         public function getFriendLinks(){
                 
         }
@@ -39,10 +47,12 @@ class Modelbase extends CI_Model{
                    $url = sprintf('/index/cate/%d/%s/%d.shtml',$p1,$p2,$p3);
                 }elseif('cate' == $key){
                    $url = sprintf('/index/cate/%d.shtml',$p1);
-                }elseif('detail' == $key){
+                }elseif('comic' == $key){
                    $url = sprintf('/index/comic/%d.shtml',$p1);
-                }elseif('vols' == $key){
-                   
+                }elseif('vol' == $key){
+                   $url = sprintf('/index/vol/%d/%d.shtml',$p1,$p2);
+                }elseif('letter' == $key){
+                   $url = sprintf('/index/comicletter/%d.shtml',$p1);
                 }
                 return $url;
         }

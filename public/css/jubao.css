@@ -1,0 +1,10 @@
+form{padding:0; margin:0;}
+td{line-height:1.8em;}
+td span{color:#FF0000;}
+
+.input,textarea{ font-size:12px; padding:4px; border:1px solid #999999; background-color:#FFFFCC; border-top:1px solid #666666; border-left:1px solid #666666;}
+.textarea{width:90%;}
+.send{font-size:12px; font-weight:bold; color:#FF0000; width:160px; text-align:center; line-height:1.6em;}
+
+.notice{line-height:1.5em; color:#993333; border-bottom:1pX dashed #CCCCCC; padding-bottom:6px;}
+

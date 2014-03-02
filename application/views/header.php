@@ -8,7 +8,7 @@
 <meta name="Description"
 	content="火影忍者662于1月22日更新，爱漫画是国内更新火影忍者漫画速度最快、画质最好的火影忍者漫画网，同时每周三以最快速度更新海贼王漫画、死神漫画等热门在线漫画。" />
 <link href="<?php echo $css_url;?>global.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo $css_url;?>index.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $css_url,$_a;?>.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="favicon.ico">
 <script language="javascript" src="<?php echo $js_url;?>common.js"></script>
 <script language="javascript" src="<?php echo $js_url;?>index.js"></script>
@@ -53,25 +53,19 @@
 <div class="subNav">
 <div class="subNavList">
 <div class="charNav"><strong>
-<img src="<?php echo $img_url;?>btn-chrlist.gif" /></strong><a href="/comic/A/">A</a><a
-	href="/comic/B/">B</a><a href="/comic/C/">C</a><a href="/comic/D/">D</a><a
-	href="/comic/E/">E</a><a href="/comic/F/">F</a><a href="/comic/G/">G</a><a
-	href="/comic/H/">H</a><a href="/comic/I/">I</a><a href="/comic/J/">J</a><a
-	href="/comic/K/">K</a><a href="/comic/L/">L</a><a href="/comic/M/">M</a><a
-	href="/comic/N/">N</a><a href="/comic/O/">O</a><a href="/comic/P/">P</a><a
-	href="/comic/Q/">Q</a><a href="/comic/R/">R</a><a href="/comic/S/">S</a><a
-	href="/comic/T/">T</a><a href="/comic/U/">U</a><a href="/comic/V/">V</a><a
-	href="/comic/W/">W</a><a href="/comic/X/">X</a><a href="/comic/Y/">Y</a><a
-	href="/comic/Z/">Z</a></div>
-<div class="otherNav"><span><a href="/support/tuijian.aspx"
-	onclick="return openWindow(this.href,540,600);">我要推荐漫画</a><a
-	href="/support/jubao.aspx"
-	onclick="return openWindow(this.href,500,520);">举报低俗漫画</a><a
+<img src="<?php echo $img_url;?>btn-chrlist.gif" /></strong>
+<?php foreach($letterList as &$row){ ?>
+<a href="<?php echo $row['url'];?>" title="<?php echo $row['letter'];?>"><?php echo $row['letter'];?></a>
+<?php } ?>
+</div>
+<div class="otherNav"><span>
+<a href="/support/jubao" onclick="">举报低俗漫画</a><a
 	href="javascript:void(0);"
-	onClick="window.external.AddFavorite('http://www.imanhua.com/?fav','爱漫画,在线漫画,为您提供最新、最好看的漫画');"
-	class="addFav">收藏<?php echo $web_title;?></a></span><a href="/wanjie.html">完结漫画</a> <a
-	href="/lianzai.html">连载漫画</a> <a href="/all.html">全部漫画</a> <a
-	href="/top.html" class="red">漫画风云榜</a> <a href="/recent.html"
+	onClick="window.external.AddFavorite('http://<?php echo $domain;?>','爱漫画,在线漫画,为您提供最新、最好看的漫画');"
+	class="addFav">收藏<?php echo $web_title;?></a></span>
+<a href="/wanjie.html">完结漫画</a> <a
+	href="/lianzai.html">连载漫画</a>
+<a href="/top.html" class="red">漫画风云榜</a> <a href="/recent.html"
 	class="red">最新更新</a>&nbsp;<strong>火影忍者662</strong> <strong>火影忍者漫画662</strong>
 1月22日更新</div>
 </div>

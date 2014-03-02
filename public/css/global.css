@@ -117,7 +117,7 @@ h2.sbar span a em{display:none;}
 .hotListText a{color:#FF0000; text-decoration:underline;}
 .hotListText a:hover{text-decoration:none;}
 
-.main_nav{width:100%; height:34px; background:url(/public/images/sprites_bg.gif) 0 -195px repeat-x;}
+.main_nav{width:980px;margin:0 auto; height:34px; background:url(/public/images/sprites_bg.gif) 0 -195px repeat-x;}
 
 .navList{margin:0 auto; width:980px;}
 .navList li{float:left; font-size:14px; height:30px;width:65px; background:url(/public/images/sprites_bg.gif) 0 -240px no-repeat; padding-left:9px; text-align:center; padding-top:2px;}

@@ -1,171 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo $comicinfo['title'],$web_title; ?></title>
-<meta name="Keywords" content="<?php echo $comicinfo['keywords'];?>" />
-<link href="<?php echo $css_url;?>global.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-.fr {
-	float: right;
-}
-
-.fl {
-	float: left;
-}
-
-.none {
-	display: none;
-}
-
-.pa {
-	position: absolute;
-}
-
-.pr {
-	position: relative;
-}
-
-.w220 {
-	width: 220px;
-}
-
-.bt1px {
-	border-top: 1px solid #999;
-}
-
-.share {
-	position: absolute;
-	right: 6px;
-	top: 2px;
-}
-
-.right-box {
-	width: 250px;
-	height: 250px;
-	padding-left: 4px;
-	padding-bottom: 4px;
-}
-
-.bg-sepr {
-	height: 8px;
-	border-top: 1px solid #999;
-	border-bottom: 1px solid #999;
-	background-color: #fff;
-	clear: both;
-}
-
-.duoshuo {
-	width: 720px;
-	margin: 0 auto;
-}
-
-.w720 {
-	width: 720px;
-	margin: 0 auto;
-}
-
-.comment {
-	padding: 10px 0;
-	font-family: 'Microsoft YaHei', 'Arial Black', Gadget, sans-serif;
-}
-
-.comment a {
-	font: 600 16px/24px 'Microsoft YaHei', 'Arial Black', Gadget, sans-serif;
-	padding: 4px 0;
-	text-align: center;
-	width: 100px;
-	display: inline-block;
-	border: 1px solid #ccc;
-	height: 24px;
-	background-color: #f6f6f6;
-	border-top: 1px solid #e0e0e0;
-	border-left: 1px solid #e0e0e0;
-	border-radius: 3px;
-	text-shadow: 1px 1px 1px #f0f0f0;
-	box-shadow: 1px 1px 1px #f0f0f0;
-}
-
-.comment a:hover {
-	background-color: #fafafa;
-}
-
-.comment span {
-	color: #f30;
-}
-</style>
-<script type="text/javascript" src="<?php echo $js_url;?>common.js"></script>
-<script type="text/javascript" src="<?php echo $js_url;?>book.js"></script>
-<script type="text/javascript"> var bookInfo = {bid:1119,vid:99}; var i = 0; if (Cookie.read('order') == null) { Cookie.create('order', String(i), 30); } else { i = parseInt(Cookie.read('order')); } function order(q, r) { if (!r) { if (q == i) return; i = q; Cookie.create('order', String(q), 30); } var el = $('subBookList'); var o = el.getElementsByTagName('li'); var len = o.length; var asc = $('asc'); var desc = $('desc'); var s = ""; if (q == 0) { desc.className = 'on'; asc.className = ''; } else { desc.className = ''; asc.className = 'on'; } var t = 0; for (var p = len - 1; p >= 0; p--) { var li = o[p].innerHTML; if (li != '') { s += '<li' + (t % 6 >= 3 ? ' class="alter"' : '') + '>' + o[p].innerHTML + '</li>'; t++; } } el.innerHTML = s; } </script>
-</head>
-<body>
+<div style="width: 980px; margin: 0 auto 2px; width: 980px; height: 26px;">
+</div>
 <div class="main">
-<div class="top">
-<div class="logo"><a href="/" title="<?php echo $web_title;?>为您提供漫画、在线漫画、最新漫画免费观看"><?php echo $web_title;?>专为您提供漫画、在线漫画
-、火影忍者漫画、火影漫画 ，并提供死神、海贼王漫画、网球王子、灌蓝高手、七龙珠等漫画在线免费观看</a></div>
-<div class="top_right">
-<div class="hotListText"><script language="javascript">hotComic();</script></div>
-<div class="search" id="search"><a
-	href=""
-	style="font-size: 14px; font-weight: bold; color: blue;"
-	target="_blank">聊动漫，上贴吧！</a> <span id="searchTip">标题或作者：</span><input
-	name="kw" type="text" value="火影忍者" id="kw"
-	onkeydown="fnKeydown(event);" onkeyup="fnKeyup(event);"
-	onfocus="fnFocus();" onblur="fnBlur();" /> <input type="button"
-	class="btnBig" name="Submit" value="搜索本站漫画" onclick="searchSend()" />
-<div id="suggest"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="main_nav">
-<ul class="navList">
-	<li class="first"><a href="/"><?php echo $web_title;?>首页</a></li>
-	<li><a href="/comic/shaonian/" title="少年热血">少年热血</a></li>
-	<li><a href="/comic/wuxia/" title="武侠格斗">武侠格斗</a></li>
-	<li><a href="/comic/kehuan/" title="科幻魔幻">科幻魔幻</a></li>
-	<li><a href="/comic/tiyu/" title="竞技体育">竞技体育</a></li>
-	<li><a href="/comic/xiju/" title="爆笑喜剧">爆笑喜剧</a></li>
-	<li><a href="/comic/tuili/" title="侦探推理">侦探推理</a></li>
-	<li><a href="/comic/kongbu/" title="恐怖灵异">恐怖灵异</a></li>
-	<li><a href="/comic/dalu/" title="大陆漫画">大陆漫画</a></li>
-	<li><a href="/comic/japan/" title="日本漫画">日本漫画</a></li>
-	<li class="mini"><a href="/comic/hk/" title="港台漫画">港台</a></li>
-	<li class="mini"><a href="/comic/oumei/" title="欧美漫画">欧美</a></li>
-	<script language="javascript">otherNav();</script>
-</ul>
-</div>
-<div class="subNav">
-<div class="subNavList">
-<div class="charNav"><strong><img
-	src="<?php echo $img_url;?>btn-chrlist.gif" /></strong><a href="/comic/A/">A</a><a
-	href="/comic/B/">B</a><a href="/comic/C/">C</a><a href="/comic/D/">D</a><a
-	href="/comic/E/">E</a><a href="/comic/F/">F</a><a href="/comic/G/">G</a><a
-	href="/comic/H/">H</a><a href="/comic/I/">I</a><a href="/comic/J/">J</a><a
-	href="/comic/K/">K</a><a href="/comic/L/">L</a><a href="/comic/M/">M</a><a
-	href="/comic/N/">N</a><a href="/comic/O/">O</a><a href="/comic/P/">P</a><a
-	href="/comic/Q/">Q</a><a href="/comic/R/">R</a><a href="/comic/S/">S</a><a
-	href="/comic/T/">T</a><a href="/comic/U/">U</a><a href="/comic/V/">V</a><a
-	href="/comic/W/">W</a><a href="/comic/X/">X</a><a href="/comic/Y/">Y</a><a
-	href="/comic/Z/">Z</a></div>
-<div class="otherNav"><span><a href="/support/tuijian.aspx"
-	onclick="return openWindow(this.href,540,600);">我要推荐漫画</a><a
-	href="/support/jubao.aspx"
-	onclick="return openWindow(this.href,500,520);">举报低俗漫画</a><a
-	href="javascript:void(0);"
-	onClick="window.external.AddFavorite('http://www.imanhua.com/?fav','爱漫画,在线漫画,为您提供最新、最好看的漫画');"
-	class="addFav">收藏爱漫画</a></span><a href="/wanjie.html">完结漫画</a> <a
-	href="/lianzai.html">连载漫画</a> <a href="/all.html">全部漫画</a> <a
-	href="/top.html" class="red">漫画风云榜</a> <a href="/recent.html"
-	class="red">最新更新</a></div>
-</div>
-</div>
-<div
-	style="width: 980px; margin: 0 auto 2px; width: 980px; height: 26px;"><script
-	type="text/javascript">var cpro_id = "u1374308";</script>
-</div>
-<div class="main"><script type="text/javascript"
-	src="<?php echo $js_url;?>top.js"></script> <script type="text/javascript">show(0);</script>
 </div>
 <div class="main">
 <div class="blank2 bookBG"></div>
@@ -205,9 +40,8 @@
 		target="_blank" title="HACHI东京23宫">HACHI东京23宫</a>[<a class="red"
 		href="/comic/5103/list_94026.html" target="_blank" title="第11话">第11话</a>]</li>
 </ul>
-<script type="text/javascript">show(4);</script>
 <div class="bt1px" style="background-color: #f0f0f0; margin: 1px;">
-<script type="text/javascript">show(5);</script></div>
+</div>
 <h2 class="bar bt1px"><strong>最新添加的漫画</strong></h2>
 <ul class="newUpdate">
 	<li><em class="red">2014/1/14</em><a href="/comic/5210/"
@@ -260,7 +94,7 @@
 <span class="blank6"></span>
 <div class="bookMain">
 <div class="bookIntro">
-<div class="fr right-box"><script type="text/javascript">show(1);</script>
+<div class="fr right-box">
 </div>
 <h2><?php echo $comicinfo['name'];?>漫画</h2>
 <div class="intro">
@@ -312,7 +146,6 @@
 </ul>
 <div class="blank4"></div>
 </div>
-<script type="text/javascript">show(2);</script>
 <div class="comment"><a href='#comment'>发表评论</a> &nbsp;<span>(评论并转发腾讯微薄亦有机会赢Q币)</span></div>
 <div class="blank4"></div>
 </div>
@@ -321,7 +154,7 @@
 </div>
 <div
 	style="background-color: #FFFFFF; border-top: 1px solid #999999; clear: both;">
-<script type="text/javascript">show(3);</script></div>
+</div>
 <div class="subBookList" id="subBookBox"
 	style="border-top: 1px solid #999999;">
 <h2 class="bar"><span class="orderNav">[ 最近更新于：<?php echo $comicinfo['rtime'];?>]
@@ -401,17 +234,4 @@
 </div>
 <div class="blank2 bookBG2"></div>
 </div>
-<script type="text/javascript" id="bdshare_js"
-	data="type=tools&amp;uid=12103"></script>
-<script type="text/javascript" id="bdshell_js"></script>
-<script type="text/javascript">  if (typeof(bookInfo.vid) === 'number' && bookInfo.vid > 0) {  var url = 'http://www.dm456.com/aspx/outer2.aspx?id=' + bookInfo.vid; var obj = document.getElementById("subBookBox"); var newNode = document.createElement("div"); newNode.style.backgroundColor="#ffffff"; newNode.innerHTML ='<iframe width="752" height="122" src="' + url + '" style="padding:0; margin:0;border:none;overflow:hidden;" ></iframe><div class="blank8" style="background-color: #fff;"></div>';  obj.parentNode.insertBefore(newNode,obj); } var duoshuoQuery = { short_name: "imanhua" }; var _c = createXMLHttp(); _c.open("GET", "/v2/user/count.aspx?bid=1119", false); _c.send(null); document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000); (function () {  var ds = document.createElement('script'); ds.type = 'text/javascript'; ds.async = true; ds.src = 'http://static.duoshuo.com/embed.js'; ds.charset = 'UTF-8'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds); })(); </script>
-<div class="main" style="margin-top: 8px;"><script
-	type="text/javascript">show(6);</script></div>
 <div class="blank4"></div>
-<div class="footer"><?php echo $comicinfo['name'];?>漫画来自网友分享和上传，以供漫画爱好者研究<?php echo $comicinfo['name'];?>漫画画法技巧和构图方式。若侵犯到您的权益，请立即<a
-	target="_blank" class="red" href="/contact.html"><b>联系我们</b></a>删除。本站不负任何相关责任。
-<br />
-<script src="<?php echo $js_url;?>foot.js" language='JavaScript'></script>
-<script src='<?php echo $js_url;?>icount.js' language='JavaScript' ></script></div>
-</body>
-</html>

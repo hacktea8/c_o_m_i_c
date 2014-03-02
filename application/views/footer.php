@@ -26,7 +26,7 @@
 <div class="main" style=""><script language="javascript">show(2);</script></div>
 <div class="footer">
 <div class="main" style="line-height: 2.2em;"><?php echo $web_title;?>网站所有漫画均来自网友分享和上传，以便漫画爱好者研究漫画技巧和构图方式。若侵犯到您的权益，请立即<a
-	class="red" target="_blank" href="/contact.html"><b>联系我们</b></a>删除。本站不负任何相关责任。
+	class="red" target="_blank" href="/support/contact"><b>联系我们</b></a>删除。本站不负任何相关责任。
 <div>
 <script
 	src="<?php echo $js_url;?>foot.js" language='JavaScript' charset='utf-8'></script><script

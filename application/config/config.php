@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://mh.hacktea8.com';
+$config['base_url']	= '';
 $config['domain']='mh.hacktea8.com';
 $config['login_url']='http://www.hacktea8.com/login.php?jumpurl=';
 $config['js_url']='http://mh.hacktea8.com/public/js/';
@@ -68,7 +68,7 @@ $config['uri_protocol']	= 'AUTO';
 | http://codeigniter.com/user_guide/general/urls.html
 */
 
-$config['url_suffix'] = '';
+$config['url_suffix'] = '.shtml';
 
 /*
 |--------------------------------------------------------------------------

@@ -11,8 +11,9 @@ class Usrbase extends Webbase {
 
    protected function _init(){
      $channel = $this->mhmodel->getNavList();
-     
-     $this->assign(array('channel'=>$channel));
+     $letterList = $this->mhmodel->getLetterList();
+
+     $this->assign(array('letterList'=>$letterList,'channel'=>$channel));
    }
 
    protected function assign($data){

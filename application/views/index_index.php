@@ -9,214 +9,45 @@
 	<li onmouseover="changeTab(5,1)"><strong>经典完结漫画</strong></li>
 	<li onmouseover="changeTab(5,2)"><strong>最新上架漫画</strong></li>
 	<li onmouseover="changeTab(5,3)"><strong>全彩精选漫画</strong></li>
+<?php if(1){?>
 	<li class="end" onmouseover="changeTab(5,4);initGame();"><strong
 		id="hk">热门网络游戏<em></em></strong></li>
+<?php }?>
 </ul>
 </div>
 <div class="blank8"></div>
 <div class="comicList" id="comicList">
 <ul style="display: block;">
-	<li><a href="/comic/1119/" target="_blank" title="恶魔奶爸"><img
-		src="http://i2.imanhua.com/Cover/2011-07/mowangdefuqing.jpg"
-		alt="恶魔奶爸" /></a><a href="/comic/1119/" target="_blank" title="恶魔奶爸">恶魔奶爸</a>[<a
-		class="red" href="/comic/1119/list_94258.html" target="_blank"
-		title="235话正式版">235话正式版</a>]</li>
-	<li><a href="/comic/201/" target="_blank" title="妖精的尾巴"><img
-		src="http://i2.imanhua.com/Cover/2012-04/yjdwb.jpg" alt="妖精的尾巴" /></a><a
-		href="/comic/201/" target="_blank" title="妖精的尾巴">妖精的尾巴</a>[<a
-		class="red" href="/comic/201/list_94198.html" target="_blank"
-		title="367话">367话</a>]</li>
-	<li><a href="/comic/54/" target="_blank" title="火影忍者"><img
-		src="http://i1.imanhua.com/Cover/2011-10/hyrz.jpg" alt="火影忍者" /></a><a
-		href="/comic/54/" target="_blank" title="火影忍者">火影忍者</a>[<a class="red"
-		href="/comic/54/huoyingrenzhe661.shtml" target="_blank" title="第661话">第661话</a>]</li>
-	<li><a href="/comic/55/" target="_blank" title="海贼王"><img
-		src="http://i2.imanhua.com/Cover/2011-09/op.jpg" alt="海贼王" /></a><a
-		href="/comic/55/" target="_blank" title="海贼王">海贼王</a>[<a class="red"
-		href="/comic/55/haizeiwang734.shtml" target="_blank" title="第734话">第734话</a>]</li>
-	<li><a href="/comic/140/" target="_blank" title="进击的巨人"><img
-		src="http://i1.imanhua.com/Cover/2010-08/jingjidejuren.jpg"
-		alt="进击的巨人" /></a><a href="/comic/140/" target="_blank" title="进击的巨人">进击的巨人</a>[<a
-		class="red" href="/comic/140/list_93714.html" target="_blank"
-		title="第53话">第53话</a>]</li>
-	<li><a href="/comic/1110/" target="_blank" title="新网球王子"><img
-		src="http://i1.imanhua.com/Cover/2011-07/xingwangqiuwangzi.jpg"
-		alt="新网球王子" /></a><a href="/comic/1110/" target="_blank" title="新网球王子">新网球王子</a>[<a
-		class="red" href="/comic/1110/list_93302.html" target="_blank"
-		title="第117话">第117话</a>]</li>
-	<li><a href="/comic/1067/" target="_blank" title="黑子的篮球"><img
-		src="http://i2.imanhua.com/Cover/2012-04/hzdlq1.jpg" alt="黑子的篮球" /></a><a
-		href="/comic/1067/" target="_blank" title="黑子的篮球">黑子的篮球</a>[<a
-		class="red" href="/comic/1067/list_94085.html" target="_blank"
-		title="245话">245话</a>]</li>
-	<li><a href="/comic/782/" target="_blank" title="只有神知道的世界"><img
-		src="http://i1.imanhua.com/Cover/2013-02/zyszddsj.jpg" alt="只有神知道的世界" /></a><a
-		href="/comic/782/" target="_blank" title="只有神知道的世界">只有神知道的世界</a>[<a
-		class="red" href="/comic/782/list_94211.html" target="_blank"
-		title="257话">257话</a>]</li>
-	<li><a href="/comic/584/" target="_blank" title="美食的俘虏"><img
-		src="http://i1.imanhua.com/Cover/2012-04/msdfl.jpg" alt="美食的俘虏" /></a><a
-		href="/comic/584/" target="_blank" title="美食的俘虏">美食的俘虏</a>[<a
-		class="red" href="/comic/584/list_93081.html" target="_blank"
-		title="263话">263话</a>]</li>
-	<li><a href="/comic/120/" target="_blank" title="死神"><img
-		src="http://i1.imanhua.com/Cover/2011-10/sishen.jpg" alt="死神" /></a><a
-		href="/comic/120/" target="_blank" title="死神">死神</a>[<a class="red"
-		href="/comic/120/sishen564.shtml" target="_blank" title="564话">564话</a>]</li>
+<?php foreach($indexData['hotSerial'] as &$row){?>
+	<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>">
+<img src="<?php echo $row['cover'];?>" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
+[<a class="red" href="<?php echo $row['volurl'];?>" target="_blank"
+		title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
+<?php } ?>
 </ul>
 <ul>
-	<li><a href="/comic/2066/" target="_blank" title="刀剑神域"><img
-		src="http://i1.imanhua.com/Cover/2010-10/daojianshenyu.jpg" alt="刀剑神域" /></a><a
-		href="/comic/2066/" target="_blank" title="刀剑神域">刀剑神域</a>[<a
-		class="green" href="/comic/2066/list_70679.html" target="_blank"
-		title="完结">完结</a>]</li>
-	<li><a href="/comic/1562/" target="_blank" title="GE Good Ending"><img
-		src="http://i1.imanhua.com/cover/2010-01-01/GE-good-ending.jpg"
-		alt="GE Good Ending" /></a><a href="/comic/1562/" target="_blank"
-		title="GE Good Ending">GE Good Ending</a>[<a class="green"
-		href="/comic/1562/list_88351.html" target="_blank" title="完结">完结</a>]</li>
-	<li><a href="/comic/1433/" target="_blank" title="逃离伊甸园"><img
-		src="http://i2.imanhua.com/Cover/2012-11/taoliyidianyuan.jpg"
-		alt="逃离伊甸园" /></a><a href="/comic/1433/" target="_blank" title="逃离伊甸园">逃离伊甸园</a>[<a
-		class="green" href="/comic/1433/list_92073.html" target="_blank"
-		title="完结">完结</a>]</li>
-	<li><a href="/comic/1340/" target="_blank" title="我间乱"><img
-		src="http://i1.imanhua.com/cover/2009-7-1/wojianluan.jpg" alt="我间乱" /></a><a
-		href="/comic/1340/" target="_blank" title="我间乱">我间乱</a>[<a
-		class="green" href="/comic/1340/list_83782.html" target="_blank"
-		title="完结">完结</a>]</li>
-	<li><a href="/comic/938/" target="_blank" title="新蔷薇少女"><img
-		src="http://i1.imanhua.com/Cover/2008-11-12/15401532.jpg" alt="新蔷薇少女" /></a><a
-		href="/comic/938/" target="_blank" title="新蔷薇少女">新蔷薇少女</a>[<a
-		class="green" href="/comic/938/list_94297.html" target="_blank"
-		title="完结">完结</a>]</li>
-	<li><a href="/comic/675/" target="_blank" title="卡卡西外传"><img
-		src="http://i2.imanhua.com/Cover/2008-07-31/23350211.jpg" alt="卡卡西外传" /></a><a
-		href="/comic/675/" target="_blank" title="卡卡西外传">卡卡西外传</a>[<a
-		class="green" href="/comic/675/list_22468.html" target="_blank"
-		title="完结">完结</a>]</li>
-	<li><a href="/comic/426/" target="_blank" title="会长是女仆大人"><img
-		src="http://i1.imanhua.com/Cover/2008-02-01/19320398.jpg"
-		alt="会长是女仆大人" /></a><a href="/comic/426/" target="_blank" title="会长是女仆大人">会长是女仆大人</a>[<a
-		class="green" href="/comic/426/list_90695.html" target="_blank"
-		title="完结">完结</a>]</li>
-	<li><a href="/comic/361/" target="_blank" title="吸血鬼骑士"><img
-		src="http://i2.imanhua.com/Cover/2013-05/xxgqs.jpg" alt="吸血鬼骑士" /></a><a
-		href="/comic/361/" target="_blank" title="吸血鬼骑士">吸血鬼骑士</a>[<a
-		class="green" href="/comic/361/list_90663.html" target="_blank"
-		title="完结">完结</a>]</li>
-	<li><a href="/comic/250/" target="_blank" title="守护甜心"><img
-		src="http://i1.imanhua.com/Cover/2012-02/shtx.jpg" alt="守护甜心" /></a><a
-		href="/comic/250/" target="_blank" title="守护甜心">守护甜心</a>[<a
-		class="green" href="/comic/250/list_65000.html" target="_blank"
-		title="完结">完结</a>]</li>
-	<li><a href="/comic/46/" target="_blank" title="灌篮高手"><img
-		src="http://i1.imanhua.com/Cover/2007-05-01/46/glgs120.jpg" alt="灌篮高手" /></a><a
-		href="/comic/46/" target="_blank" title="灌篮高手">灌篮高手</a>[<a
-		class="green" href="/comic/46/list_4919.html" target="_blank"
-		title="完结">完结</a>]</li>
+<?php foreach($indexData['classicEnd'] as &$row){?>
+	<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>">
+<img src="<?php echo $row['cover'];?>" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
+[<a class="red" href="<?php echo $row['volurl'];?>" target="_blank"
+		title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
+<?php } ?>
 </ul>
 <ul>
-	<li><a href="/comic/5225/" target="_blank" title="噬神者2 undercover"><img
-		src="http://i2.imanhua.com/Cover/2014-01/ssz2undercover.jpg"
-		alt="噬神者2 undercover" /></a><a href="/comic/5225/" target="_blank"
-		title="噬神者2 undercover">噬神者2 undercover</a>[<a class="red"
-		href="/comic/5225/list_94373.html" target="_blank" title="01">01</a>]</li>
-	<li><a href="/comic/5224/" target="_blank" title="于黑夜玩耍的孩子们"><img
-		src="http://i1.imanhua.com/Cover/2014-01/yhywsdhzm.jpg"
-		alt="于黑夜玩耍的孩子们" /></a><a href="/comic/5224/" target="_blank"
-		title="于黑夜玩耍的孩子们">于黑夜玩耍的孩子们</a>[<a class="red"
-		href="/comic/5224/list_94337.html" target="_blank" title="第00话">第00话</a>]</li>
-	<li><a href="/comic/5223/" target="_blank" title="天空之音"><img
-		src="http://i2.imanhua.com/Cover/2014-01/tkdyf.jpg" alt="天空之音" /></a><a
-		href="/comic/5223/" target="_blank" title="天空之音">天空之音</a>[<a
-		class="red" href="/comic/5223/list_94312.html" target="_blank"
-		title="第03话">第03话</a>]</li>
-	<li><a href="/comic/5222/" target="_blank" title="学园K"><img
-		src="http://i1.imanhua.com/Cover/2014-01/xyk.jpg" alt="学园K" /></a><a
-		href="/comic/5222/" target="_blank" title="学园K">学园K</a>[<a class="red"
-		href="/comic/5222/list_94309.html" target="_blank" title="第01话">第01话</a>]</li>
-	<li><a href="/comic/5221/" target="_blank" title="绘心十色"><img
-		src="http://i2.imanhua.com/Cover/2014-01/hxss.jpg" alt="绘心十色" /></a><a
-		href="/comic/5221/" target="_blank" title="绘心十色">绘心十色</a>[<a
-		class="red" href="/comic/5221/list_94307.html" target="_blank"
-		title="第01话">第01话</a>]</li>
-	<li><a href="/comic/5220/" target="_blank" title="校舍的后方埋藏着天使蚀"><img
-		src="http://i1.imanhua.com/Cover/2014-01/xsdhfmczts.jpg"
-		alt="校舍的后方埋藏着天使蚀" /></a><a href="/comic/5220/" target="_blank"
-		title="校舍的后方埋藏着天使蚀">校舍的后方埋藏着天使蚀</a>[<a class="red"
-		href="/comic/5220/list_94308.html" target="_blank" title="第01话">第01话</a>]</li>
-	<li><a href="/comic/5219/" target="_blank" title="他现在正在恋爱"><img
-		src="http://i2.imanhua.com/Cover/2014-01/txzzzla.jpg" alt="他现在正在恋爱" /></a><a
-		href="/comic/5219/" target="_blank" title="他现在正在恋爱">他现在正在恋爱</a>[<a
-		class="green" href="/comic/5219/list_94269.html" target="_blank"
-		title="完结">完结</a>]</li>
-	<li><a href="/comic/5218/" target="_blank" title="世界上最狭窄的星球"><img
-		src="http://i1.imanhua.com/Cover/2014-01/sjszxzdxq.jpg"
-		alt="世界上最狭窄的星球" /></a><a href="/comic/5218/" target="_blank"
-		title="世界上最狭窄的星球">世界上最狭窄的星球</a>[<a class="green"
-		href="/comic/5218/list_94270.html" target="_blank" title="完结">完结</a>]</li>
-	<li><a href="/comic/5217/" target="_blank" title="我才不会对黑崎君说的话言听计从"><img
-		src="http://i2.imanhua.com/Cover/2014-01/wcbhdhqjsdhytjc.jpg"
-		alt="我才不会对黑崎君说的话言听计从" /></a><a href="/comic/5217/" target="_blank"
-		title="我才不会对黑崎君说的话言听计从">我才不会对黑崎君说的话言听计从</a>[<a class="red"
-		href="/comic/5217/list_94264.html" target="_blank" title="第01话">第01话</a>]</li>
-	<li><a href="/comic/5216/" target="_blank" title="尽管如此世界依然美丽"><img
-		src="http://i1.imanhua.com/Cover/2014-01/jgsjyrrcml.jpg"
-		alt="尽管如此世界依然美丽" /></a><a href="/comic/5216/" target="_blank"
-		title="尽管如此世界依然美丽">尽管如此世界依然美丽</a>[<a class="red"
-		href="/comic/5216/list_94263.html" target="_blank" title="01">01</a>]</li>
+<?php foreach($indexData['newGround'] as &$row){?>
+	<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>">
+<img src="<?php echo $row['cover'];?>" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
+[<a class="red" href="<?php echo $row['volurl'];?>" target="_blank"
+		title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
+<?php } ?>
 </ul>
 <ul>
-	<li><a href="/comic/4036/" target="_blank" title="封神纪III"><img
-		src="http://i1.imanhua.com/Cover/2012-10/fengshengji3.jpg"
-		alt="封神纪III" /></a><a href="/comic/4036/" target="_blank" title="封神纪III">封神纪III</a>[<a
-		class="red" href="/comic/4036/list_94208.html" target="_blank"
-		title="第65卷">第65卷</a>]</li>
-	<li><a href="/comic/3628/" target="_blank" title="石黑龙传"><img
-		src="http://i1.imanhua.com/Cover/2012-06/shlz1.jpg" alt="石黑龙传" /></a><a
-		href="/comic/3628/" target="_blank" title="石黑龙传">石黑龙传</a>[<a
-		class="red" href="/comic/3628/list_94322.html" target="_blank"
-		title="第78卷">第78卷</a>]</li>
-	<li><a href="/comic/1559/" target="_blank" title="春秋战雄"><img
-		src="http://i2.imanhua.com/cover/2010-01-01/chunqiuzhanxiong.jpg"
-		alt="春秋战雄" /></a><a href="/comic/1559/" target="_blank" title="春秋战雄">春秋战雄</a>[<a
-		class="red" href="/comic/1559/list_94159.html" target="_blank"
-		title="第210回">第210回</a>]</li>
-	<li><a href="/comic/256/" target="_blank" title="新著龙虎门"><img
-		src="http://i1.imanhua.com/Cover/2007-12-03/05053511.jpg" alt="新著龙虎门" /></a><a
-		href="/comic/256/" target="_blank" title="新著龙虎门">新著龙虎门</a>[<a
-		class="red" href="/comic/256/list_94240.html" target="_blank"
-		title="第713卷">第713卷</a>]</li>
-	<li><a href="/comic/195/" target="_blank" title="风云第三部"><img
-		src="http://i2.imanhua.com/Cover/2007-08-09/16060557.jpg" alt="风云第三部" /></a><a
-		href="/comic/195/" target="_blank" title="风云第三部">风云第三部</a>[<a
-		class="red" href="/comic/195/list_93436.html" target="_blank"
-		title="第664回">第664回</a>]</li>
-	<li><a href="/comic/4209/" target="_blank" title="复仇者V5"><img
-		src="http://i2.imanhua.com/Cover/2012-12/fczv5.jpg" alt="复仇者V5" /></a><a
-		href="/comic/4209/" target="_blank" title="复仇者V5">复仇者V5</a>[<a
-		class="red" href="/comic/4209/list_93796.html" target="_blank"
-		title="第19卷">第19卷</a>]</li>
-	<li><a href="/comic/4035/" target="_blank" title="魅影陌客"><img
-		src="http://i2.imanhua.com/Cover/2012-10/mymk.jpg" alt="魅影陌客" /></a><a
-		href="/comic/4035/" target="_blank" title="魅影陌客">魅影陌客</a>[<a
-		class="red" href="/comic/4035/list_93954.html" target="_blank"
-		title="第14卷">第14卷</a>]</li>
-	<li><a href="/comic/3845/" target="_blank" title="盗墓者"><img
-		src="http://i2.imanhua.com/Cover/2012-08/daomuzhe.jpg" alt="盗墓者" /></a><a
-		href="/comic/3845/" target="_blank" title="盗墓者">盗墓者</a>[<a class="red"
-		href="/comic/3845/list_85673.html" target="_blank" title="第03卷">第03卷</a>]</li>
-	<li><a href="/comic/2875/" target="_blank" title="蝙蝠侠与罗宾"><img
-		src="http://i2.imanhua.com/Cover/2011-10/bfxylb.jpg" alt="蝙蝠侠与罗宾" /></a><a
-		href="/comic/2875/" target="_blank" title="蝙蝠侠与罗宾">蝙蝠侠与罗宾</a>[<a
-		class="red" href="/comic/2875/list_93056.html" target="_blank"
-		title="第25卷">第25卷</a>]</li>
-	<li><a href="/comic/1595/" target="_blank" title="行尸走肉"><img
-		src="http://i2.imanhua.com/Cover/2010-06/xingshizourou.gif" alt="行尸走肉" /></a><a
-		href="/comic/1595/" target="_blank" title="行尸走肉">行尸走肉</a>[<a
-		class="red" href="/comic/1595/list_94239.html" target="_blank"
-		title="第119话">第119话</a>]</li>
+<?php foreach($indexData['fullcolorChoice'] as &$row){?>
+	<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>">
+<img src="<?php echo $row['cover'];?>" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
+[<a class="red" href="<?php echo $row['volurl'];?>" target="_blank"
+		title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
+<?php } ?>
 </ul>
 <ul>
 	<div id="gamepage"><iframe width="100%" id="webgamepage"
@@ -232,120 +63,18 @@
 <div class="lr1px">
 <h2 class="bar"><strong>漫画点击排行</strong></h2>
 <ul class="topHits">
-	<li><span class="t1">1.</span><a href="/comic/54/" target="_blank"
-		title="火影忍者">火影忍者</a></li>
-	<li><span class="t2">2.</span><a href="/comic/201/"
-		target="_blank" title="妖精的尾巴">妖精的尾巴</a></li>
-	<li><span class="t3">3.</span><a href="/comic/1067/"
-		target="_blank" title="黑子的篮球">黑子的篮球</a></li>
-	<li><span class="t4">4.</span><a href="/comic/140/"
-		target="_blank" title="进击的巨人">进击的巨人</a></li>
-	<li><span class="t5">5.</span><a href="/comic/55/" target="_blank"
-		title="海贼王">海贼王</a></li>
-	<li><span class="t6">6.</span><a href="/comic/584/"
-		target="_blank" title="美食的俘虏">美食的俘虏</a></li>
-	<li><span class="t7">7.</span><a href="/comic/1119/"
-		target="_blank" title="恶魔奶爸">恶魔奶爸</a></li>
-	<li><span class="t8">8.</span><a href="/comic/1110/"
-		target="_blank" title="新网球王子">新网球王子</a></li>
-	<li><span class="t9">9.</span><a href="/comic/177/"
-		target="_blank" title="名侦探柯南">名侦探柯南</a></li>
-	<li><span class="t10">10.</span><a href="/comic/120/"
-		target="_blank" title="死神">死神</a></li>
-	<li><span class="t11">11.</span><a href="/comic/76/"
-		target="_blank" title="全职猎人">全职猎人</a></li>
-	<li><span class="t12">12.</span><a href="/comic/782/"
-		target="_blank" title="只有神知道的世界">只有神知道的世界</a></li>
-	<li><span class="t13">13.</span><a href="/comic/1980/"
-		target="_blank" title="灌篮高手全国大赛篇">灌篮高手全国大赛篇</a></li>
-	<li><span class="t14">14.</span><a href="/comic/1832/"
-		target="_blank" title="魔笛MAGI">魔笛MAGI</a></li>
-	<li><span class="t15">15.</span><a href="/comic/256/"
-		target="_blank" title="新著龙虎门">新著龙虎门</a></li>
-	<li><span class="t16">16.</span><a href="/comic/619/"
-		target="_blank" title="滑头鬼之孙">滑头鬼之孙</a></li>
-	<li><span class="t17">17.</span><a href="/comic/426/"
-		target="_blank" title="会长是女仆大人">会长是女仆大人</a></li>
-	<li><span class="t18">18.</span><a href="/comic/1595/"
-		target="_blank" title="行尸走肉">行尸走肉</a></li>
-	<li><span class="t19">19.</span><a href="/comic/195/"
-		target="_blank" title="风云第三部">风云第三部</a></li>
-	<li><span class="t20">20.</span><a href="/comic/1561/"
-		target="_blank" title="王者天下">王者天下</a></li>
-	<li><span class="t21">21.</span><a href="/comic/1559/"
-		target="_blank" title="春秋战雄">春秋战雄</a></li>
-	<li><span class="t22">22.</span><a href="/comic/46/"
-		target="_blank" title="灌篮高手">灌篮高手</a></li>
-	<li><span class="t23">23.</span><a href="/comic/171/"
-		target="_blank" title="SKIP BEAT">SKIP BEAT</a></li>
-	<li><span class="t24">24.</span><a href="/comic/183/"
-		target="_blank" title="圣斗士-冥王神话">圣斗士-冥王神话</a></li>
-	<li><span class="t25">25.</span><a href="/comic/1809/"
-		target="_blank" title="奥特曼STORY0">奥特曼STORY0</a></li>
-	<li><span class="t26">26.</span><a href="/comic/2250/"
-		target="_blank" title="虫奉行">虫奉行</a></li>
-	<li><span class="t27">27.</span><a href="/comic/2066/"
-		target="_blank" title="刀剑神域">刀剑神域</a></li>
-	<li><span class="t28">28.</span><a href="/comic/361/"
-		target="_blank" title="吸血鬼骑士">吸血鬼骑士</a></li>
-	<li><span class="t29">29.</span><a href="/comic/4036/"
-		target="_blank" title="封神纪III">封神纪III</a></li>
-	<li><span class="t30">30.</span><a href="/comic/4212/"
-		target="_blank" title="一拳超人">一拳超人</a></li>
-	<li><span class="t31">31.</span><a href="/comic/1338/"
-		target="_blank" title="诛仙漫画">诛仙漫画</a></li>
-	<li><span class="t32">32.</span><a href="/comic/25/"
-		target="_blank" title="D格雷少年">D格雷少年</a></li>
-	<li><span class="t33">33.</span><a href="/comic/3386/"
-		target="_blank" title="天子传奇8">天子传奇8</a></li>
-	<li><span class="t34">34.</span><a href="/comic/3363/"
-		target="_blank" title="东京食尸鬼">东京食尸鬼</a></li>
-	<li><span class="t35">35.</span><a href="/comic/612/"
-		target="_blank" title="有你的小镇">有你的小镇</a></li>
-	<li><span class="t36">36.</span><a href="/comic/204/"
-		target="_blank" title="旋风管家">旋风管家</a></li>
+<?php foreach($indexData['hitsRank'] as $key=>&$row){ ?>
+	<li><span class="t<?php echo $key+1;?>"><?php echo $key+1;?>.</span><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a></li>
+<?php } ?>
 </ul>
 </div>
 <div class="blank8 lineGray"></div>
 <div class="lr1px">
 <h2 class="bar"><strong>新添漫画点击排行</strong></h2>
 <ul class="topHits">
-	<li><span class="t1">1.</span><a href="/comic/5186/"
-		target="_blank" title="零之神域">零之神域</a></li>
-	<li><span class="t2">2.</span><a href="/comic/5188/"
-		target="_blank" title="绝叫学级">绝叫学级</a></li>
-	<li><span class="t3">3.</span><a href="/comic/5209/"
-		target="_blank" title="校园人鱼">校园人鱼</a></li>
-	<li><span class="t4">4.</span><a href="/comic/5215/"
-		target="_blank" title="湘南七人">湘南七人</a></li>
-	<li><span class="t5">5.</span><a href="/comic/5187/"
-		target="_blank" title="某科学的一方通行">某科学的一方通行</a></li>
-	<li><span class="t6">6.</span><a href="/comic/5194/"
-		target="_blank" title="让喜欢的人当家庭教师的结果">让喜欢的人当家庭教师的结果</a></li>
-	<li><span class="t7">7.</span><a href="/comic/5185/"
-		target="_blank" title="All You Need Is Kill">All You Need Is Kill</a></li>
-	<li><span class="t8">8.</span><a href="/comic/5192/"
-		target="_blank" title="替身新娘">替身新娘</a></li>
-	<li><span class="t9">9.</span><a href="/comic/5193/"
-		target="_blank" title="两星期男友">两星期男友</a></li>
-	<li><span class="t10">10.</span><a href="/comic/5182/"
-		target="_blank" title="踢拳辣美眉">踢拳辣美眉</a></li>
-	<li><span class="t11">11.</span><a href="/comic/5190/"
-		target="_blank" title="十年后在街角偶遇">十年后在街角偶遇</a></li>
-	<li><span class="t12">12.</span><a href="/comic/5208/"
-		target="_blank" title="哈莉奎茵">哈莉奎茵</a></li>
-	<li><span class="t13">13.</span><a href="/comic/5217/"
-		target="_blank" title="我才不会对黑崎君说的话言听计从">我才不会对黑崎君说的话言听计从</a></li>
-	<li><span class="t14">14.</span><a href="/comic/5218/"
-		target="_blank" title="世界上最狭窄的星球">世界上最狭窄的星球</a></li>
-	<li><span class="t15">15.</span><a href="/comic/5179/"
-		target="_blank" title="绝对博士">绝对博士</a></li>
-	<li><span class="t16">16.</span><a href="/comic/5214/"
-		target="_blank" title="DATE A PARTY">DATE A PARTY</a></li>
-	<li><span class="t17">17.</span><a href="/comic/5206/"
-		target="_blank" title="暴力宇宙海贼">暴力宇宙海贼</a></li>
-	<li><span class="t18">18.</span><a href="/comic/5219/"
-		target="_blank" title="他现在正在恋爱">他现在正在恋爱</a></li>
+<?php foreach($indexData['newHitsRank'] as $key=>&$row){ ?>
+	<li><span class="t<?php echo $key+1;?>"><?php echo $key+1;?>.</span><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a></li>
+<?php } ?>
 </ul>
 </div>
 </div>
@@ -726,190 +455,9 @@
 <h2 class="bar"><span><a href="/recent.html" class="red">>>更多</a>
 </span><strong>最新更新漫画</strong></h2>
 <ul class="newUpdate" style="padding-top: 0;">
-	<li><em class="red">2014/1/21</em><a href="/comic/1892/"
-		target="_blank" title="召唤恶魔">召唤恶魔</a>[<a class="red"
-		href="/comic/1892/list_94457.html" target="_blank" title="第104话">第104话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/4959/"
-		target="_blank" title="恶魔凝视">恶魔凝视</a>[<a class="red"
-		href="/comic/4959/list_94456.html" target="_blank" title="第01话">第01话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/1474/"
-		target="_blank" title="咖菲侦探部">咖菲侦探部</a>[<a class="red"
-		href="/comic/1474/list_94455.html" target="_blank" title="第36话">第36话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/2778/"
-		target="_blank" title="时间停止的校舍">时间停止的校舍</a>[<a class="red"
-		href="/comic/2778/list_94454.html" target="_blank" title="第07话">第07话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/4710/"
-		target="_blank" title="国际正义联盟">国际正义联盟</a>[<a class="red"
-		href="/comic/4710/list_94453.html" target="_blank" title="#12">#12</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/3306/"
-		target="_blank" title="生化危机">生化危机</a>[<a class="red"
-		href="/comic/3306/list_94376.html" target="_blank" title="第35话">第35话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/2839/"
-		target="_blank" title="闪电侠">闪电侠</a>[<a class="red"
-		href="/comic/2839/list_94375.html" target="_blank" title="第26卷">第26卷</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/5225/"
-		target="_blank" title="噬神者2 undercover">噬神者2 undercover</a>[<a
-		class="red" href="/comic/5225/list_94373.html" target="_blank"
-		title="01">01</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/2247/"
-		target="_blank" title="请叫我英雄">请叫我英雄</a>[<a class="red"
-		href="/comic/2247/list_94372.html" target="_blank" title="第166话">第166话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/2212/"
-		target="_blank" title="摇曳百合">摇曳百合</a>[<a class="red"
-		href="/comic/2212/list_94371.html" target="_blank" title="幕间篇23">幕间篇23</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/1810/"
-		target="_blank" title="绿灯侠V4">绿灯侠V4</a>[<a class="red"
-		href="/comic/1810/list_94369.html" target="_blank" title="第25卷">第25卷</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/5070/"
-		target="_blank" title="光与影">光与影</a>[<a class="red"
-		href="/comic/5070/list_94367.html" target="_blank" title="第04话">第04话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/5188/"
-		target="_blank" title="绝叫学级">绝叫学级</a>[<a class="red"
-		href="/comic/5188/list_94366.html" target="_blank" title="第65话">第65话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/4018/"
-		target="_blank" title="servamp">servamp</a>[<a class="red"
-		href="/comic/4018/list_94365.html" target="_blank" title="第16话">第16话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/4571/"
-		target="_blank" title="AcmaGame">AcmaGame</a>[<a class="red"
-		href="/comic/4571/list_94364.html" target="_blank" title="第15话">第15话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/1113/"
-		target="_blank" title="钻石王牌">钻石王牌</a>[<a class="red"
-		href="/comic/1113/list_94363.html" target="_blank" title="302话">302话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/4966/"
-		target="_blank" title="疾风守护者">疾风守护者</a>[<a class="red"
-		href="/comic/4966/list_94362.html" target="_blank" title="437话">437话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/2380/"
-		target="_blank" title="JOJO奇妙冒险第八部">JOJO奇妙冒险第八部</a>[<a class="red"
-		href="/comic/2380/list_94361.html" target="_blank" title="第28话">第28话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/3590/"
-		target="_blank" title="幽丽塔">幽丽塔</a>[<a class="red"
-		href="/comic/3590/list_94360.html" target="_blank" title="第51话">第51话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/4938/"
-		target="_blank" title="强袭246">强袭246</a>[<a class="red"
-		href="/comic/4938/list_94359.html" target="_blank" title="第09话">第09话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/4820/"
-		target="_blank" title="中华英雄2013">中华英雄2013</a>[<a class="red"
-		href="/comic/4820/list_94358.html" target="_blank" title="第22卷">第22卷</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/4295/"
-		target="_blank" title="SE">SE</a>[<a class="red"
-		href="/comic/4295/list_94357.html" target="_blank" title="第15话">第15话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/1870/"
-		target="_blank" title="百姓贵族">百姓贵族</a>[<a class="red"
-		href="/comic/1870/list_94356.html" target="_blank" title="第36话">第36话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/3401/"
-		target="_blank" title="Area D异能领域">Area D异能领域</a>[<a class="red"
-		href="/comic/3401/list_94355.html" target="_blank" title="第65话">第65话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/4834/"
-		target="_blank" title="UQ HOLDER">UQ HOLDER</a>[<a class="red"
-		href="/comic/4834/list_94354.html" target="_blank" title="第19话">第19话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/2311/"
-		target="_blank" title="诚如神之所说">诚如神之所说</a>[<a class="red"
-		href="/comic/2311/list_94353.html" target="_blank" title="第71话">第71话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/1754/"
-		target="_blank" title="雷恩Rain">雷恩Rain</a>[<a class="red"
-		href="/comic/1754/list_94352.html" target="_blank" title="第41话">第41话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/2873/"
-		target="_blank" title="蝙蝠侠">蝙蝠侠</a>[<a class="red"
-		href="/comic/2873/list_94351.html" target="_blank" title="第26卷">第26卷</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/5088/"
-		target="_blank" title="杀手">杀手</a>[<a class="red"
-		href="/comic/5088/list_94350.html" target="_blank" title="第07卷">第07卷</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/4505/"
-		target="_blank" title="糟糕女子宿舍">糟糕女子宿舍</a>[<a class="red"
-		href="/comic/4505/list_94348.html" target="_blank" title="第08话">第08话</a>]</li>
-	<li><em class="red">2014/1/21</em><a href="/comic/4242/"
-		target="_blank" title="七原罪">七原罪</a>[<a class="red"
-		href="/comic/4242/list_94347.html" target="_blank" title="第62话">第62话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/5209/"
-		target="_blank" title="校园人鱼">校园人鱼</a>[<a class="red"
-		href="/comic/5209/list_94346.html" target="_blank" title="第06话">第06话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/1561/"
-		target="_blank" title="王者天下">王者天下</a>[<a class="red"
-		href="/comic/1561/list_94345.html" target="_blank" title="第373话">第373话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/4992/"
-		target="_blank" title="秋叶原之旅">秋叶原之旅</a>[<a class="red"
-		href="/comic/4992/list_94344.html" target="_blank" title="第03话">第03话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/3793/"
-		target="_blank" title="地球末日">地球末日</a>[<a class="red"
-		href="/comic/3793/list_94343.html" target="_blank" title="第71话">第71话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/1740/"
-		target="_blank" title="拂晓的尤娜">拂晓的尤娜</a>[<a class="red"
-		href="/comic/1740/list_94342.html" target="_blank" title="第58话">第58话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/4866/"
-		target="_blank" title="百千家的妖怪王子">百千家的妖怪王子</a>[<a class="red"
-		href="/comic/4866/list_94341.html" target="_blank" title="06">06</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/4906/"
-		target="_blank" title="飙速宅男">飙速宅男</a>[<a class="red"
-		href="/comic/4906/list_94340.html" target="_blank" title="第128话">第128话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/5224/"
-		target="_blank" title="于黑夜玩耍的孩子们">于黑夜玩耍的孩子们</a>[<a class="red"
-		href="/comic/5224/list_94337.html" target="_blank" title="第00话">第00话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/5003/"
-		target="_blank" title="小蹲提不起劲">小蹲提不起劲</a>[<a class="red"
-		href="/comic/5003/list_94336.html" target="_blank" title="第16话">第16话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/3243/"
-		target="_blank" title="EverGreen">EverGreen</a>[<a class="red"
-		href="/comic/3243/list_94335.html" target="_blank" title="11话">11话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/171/"
-		target="_blank" title="SKIP BEAT">SKIP BEAT</a>[<a class="red"
-		href="/comic/171/list_94334.html" target="_blank" title="第208话">第208话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/5091/"
-		target="_blank" title="突发小春的武技">突发小春的武技</a>[<a class="red"
-		href="/comic/5091/list_94333.html" target="_blank" title="第05话">第05话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/4927/"
-		target="_blank" title="国士无双">国士无双</a>[<a class="red"
-		href="/comic/4927/list_94332.html" target="_blank" title="第21话">第21话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/5047/"
-		target="_blank" title="天下无敌2013">天下无敌2013</a>[<a class="red"
-		href="/comic/5047/list_94331.html" target="_blank" title="第10卷">第10卷</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/2286/"
-		target="_blank" title="美国吸血鬼">美国吸血鬼</a>[<a class="red"
-		href="/comic/2286/list_94330.html" target="_blank" title="第16卷">第16卷</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/1461/"
-		target="_blank" title="图书馆战争">图书馆战争</a>[<a class="red"
-		href="/comic/1461/list_94329.html" target="_blank" title="第63话">第63话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/3001/"
-		target="_blank" title="天使心第二季">天使心第二季</a>[<a class="red"
-		href="/comic/3001/list_94328.html" target="_blank" title="第39话">第39话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/4907/"
-		target="_blank" title="3D彼女">3D彼女</a>[<a class="red"
-		href="/comic/4907/list_94327.html" target="_blank" title="第17话">第17话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/3811/"
-		target="_blank" title="一弦定音">一弦定音</a>[<a class="red"
-		href="/comic/3811/list_94326.html" target="_blank" title="第18话">第18话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/3205/"
-		target="_blank" title="极黑的布伦希尔特">极黑的布伦希尔特</a>[<a class="red"
-		href="/comic/3205/list_94325.html" target="_blank" title="第88话">第88话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/4663/"
-		target="_blank" title="隐世灵语">隐世灵语</a>[<a class="red"
-		href="/comic/4663/list_94324.html" target="_blank" title="第22话">第22话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/3628/"
-		target="_blank" title="石黑龙传">石黑龙传</a>[<a class="red"
-		href="/comic/3628/list_94322.html" target="_blank" title="第78卷">第78卷</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/4884/"
-		target="_blank" title="邪恶永恒">邪恶永恒</a>[<a class="red"
-		href="/comic/4884/list_94321.html" target="_blank" title="自杀小队#27">自杀小队#27</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/3774/"
-		target="_blank" title="自杀小队">自杀小队</a>[<a class="red"
-		href="/comic/3774/list_94320.html" target="_blank" title="第27话">第27话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/4976/"
-		target="_blank" title="无限Infinity">无限Infinity</a>[<a class="red"
-		href="/comic/4976/list_94319.html" target="_blank" title="#06">#06</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/1778/"
-		target="_blank" title="逆转监督">逆转监督</a>[<a class="red"
-		href="/comic/1778/list_94318.html" target="_blank" title="第282话">第282话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/936/"
-		target="_blank" title="神奇宝贝特别篇">神奇宝贝特别篇</a>[<a class="red"
-		href="/comic/936/list_94317.html" target="_blank" title="501">501</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/5141/"
-		target="_blank" title="被瞄准的恋爱">被瞄准的恋爱</a>[<a class="red"
-		href="/comic/5141/list_94314.html" target="_blank" title="第03话">第03话</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/3639/"
-		target="_blank" title="冥王神话星座篇">冥王神话星座篇</a>[<a class="red"
-		href="/comic/3639/list_94313.html" target="_blank" title="射手座03">射手座03</a>]</li>
-	<li><em class="orange">2014/1/20</em><a href="/comic/5223/"
-		target="_blank" title="天空之音">天空之音</a>[<a class="red"
-		href="/comic/5223/list_94312.html" target="_blank" title="第03话">第03话</a>]</li>
+<?php foreach($indexData['newRenew'] as &$row){ ?>
+	<li><em class="red"><?php echo $row['rtime'];?></em><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>[<a class="red" href="<?php echo $row['volurl'];?>" target="_blank" title="第<?php echo $row['vol'];?>话">第<?php echo $row['vol'];?>话</a>]</li>
+<?php } ?>
 </ul>
 <div class="blank2"></div>
 </div>
