@@ -2,6 +2,8 @@
 require_once 'usrbase.php';
 
 class Index extends Usrbase {
+  public $_per = 48;
+
   public function __construct(){
     parent::__construct();
   }
@@ -23,7 +25,10 @@ class Index extends Usrbase {
   }
   
   public function cate($cid,$order='new',$page=1){
-    $this->assign(array('comicinfo' => $comicinfo));
+    $lists = $this->mhmodel->getComicListByCid($cid, $order, $page, $this->_per);
+    $key = 'cate'.$cid.'topdata';
+    $cateTopData = $this->mhmodel->getCateTopData($cid);
+    $this->assign(array('lists' => $lists,'cateTopData'=>$cateTopData));
 //var_dump($this->viewData);exit;
     $this->view('index_cate');
   }
