@@ -2,7 +2,7 @@
 require_once 'usrbase.php';
 
 class Index extends Usrbase {
-  public $_per = 48;
+  public $_per = 24;
 
   public function __construct(){
     parent::__construct();
@@ -24,12 +24,21 @@ class Index extends Usrbase {
     $this->view('index_comicletter'); 
   }
   
-  public function cate($cid,$order='new',$page=1){
+  public function cate($cid,$order='atime',$page=1){
+    $cid = intval($cid);
+    $page = intval($page);
     $lists = $this->mhmodel->getComicListByCid($cid, $order, $page, $this->_per);
     $key = 'cate'.$cid.'topdata';
     $cateTopData = $this->mhmodel->getCateTopData($cid);
-    $this->assign(array('lists' => $lists,'cateTopData'=>$cateTopData));
-//var_dump($this->viewData);exit;
+    $this->load->library('pagination');
+    $config['cur_page'] = $page;
+    $config['base_url'] = sprintf('/index/cate/%d/%s/',$cid,$page);
+    $config['total_rows'] = $this->_channel[$cid]['ctotal'];
+    $config['per_page'] = $this->_per;
+    $this->pagination->initialize($config);
+    $page_string = $this->pagination->create_links();
+    $this->assign(array('order'=>$order,'page'=>$page,'page_string'=>$page_string,'cid'=>$cid,'lists' => $lists,'cateTopData'=>$cateTopData));
+//echo "<pre>";var_dump($this->viewData);exit;
     $this->view('index_cate');
   }
 

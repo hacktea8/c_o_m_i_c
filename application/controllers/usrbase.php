@@ -2,6 +2,7 @@
 require_once 'webbase.php';
 
 class Usrbase extends Webbase {
+   public $_channel = '';
 
    public function __construct(){
      parent::__construct();
@@ -10,10 +11,10 @@ class Usrbase extends Webbase {
    }
 
    protected function _init(){
-     $channel = $this->mhmodel->getNavList();
+     $this->_channel = $this->mhmodel->getNavList();
      $letterList = $this->mhmodel->getLetterList();
-
-     $this->assign(array('letterList'=>$letterList,'channel'=>$channel));
+     $friendLink = $this->mhmodel->getFriendLinks();
+     $this->assign(array('friendLink'=>$friendLink,'letterList'=>$letterList,'channel'=>$this->_channel));
    }
 
    protected function assign($data){

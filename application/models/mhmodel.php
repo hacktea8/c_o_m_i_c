@@ -29,14 +29,14 @@ class Mhmodel extends Modelbase{
   public function getCateTopData($cid){
      $return = array();
      $return['hitsRank'] = $this->getComicsHitsRank($limit = 15,$cid);
-     $return['newRenew'] = $this->getNewRenewComics($limit = 45,$cid);
-     $return['classicEnd'] = $this->getClassicEndComics($limit = 10,$cid);
-     $return['hotSerial'] = $this->getHotSerialComics($limit = 10,$cid);
+     $return['newRenew'] = $this->getNewRenewComics($limit = 13,$cid);
+     $return['classicEnd'] = $this->getClassicEndComics($limit = 8,$cid);
+     $return['hotSerial'] = $this->getHotSerialComics($limit = 8,$cid);
      return $return;
   }
   public function getComicListByCid($cid, $order, $page, $per){
      $where = $cid ? sprintf('WHERE `cid`=%d ',$cid) : '';
-     $ordermap = array('new'=>' `rtime` DESC');
+     $ordermap = array('hits'=>' `hits` DESC','atime'=>' `atime` DESC','rtime'=>' `rtime` DESC');
      $order = isset($ordermap[$order]) ? $ordermap[$order]: array_shift($ordermap);
      $p = $page - 1;
      $p = $p < 0 ? 0 : $p;
@@ -58,8 +58,10 @@ class Mhmodel extends Modelbase{
   }
 //热门连载
   public function getHotSerialComics($limit = 10, $cid = 0){
-     $where = $cid ? sprintf('AND `cid`=%d ',$cid) : '';
-     $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`, `vol` FROM `comic` WHERE `ishot` = 1 %s LIMIT %d", $where, $limit);
+     //$where = $cid ? sprintf('AND `cid`=%d ',$cid) : '';
+     $where = $cid ? sprintf(' `cid`=%d ',$cid) : '';
+     //$sql = sprintf("SELECT `id`, `cid`, `name`, `cover`, `vol` FROM `comic` WHERE `ishot` = 1 %s LIMIT %d", $where, $limit);
+     $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`, `vol` FROM `comic` WHERE  %s ORDER BY `hits` DESC LIMIT %d", $where, $limit);
      $list = $this->db->query($sql)->result_array();
      foreach($list as &$v){
        $v['cover'] = $this->getPicUrl($v['cover']);
@@ -130,6 +132,7 @@ class Mhmodel extends Modelbase{
        $v['url'] = $this->getUrl('comic', $v['id']);
        $v['volurl'] = $this->getUrl('vol', $v['id'],$v['vol']);
        $v['rtime'] = date('Y-m-d',$v['rtime']);
+       $v['volname'] = $v['vol'].'话';
      }
      return $list;
   } 

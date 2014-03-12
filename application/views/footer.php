@@ -2,7 +2,9 @@
 <h2 class="bar"><span>定期清理不符合要求的链接，未能通知，请见谅！链接要求：百度权重8以上，ALEXA综合排名5000名以内，并且PR≥6的优秀站点</span><strong>友情链接</strong></h2>
 <div class="blank8"></div>
 <ul class="friendLink">
-	<li><a title="" href="http://dongman.hao123.com/" target="_blank">hao123网址</a></li>
+<?php foreach($friendLink as $row){ ?>
+<li><a title="<?php echo $row['title'];?>" href="<?php echo $row['link'];?>" target="_blank"><?php echo $row['title'];?></a></li>
+<?php } ?>
 </ul>
 <div class="blank8"></div>
 </div>

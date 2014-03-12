@@ -54,7 +54,7 @@
 <div class="subNavList">
 <div class="charNav"><strong>
 <img src="<?php echo $img_url;?>btn-chrlist.gif" /></strong>
-<?php foreach($letterList as &$row){ ?>
+<?php if(0) foreach($letterList as &$row){ ?>
 <a href="<?php echo $row['url'];?>" title="<?php echo $row['letter'];?>"><?php echo $row['letter'];?></a>
 <?php } ?>
 </div>
@@ -63,10 +63,13 @@
 	href="javascript:void(0);"
 	onClick="window.external.AddFavorite('http://<?php echo $domain;?>','爱漫画,在线漫画,为您提供最新、最好看的漫画');"
 	class="addFav">收藏<?php echo $web_title;?></a></span>
+<?php if(0){ ?>
 <a href="/wanjie.html">完结漫画</a> <a
 	href="/lianzai.html">连载漫画</a>
 <a href="/top.html" class="red">漫画风云榜</a> <a href="/recent.html"
-	class="red">最新更新</a>&nbsp;<strong>火影忍者662</strong> <strong>火影忍者漫画662</strong>
+	class="red">最新更新</a>
+<?php } ?>
+&nbsp;<strong>火影忍者662</strong> <strong>火影忍者漫画662</strong>
 1月22日更新</div>
 </div>
 </div>

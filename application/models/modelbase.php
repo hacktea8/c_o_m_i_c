@@ -21,12 +21,20 @@ class Modelbase extends CI_Model{
 
 		return $info;
 	}
+  public function getFriendLinks($flag = 1){
+     $where = $flag < 0 ? '' : sprintf("WHERE `flag`=%d", $flag);
+     $sql = sprintf("SELECT * FROM `friendlinks` %s", $where);
+     $list = $this->db->query($sql)->result_array();
+     return $list;
+  }
         public function getNavList($flag = 1){
                 $where = $flag < 0 ? '' : sprintf("WHERE `flag`=%d", $flag);
                 $sql = sprintf("SELECT * FROM `cate` %s", $where);
-                $return = $this->db->query($sql)->result_array();
-                foreach($return as &$v){
+                $list = $this->db->query($sql)->result_array();
+                $return = array();
+                foreach($list as &$v){
                   $v['url'] = $this->getUrl($key = 'cate',$v['id']);
+                  $return[$v['id']] = $v;
                 }
                 return $return;
         }
@@ -37,9 +45,6 @@ class Modelbase extends CI_Model{
                   $v['url'] = $this->getUrl($key = 'letter',$v['id']);
                 }
                 return $return;
-        }
-        public function getFriendLinks(){
-                
         }
         public function getUrl($key = 'cate',$p1='',$p2='',$p3=''){
                 $url = '';
