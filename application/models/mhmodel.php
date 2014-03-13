@@ -65,9 +65,9 @@ class Mhmodel extends Modelbase{
 //热门连载
   public function getHotSerialComics($limit = 10, $cid = 0){
      //$where = $cid ? sprintf('AND `cid`=%d ',$cid) : '';
-     $where = $cid ? sprintf(' `cid`=%d ',$cid) : '';
+     $where = $cid ? sprintf(' WHERE `cid`=%d ',$cid) : '';
      //$sql = sprintf("SELECT `id`, `cid`, `name`, `cover`, `vol` FROM `comic` WHERE `ishot` = 1 %s LIMIT %d", $where, $limit);
-     $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`, `vol` FROM `comic` WHERE  %s ORDER BY `hits` DESC LIMIT %d", $where, $limit);
+     $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`, `vol` FROM `comic`  %s ORDER BY `hits` DESC LIMIT %d", $where, $limit);
      $list = $this->db->query($sql)->result_array();
      foreach($list as &$v){
        $v['cover'] = $this->getPicUrl($v['cover']);
@@ -93,9 +93,10 @@ class Mhmodel extends Modelbase{
 //最新上架
   public function getNewGroundComics($limit = 10, $cid = 0){
      $where = $cid ? sprintf('WHERE `cid`=%d ',$cid) : '';
-     $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`, `vol` FROM `comic` %s ORDER BY `atime` DESC LIMIT %d", $where, $limit);
+     $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`, `vol`,`atime` FROM `comic` %s ORDER BY `atime` DESC LIMIT %d", $where, $limit);
      $list = $this->db->query($sql)->result_array();
      foreach($list as &$v){
+       $v['atime'] = date('Y/m/d',$v['atime']);
        $v['cover'] = $this->getPicUrl($v['cover']);
        $v['url'] = $this->getUrl('comic', $v['id']);
        $v['volurl'] = $this->getUrl('vol', $v['id'], $v['vol']);

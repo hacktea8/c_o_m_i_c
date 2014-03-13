@@ -19,11 +19,22 @@ class Modelbase extends CI_Model{
      $info = $this->db->query($sql)->row_array(); 
      if($info){
        $info['id'] = $cid;
+       $info['vols'] = $this->getComicVols($cid);
+       $info['cover'] = $this->getPicUrl($info['cover']);
        $info['atime'] = date('Y-m-d', $info['atime']);
        $info['rtime'] = date('Y-m-d', $info['rtime']);
        $info['relate'] = $this->getComicRelateByCid($info['cid'],$limit = 16);
      }
      return $info;
+  }
+  public function getComicVols($cid){
+     $sql = sprintf("SELECT `vid`,`vnum` FROM `vols` WHERE `cid`=%d ORDER BY `vnum` DESC ",$cid);
+     $lists = $this->db->query($sql)->result_array();
+     foreach($lists as &$v){
+       $v['url'] = $this->getUrl('vol',$cid,$v['vid']);
+       $v['name'] = "第$v[vnum]话";
+     }
+     return $lists;
   }
   public function getComicRelateByCid($cid,$limit){
     $sql = sprintf("SELECT `id`,`name` FROM `comic` WHERE `flag`=1 AND `cid`=%d LIMIT 0,%d",$cid,$limit*2);

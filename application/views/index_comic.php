@@ -19,7 +19,7 @@
 <h2 class="bar bt1px"><strong>最新添加的漫画</strong></h2>
 <ul class="newUpdate">
 <?php foreach($newUpdateData['newGround'] as $row){ ?>
-<li><em class="red"><?php echo $row['rtime'];?></em><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>[<a class="green"
+<li><em class="red"><?php echo $row['atime'];?></em><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>[<a class="green"
 		href="<?php echo $row['volurl'];?>" target="_blank" title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
 <?php } ?>
 </ul>
@@ -27,7 +27,7 @@
 <div class="bookInfo pr">
 <h2 class="bar"><strong class="position">您当前的位置 ：<em><a
 	href="/">首页</a> >> <a href="/index/cate/<?php echo $comicinfo['cid'];?>/"><?php echo $channel[$comicinfo['cid']]['name'];?>漫画列表</a> >> <a
-	href="/index/comic/<?php echo $comicinfo['id'];?>/"><?php echo $comicinfo['name'];?>漫画</a></em></strong></h2>
+	href="javascript:void(0);"><?php echo $comicinfo['name'];?>漫画</a></em></strong></h2>
 <div class="share"><!-- Baidu Button BEGIN -->
 <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"><span
 	class="bds_more">分享到：</span> <a class="bds_qzone"></a> <a
