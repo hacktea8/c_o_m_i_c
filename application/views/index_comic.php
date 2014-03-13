@@ -9,7 +9,7 @@
 <h2 class="bar"><span><a href="/recent.html" class="red">>>更多</a>
 </span><strong>最新更新漫画</strong></h2>
 <ul class="newUpdate">
-<?php foreach($newUpdateData['renew'] as $row){ ?>
+<?php foreach($newUpdateData['newRenew'] as $row){ ?>
 <li><em class="red"><?php echo $row['rtime'];?></em>
 <a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>[<a class="red" href="<?php echo $row['volurl'];?>" target="_blank" title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
 <?php } ?>
@@ -18,7 +18,7 @@
 </div>
 <h2 class="bar bt1px"><strong>最新添加的漫画</strong></h2>
 <ul class="newUpdate">
-<?php foreach($newUpdateData['newadd'] as $row){ ?>
+<?php foreach($newUpdateData['newGround'] as $row){ ?>
 <li><em class="red"><?php echo $row['rtime'];?></em><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>[<a class="green"
 		href="<?php echo $row['volurl'];?>" target="_blank" title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
 <?php } ?>
@@ -35,7 +35,7 @@
 <a class="bds_t163"></a> <a class="shareCount"></a></div>
 <!-- Baidu Button END --></div>
 <h1><?php echo $comicinfo['name'];?></h1>
-<p class="bookAttr"><span>完结状态：[ <em><?php echo $comicinfo['status']?'完结':'连载';?></em> ]</span>原作者：<?php echo $comicinfo['author'];?> |
+<p class="bookAttr"><span>完结状态：[ <em><?php echo $comicinfo['status'];?></em> ]</span>原作者：<?php echo $comicinfo['author'];?> |
 <?php if(0){ ?>字母索引：<a href="/comic/<?php echo $comicinfo['letter'];?>"><?php echo $comicinfo['letter'];?></a><?php } ?> | 加入时间：<?php echo $comicinfo['atime'];?> | 更新时间：<?php echo $comicinfo['rtime'];?></p>
 <span class="blank6"></span>
 <div class="bookMain">
@@ -48,7 +48,7 @@
 &nbsp;</p>
 </div>
 <div class="bookSimilar">
-<h2>恶魔奶爸相关漫画</h2>
+<h2><?php echo $comicinfo['name'];?>相关漫画</h2>
 <ul>
 <?php foreach($comicinfo['relate'] as $row){ ?>
 	<li><a href="<?php echo $row['url'];?>" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a></li>

@@ -2,25 +2,41 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Modelbase extends CI_Model{
-	protected $db;
-	
-	public function __construct(){
-                parent::__construct();
-		$this->db = $this->load->database('default',true);
-	}
-        public function getPicUrl($key){
-               
-               return 'http://img.hacktea8.com/showpic.php?key='.$key;
-        }
-	public function getComicinfoByid($cid){
-		if(!$cid){
-			return false;
-		}
-                $sql = sprintf('SELECT %s FROM `comic` WHERE flag=1 AND cid=%d LIMIT 1', $this->_comiccol,$cid);
-		$info = $this->db->query($sql)->row_array(); 
-
-		return $info;
-	}
+  protected $db;
+  
+  public function __construct(){
+     parent::__construct();
+     $this->db = $this->load->database('default',true);
+  }
+  public function getPicUrl($key){              
+     return 'http://img.hacktea8.com/showpic.php?key='.$key;
+  }
+  public function getComicinfoByid($cid){
+     if(!$cid){
+       return false;
+     }
+     $sql = sprintf('SELECT %s FROM `comic` WHERE flag=1 AND id=%d LIMIT 1', $this->_comiccol,$cid);
+     $info = $this->db->query($sql)->row_array(); 
+     if($info){
+       $info['id'] = $cid;
+       $info['atime'] = date('Y-m-d', $info['atime']);
+       $info['rtime'] = date('Y-m-d', $info['rtime']);
+       $info['relate'] = $this->getComicRelateByCid($info['cid'],$limit = 16);
+     }
+     return $info;
+  }
+  public function getComicRelateByCid($cid,$limit){
+    $sql = sprintf("SELECT `id`,`name` FROM `comic` WHERE `flag`=1 AND `cid`=%d LIMIT 0,%d",$cid,$limit*2);
+    $list = $this->db->query($sql)->result_array();
+    $return = $this->getRandList($list,$limit);
+    return $return;
+  }
+  public function getRandList(&$list,$limit){
+    $len = count($list);
+    $len = $len - 1 - $limit;
+    $pos = mt_rand(0,$len);
+    return array_slice($list,$pos,$limit);
+  }
   public function getFriendLinks($flag = 1){
      $where = $flag < 0 ? '' : sprintf("WHERE `flag`=%d", $flag);
      $sql = sprintf("SELECT * FROM `friendlinks` %s", $where);

@@ -34,6 +34,12 @@ class Mhmodel extends Modelbase{
      $return['hotSerial'] = $this->getHotSerialComics($limit = 8,$cid);
      return $return;
   }
+  public function getComicRenewData($cid){
+     $return = array();
+     $return['newGround'] = $this->getNewGroundComics($limit = 10,$cid);
+     $return['newRenew'] = $this->getNewRenewComics($limit = 13,$cid);
+     return $return;
+  }
   public function getComicListByCid($cid, $order, $page, $per){
      $where = $cid ? sprintf('WHERE `cid`=%d ',$cid) : '';
      $ordermap = array('hits'=>' `hits` DESC','atime'=>' `atime` DESC','rtime'=>' `rtime` DESC');

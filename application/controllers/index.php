@@ -47,16 +47,13 @@ class Index extends Usrbase {
       return false;
 
     $comicinfo = $this->mhmodel->getComicinfoByid($comicid);
-
-    $comicinfo['id'] = $comicid;
-    $comicinfo['atime'] = date('Y-m-d', $comicinfo['atime']);
-    $comicinfo['rtime'] = date('Y-m-d', $comicinfo['rtime']);
+    $newUpdateData = $this->mhmodel->getComicRenewData($comicinfo['cid']);
     $comicinfo['status'] = $comicinfo['status'] ? '已完结': '连载中';
 /*/
 echo '<pre>';
 var_dump($comicinfo);exit;
 /**/
-    $this->assign(array('comicinfo' => $comicinfo));
+    $this->assign(array('newUpdateData'=>$newUpdateData,'comicinfo' => $comicinfo));
     $this->view('index_comic');
   }
 }
