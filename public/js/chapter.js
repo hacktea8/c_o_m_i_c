@@ -3,7 +3,7 @@ moneys[0] = {
     type: 'iframe',
     width: 980,
     height: 148,
-    src: '/top_all.html',
+    src: '/public/html/top_all.html',
     enable: true
 };
 
@@ -13,7 +13,7 @@ moneys[1] = {
     width: 980,
     height: 72,
     lazyload: true,
-    src: '/v2.4/moneys/games/chapter_bottom.html',
+    src: '/public/html/chapter_bottom.html',
     enable: true
 };
 
@@ -22,7 +22,7 @@ moneys[2] = {
     width: 980,
     height: 72,
     lazyload: true,
-    src: '/v2.4/moneys/games/chapter_bottom2.html',
+    src: '/public/html/chapter_bottom2.html',
     enable: true
 };
 
@@ -44,7 +44,7 @@ moneys[4] = {
 
 IMH.adLoader.init(moneys);
 
-
+/*
 tanx_s = document.createElement("script");
 tanx_s.type = "text/javascript";
 tanx_s.charset = "gbk";
@@ -63,3 +63,4 @@ tanx_s.async = true;
 tanx_s.src = "";
 tanx_h = document.getElementsByTagName("head")[0];
 if(tanx_h)tanx_h.insertBefore(tanx_s,tanx_h.firstChild);
+*/

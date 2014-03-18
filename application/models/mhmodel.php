@@ -15,6 +15,37 @@ class Mhmodel extends Modelbase{
   public function getTable($vid){
      return 'page'.($vid % 10);
   }
+  public function getPagesetInfoByid($cid, $vid){
+     if( !$cid || !$vid)
+         return false;
+
+     $table = $this->getTable($vid);
+     $sql = sprintf('SELECT %s FROM %s WHERE `vid`=%d AND `cid`=%d LIMIT 200',$this->_pagesetcol, $table, $vid, $cid);
+     $list = $this->db->query($sql)->result_array();
+     foreach($list as &$val){
+       $val['cover'] = $this->getPicUrl($val['img']);
+     }
+     return $list;
+  }
+  public function updateInfoByid($table, $data, $id){
+     if( !$table || !$data || !$id)
+        return false;
+
+     $where = array();
+     foreach($id as $key => $val){
+       $where[] = sprintf(" `%s`='%s'",$key, mysql_real_escape_string($val));
+     }
+     $where = implode(' AND ', $where).' LIMIT 1';
+     $sql =  $this->db->update_string($table, $data, $where);
+     return $this->db->query($sql);
+  }
+  public function getVolinfoByid($cid, $vid){
+    if( !$cid || !$vid){
+       return false;
+    }
+    $sql = sprintf('SELECT %s FROM vols WHERE `vid`=%d AND `cid`=%d LIMIT 1',$this->_volcol, $vid, $cid);
+    return $this->db->query($sql)->row_array();
+  }
   public function getIndexData(){
      $return = array();
      $return['hotSerial'] = $this->getHotSerialComics(10);

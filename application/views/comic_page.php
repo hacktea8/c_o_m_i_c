@@ -4,33 +4,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><?php echo $comicinfo['title'],' - ',$web_title;?></title>
 <link href="<?php echo $css_url;?>detail.min.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
-<script type="text/javascript">var cInfo={"cid":<?php echo $comicinfo['volinfo']['vid'];?>,"p":"<?php echo $comicinfo['volinfo']['p'];?>","n":"<?php echo $comicinfo['volinfo']['n'];?>","cname":"<?php echo $comicinfo['volinfo']['name'];?>","burl":"/pages/vol/<?php echo $comicinfo['volinfo']['cid'];?>/<?php echo $comicinfo['volinfo']['vid'];?>","files":[<?php echo $comicinfo['volinfo']['pagesetimg'];?>],"bid":<?php echo $comicinfo['volinfo']['cid'];?>,"len":<?php echo $comicinfo['volinfo']['pagesize'];?>,"bname":"<?php echo $comicinfo['name'];?>","finished":<?php echo $comicinfo['state'];?>};</script>
+<script type="text/javascript">var cInfo={"cid":<?php echo $comicinfo['volinfo']['vid'];?>,"p":"<?php echo $comicinfo['volinfo']['p'];?>","n":"<?php echo $comicinfo['volinfo']['n'];?>","cname":"<?php echo $comicinfo['volinfo']['name'];?>","burl":"/index/vol/<?php echo $comicinfo['volinfo']['cid'];?>/<?php echo $comicinfo['volinfo']['vid'];?>","files":[<?php echo $comicinfo['volinfo']['pagesetimg'];?>],"bid":<?php echo $comicinfo['volinfo']['cid'];?>,"len":<?php echo $comicinfo['volinfo']['pagesize'];?>,"bname":"<?php echo $comicinfo['name'];?>","finished":<?php echo $comicinfo['state'];?>};</script>
 <script src="<?php echo $js_url;?>configs.js?v=<?php echo $version;?>"></script>
 <!--[if IE 6]> <script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script> <![endif]-->
 </head>
 <body>
 <div class="nav">
 <div class="w980 pr">
-<div class="main-nav"><a href="/" title="返回首页" class="logo"></a><a
+<div class="main-nav"><a href="/" title="返回首页" class="logo"></a>
+<?php if(0){ ?>
+<a
 	href="/recent.html" class="pr new-update">最新更新<i></i></a><a
 	href="/all.html">所有漫画</a><a href="/wanjie.html">完结</a><a
-	href="/lianzai.html">连载</a><a href="/top.html">风云榜</a><a
-	href="/comic/japan/">日本漫画</a></div>
+	href="/lianzai.html">连载</a><a href="/top.html">风云榜</a>
+<?php } ?>
+<a href="<?php echo $channel[0]['url'];?>"><?php echo $channel[0]['name'];?></a></div>
 <div class="more pr" id="sub-nav"><strong>更多类别</strong><i></i>
 <div class="content shadow sub-nav">
 <ul>
-	<li><a href="/comic/japan/">日本漫画</a></li>
-	<li><a href="/comic/dalu/">大陆漫画</a></li>
-	<li><a href="/comic/hk/">港台漫画</a></li>
-	<li><a href="/comic/oumei/">欧美漫画</a></li>
-	<li><a href="/comic/shaonian/">少年热血</a></li>
-	<li><a href="/comic/wuxia/">武侠格斗</a></li>
-	<li><a href="/comic/kehuan/">科幻魔幻</a></li>
-	<li><a href="/comic/tiyu/">竞技体育</a></li>
-	<li><a href="/comic/xiju/">爆笑喜剧</a></li>
-	<li><a href="/comic/tuili/">侦探推理</a></li>
-	<li><a href="/comic/kongbu/">恐怖灵异</a></li>
-	<li><a href="/top.html">风云榜</a></li>
+<?php foreach($channel as &$row){ ?>
+<li><a href="<?php echo $row['url'];?>"><?php echo $row['name'];?></a></li>
+<?php } ?>
 </ul>
 </div>
 </div>
@@ -48,7 +42,7 @@
 <div class="title w980" id="title">
 <div class="page-number fr">第<strong id="pageCurrent"></strong>页 /
 共<strong><?php echo $comicinfo['volinfo']['pagesize'];?></strong>页</div>
-<h1><a href="/comic/<?php echo $comicinfo['volinfo']['cid'];?>/" title="<?php echo $comicinfo['name'];?>"><?php echo $comicinfo['name'];?></a></h1>
+<h1><a href="/index/comic/<?php echo $comicinfo['volinfo']['cid'];?>/" title="<?php echo $comicinfo['name'];?>"><?php echo $comicinfo['name'];?></a></h1>
 <em>-</em>
 <h2><?php echo $comicinfo['volinfo']['name'];?></h2>
 </div>
@@ -63,7 +57,7 @@
 <?php } ?>
 </select> <a href="javascript:;" id="next" class="nextP btn-red">下一页</a> <a
 	href="javascript:;" class="nextC btn-red">下一章</a> <a
-	href="/comic/<?php echo $comicinfo['volinfo']['cid'];?>/" class="btn-red">返回目录</a></div>
+	href="/index/comic/<?php echo $comicinfo['volinfo']['cid'];?>/" class="btn-red">返回目录</a></div>
 </div>
 <div class="tip" id="tips"><span class="fr"> <a
 	href="javascript:;" id="mouseAct" class="mouseAct"
@@ -113,21 +107,6 @@
 <div class="pager" id="pagination"></div>
 </div>
 <div class="w980 imh-vvv" id="imh-2"></div>
-<div class="w980"
-	style="margin-top: 10px; height: 514px; overflow: hidden;">
-<div class="fr" style="width: 250px; height: 514px;">
-<div class="imh-vvv" id="imh-3"></div>
-<div class="imh-vvv" id="imh-4"></div>
-</div>
-<div style="width: 720px;">
-<div class="bar"><span style="padding-right: 10px;"><a
-	href="/recent.html">更多更新</a></span>
-<h3><strong>最新漫画更新列表</strong></h3>
-</div>
-<div class="update" id="uptList">
-<div class="loading"></div>
-</div>
-</div>
 </div>
 <div class="sidebar" id="sidebar">
 <ul>
@@ -144,10 +123,7 @@
 <script type="text/javascript" src="<?php echo $js_url;?>jquery.js"></script>
 <script type="text/javascript" src="<?php echo $js_url;?>main.min.js?v=<?php echo $version;?>"></script>
 <script type="text/javascript" src="<?php echo $js_url;?>chapter.js?v=<?php echo $version;?>"></script>
-<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=12103"></script>
-<script type="text/javascript" id="bdshell_js"></script>
-<script type="text/javascript" defer="defer">document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000);</script>
-<div id="bd_160x600"><script type="text/javascript">var cpro_id = "u1406893";</script>
+<div id="bd_160x600">
 </div>
 <div class="footer">
 <div class="footer-main">

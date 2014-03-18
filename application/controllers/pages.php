@@ -2,7 +2,6 @@
 
 require_once 'webbase.php';
 
-
 class Pages extends Webbase {
         
 	public function __construct(){

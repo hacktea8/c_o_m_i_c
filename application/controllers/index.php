@@ -56,5 +56,35 @@ var_dump($comicinfo);exit;
     $this->assign(array('newUpdateData'=>$newUpdateData,'comicinfo' => $comicinfo));
     $this->view('index_comic');
   }
+
+  public function vol($cid, $vid, $p = 1){
+    $comicinfo = $this->mhmodel->getComicinfoByid($cid);
+    $volinfo = $this->mhmodel->getVolinfoByid($cid, $vid);
+    if( !$volinfo['pageset']){
+      $volinfo['pageset'] = json_encode($this->mhmodel->getPagesetInfoByid($cid, $vid));
+      $this->mhmodel->updateInfoByid('vols', array('pageset'=>$volinfo['pageset']), array('cid'=>$cid,'vid'=>$vid));
+    }
+    $volinfo['pageset'] = json_decode($volinfo['pageset'], 1);
+    $volinfo['pagesize'] = count($volinfo['pageset']);
+    $volinfo['pageinfo'] = $volinfo['pageset'][$p - 1];
+    $volinfo['pagesetimg'] = array();
+    foreach($volinfo['pageset'] as $val){
+      $volinfo['pagesetimg'][] = '"'.$val['img'].'"';
+    }
+    $tmp = explode('_', $volinfo['nextpid']);
+    $volinfo['n'] = array_shift($tmp);
+    $tmp = explode('_', $volinfo['prepid']);
+    $volinfo['p'] = array_shift($tmp);
+                
+    $volinfo['pagesetimg'] = implode(',',$volinfo['pagesetimg']);
+    $comicinfo['volinfo'] = $volinfo;
+/*/
+echo '<pre>';
+var_dump($comicinfo);
+exit;
+/**/
+    $this->assign(array('comicinfo' => $comicinfo)); 
+    $this->load->view('comic_page', $this->viewData);
+  }
 }
 
