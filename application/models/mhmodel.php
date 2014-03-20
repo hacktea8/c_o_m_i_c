@@ -15,6 +15,43 @@ class Mhmodel extends Modelbase{
   public function getTable($vid){
      return 'page'.($vid % 10);
   }
+  public function getIndexColdBlock($navTotal, $block = 4, $limit = 8){
+     $pSize = ceil($navTotal/$block);
+     $return = array();
+     $list = array();
+     for($i = 0; $i< $pSize; $i++){
+        $start = $i * $block;
+        $navList = $nav = $this->getNavBlockList($flag = 1, $start, $block);
+        if(empty($nav)){
+          break;
+        }
+        $first = array_shift($nav);
+        $last = array_pop($nav);
+        $last['name'] = isset($last['name']) ? $last['name'] : '';
+        $list = array('start' => $first['name'],'end' => $last['name']);
+        $tmp = array();
+        foreach($navList as $v){
+          $tmp[] = $this->getColdComicBlockList($v['id'],$limit);
+        }
+        $list['list'] = $tmp;
+        $return[] = $list;
+     }
+     return $return;
+  }
+  public function getColdComicBlockList($cid,$limit = 8){
+     $sql = sprintf("SELECT `id`,`name` FROM `comic` WHERE `cid`=%d ORDER BY `hits` ASC LIMIT %d", $cid, $limit);
+     $list = $this->db->query($sql)->result_array();
+     foreach($list as &$v){
+       $v['url'] = $this->getUrl('comic', $v['id']);
+     }
+     return $list;
+  }
+  public function getNavBlockList($flag = 1, $start = 0, $count = 0){
+     $where = $where ? sprintf(" WHERE `flag`=%d ", $flag) : '';
+     $sql = sprintf("SELECT * FROM `cate` %s LIMIT %d,%d", $where, $start, $count);
+     $list = $this->db->query($sql)->result_array();
+     return $list;
+  }
   public function getPagesetInfoByid($cid, $vid){
      if( !$cid || !$vid)
          return false;

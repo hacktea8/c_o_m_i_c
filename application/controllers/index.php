@@ -10,7 +10,9 @@ class Index extends Usrbase {
 	
   public function index(){
     $indexData = $this->mhmodel->getIndexData();
-    $this->assign(array('indexData'=>$indexData,'comicinfo' => $comicinfo));
+    $navTotal = count($this->_channel);
+    $indexColdBlock = $this->mhmodel->getIndexColdBlock($navTotal,$block = 4, $limit = 10);
+    $this->assign(array('indexData'=>$indexData,'comicinfo' => $comicinfo,'indexColdBlock' => $indexColdBlock));
 //var_dump($this->viewData);exit;
     $this->view('index_index');	
   }

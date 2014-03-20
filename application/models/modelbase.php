@@ -54,17 +54,17 @@ class Modelbase extends CI_Model{
      $list = $this->db->query($sql)->result_array();
      return $list;
   }
-        public function getNavList($flag = 1){
-                $where = $flag < 0 ? '' : sprintf("WHERE `flag`=%d", $flag);
-                $sql = sprintf("SELECT * FROM `cate` %s", $where);
-                $list = $this->db->query($sql)->result_array();
-                $return = array();
-                foreach($list as &$v){
-                  $v['url'] = $this->getUrl($key = 'cate',$v['id']);
-                  $return[$v['id']] = $v;
-                }
-                return $return;
-        }
+  public function getNavList($flag = 1){
+     $where = $flag < 0 ? '' : sprintf("WHERE `flag`=%d", $flag);
+     $sql = sprintf("SELECT * FROM `cate` %s", $where);
+     $list = $this->db->query($sql)->result_array();
+     $return = array();
+     foreach($list as &$v){
+       $v['url'] = $this->getUrl($key = 'cate',$v['id']);
+       $return[$v['id']] = $v;
+     }
+     return $return;
+  }
         public function getLetterList(){
                 $sql = sprintf("SELECT * FROM  `letters` ORDER BY  `sort`");
                 $return = $this->db->query($sql)->result_array($sql);
