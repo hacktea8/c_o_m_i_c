@@ -87,6 +87,14 @@ class Model{
     $this->db->query($sql);
     return $this->db->insert_id();
   }
+  public function setcomicvol($data = array()){
+    if(!$data['cid']){
+      return false;
+    }
+    $sql = sprintf("UPDATE `comic` SET `vol`='%s' WHERE `id`=%d LIMIT 1",$this->db->escape($data['volnum']),$data['cid']);
+    $this->db->query($sql);
+    return 1;
+  }
   public function getPage($data = array()){
     if(!isset($data['vid']) || $data['vid'] < 1){
        return false;

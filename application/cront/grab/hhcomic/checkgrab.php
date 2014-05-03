@@ -19,19 +19,21 @@ $imgcurl->config['cookie'] = 'cookieimg';
 
 $model = new Model();
 
-$lastpage = ROOTPATH.'/hhcomic/config/lastpage_';
+$lastpage = ROOTPATH.'/hhcomic/config/lastpage_check_';
 
 /*********** Start *****************/
-$q = 13;
-//1,5,9,13
+$q = 12;
+//0,4,8,12
 $catelist = $model->getAllcate();
 foreach($catelist as $k => $cate){
+/*
   if($k < $q){
      continue;
   }
   if($k > $q){
      break;
   }
+*/
   $comicdata['cid'] = $cate['id'];
   $lastp = 1;
   if(file_exists($lastpage.$cate['id'].'.php')){
@@ -87,11 +89,13 @@ foreach($catelist as $k => $cate){
            $voldata['firstpid'] = 0;
 //var_dump($voldata);
            $vid = $model->getVol($voldata);
-           if($vid){
-              echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";continue;
+           if( !$vid){
+              $vid = $model->addVol($voldata);
+              $model->setcomicvol($voldata);
+              echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
+              //continue;
            }
-           $vid = $model->addVol($voldata);
-           $model->setcomicvol($voldata);
+           //$vid = $model->addVol($voldata);
            if(!$vid){
               die("Null Vid!\n");
            }

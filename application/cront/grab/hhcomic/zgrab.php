@@ -19,12 +19,11 @@ $imgcurl->config['cookie'] = 'cookieimg';
 
 $model = new Model();
 
-
 $lastpage = ROOTPATH.'/hhcomic/config/lastpage_';
 
 /*********** Start *****************/
-$q = 3;
-//3
+$q = 15;
+//3,7,11,15
 $catelist = $model->getAllcate();
 foreach($catelist as $k => $cate){
   if($k < $q){
@@ -92,6 +91,7 @@ foreach($catelist as $k => $cate){
               echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";continue;
            }
            $vid = $model->addVol($voldata);
+           $model->setcomicvol($voldata);
            if(!$vid){
               die("Null Vid!\n");
            }
