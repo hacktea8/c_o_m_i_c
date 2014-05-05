@@ -22,8 +22,8 @@ $model = new Model();
 $lastpage = ROOTPATH.'/hhcomic/config/lastpage_';
 
 /*********** Start *****************/
-$q = 13;
-//1,5,9,13
+$q = 17;
+//1,5,9,13,17
 $catelist = $model->getAllcate();
 foreach($catelist as $k => $cate){
   if($k < $q){

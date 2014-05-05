@@ -106,8 +106,8 @@ foreach($catelist as $k => $cate){
               if(1 == $pagedata['pid']){
                  $voldata['firstpid'] = $pagedata['vid'].'_'.$pagedata['pid'];
               }
-              $pid = $model->getPage($pagedata);
-              if(!$pid){
+              $pinfo = $model->getPage($pagedata);
+              if(!$pinfo['pid'] || strlen($pinfo['img']) < 10){
               //转图
               $postimgdata['imgurl'] = $info['server'].$pval;
               $postimgdata['referer'] = $siteinfo['domain'];
@@ -123,7 +123,11 @@ foreach($catelist as $k => $cate){
               }
               $pagedata['isimg'] = $pagedata['img'] ? 1 : 0;
               $pagedata['rtime'] = time();
-              $model->addPage($pagedata);
+              if(!$pinfo['pid']){
+                $model->addPage($pagedata);
+              }else{
+                $model->setPageImg($pagedata);
+              }
               sleep(1);
               }else{
                  sleep(1);

@@ -100,12 +100,23 @@ class Model{
        return false;
     }
     $ptable = $this->getpagestablename($data['vid']);
-    $sql = sprintf('SELECT `pid` FROM %s WHERE `pid`=%d AND `vid`=%d AND `cid`=%d LIMIT 1',$ptable,$data['pid'],$data['vid'],$data['cid']);
+    $sql = sprintf('SELECT `pid`,`img` FROM %s WHERE `pid`=%d AND `vid`=%d AND `cid`=%d LIMIT 1',$ptable,$data['pid'],$data['vid'],$data['cid']);
     $row = $this->db->row_array($sql);
     if(isset($row['pid'])){
-       return $row['pid'];
+       return $row;
     }
     return false;
+  }
+  public function setPageImg($data = array()){
+    if(!isset($data['vid']) || $data['vid'] < 1){
+       return false;
+    }
+    $ptable = $this->getpagestablename($data['vid']);
+    $setdata = array('img'=>$data['img']);
+    $where = array('pid'=>$data['pid'],'vid'=>$data['vid'],'cid'=>$data['cid']);
+    $sql = $this->db->update_string($ptable,$setdata,$where);
+    $this->db->query($sql);
+    return 1;
   }
   public function addPage($data = array()){
     if(!isset($data['vid']) || $data['vid'] < 1){
