@@ -12,17 +12,17 @@ $pattern = '/hhcomic/'.basename(__FILE__);
 require_once ROOTPATH.'/hhcomic/singleProcess.php';
 
 $mhcurl = new CurlModel();
-$mhcurl->config['cookie'] = 'cookiehhcomic';
+$mhcurl->config['cookie'] = 'cookiehhcomic1';
 
 $imgcurl = new CurlModel();
-$imgcurl->config['cookie'] = 'cookieimg';
+$imgcurl->config['cookie'] = 'cookieimg1';
 
 $model = new Model();
 
 $lastpage = ROOTPATH.'/hhcomic/config/lastpage_';
 
 /*********** Start *****************/
-$q = 17;
+$q = 1;
 //1,5,9,13,17
 $catelist = $model->getAllcate();
 foreach($catelist as $k => $cate){
@@ -54,10 +54,11 @@ foreach($catelist as $k => $cate){
         $ocomicid = $match[1];
         getmhdetail($mhurl);
         if(!$comicdata['detail']){
-           var_dump($comicdata);exit;
+           var_dump($comicdata);//exit;
         }
         $comicid = $model->getComic($comicdata);
         if(!$comicid){
+    for($cii =0;$cii<3;$cii++){
         $postimgdata['imgurl'] = sprintf($siteinfo['cover'],$mhlist[0][$k]);
         $postimgdata['referer'] = $siteinfo['domain'];
 //var_dump($postimgdata);exit;
@@ -68,6 +69,14 @@ foreach($catelist as $k => $cate){
         $comicdata['cover'] = $cover;
         if(44 == $cover){
            die('Token 失效!');
+        }
+        if(strlen($cover)>10){
+           break;
+        }
+        sleep(6);
+     }
+        if(strlen($cover)<10){
+           die("Cover:$cover ourl:$postimgdata[imgurl] 失效!\n");
         }
         $comicdata['isimg'] = $comicdata['cover'] ? 1 : 0;
 //var_dump($comicdata);exit;
@@ -90,6 +99,7 @@ foreach($catelist as $k => $cate){
            if($vid){
               echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";continue;
            }
+echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
            $vid = $model->addVol($voldata);
            $model->setcomicvol($voldata);
            if(!$vid){
@@ -104,6 +114,7 @@ foreach($catelist as $k => $cate){
               }
               $pid = $model->getPage($pagedata);
               if(!$pid){
+           for($cii=0;$cii<3;$cii++){
               //转图
               $postimgdata['imgurl'] = $info['server'].$pval;
               $postimgdata['referer'] = $siteinfo['domain'];
@@ -111,12 +122,14 @@ foreach($catelist as $k => $cate){
               $imgcurl->postval = $postimgdata;
               $img = substr($imgcurl->getHtml(),3);
               $pagedata['img'] = $img;
-              if(strlen($img) > 30){
-                 continue;
-              }
               if(44 == $img){
                  die('Token 失效!');
               }
+              if(strlen($pagedata['img'])>10){
+                 break;
+              }
+              sleep(5);
+           }
               $pagedata['isimg'] = $pagedata['img'] ? 1 : 0;
               $pagedata['rtime'] = time();
               $model->addPage($pagedata);
@@ -132,9 +145,9 @@ foreach($catelist as $k => $cate){
            }
         }
 //exit;
-        sleep(1);
+        sleep(5);
      }
-sleep(1);
+sleep(3);
   }
 }
 //var_dump($catelist);exit;

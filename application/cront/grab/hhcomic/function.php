@@ -76,9 +76,9 @@ function getmhvols($url = ''){
    $html = $mhcurl->getHtml();
    $html = iconv('GBK','UTF-8',$html);
 //var_dump($mhcurl);
-//file_put_contents('hhvol.html',$html);
-   preg_match_all('#<li><a href=/hhpage/\d+/(.+) target=_blank>.+</a>&nbsp;<a href="javascript:ShowA\(\d+,\d+,\d+\)" class="Showa">.+</a></li>#Uis',$html,$match);
-   return $match[1];
+//file_put_contents('hhvol.html',$html);exit;
+   preg_match_all('#<li><a href=http:\/\/paga\.hhcomic\.net/(\d+/hh\d+\.htm\?s=\d+) target=_blank>([^<]+)</a>&nbsp;<a href="javascript:ShowA[^"]+" class="Showa">[^<]+</a></li>#Uis',$html,$match);
+   return array('vols'=>array_reverse($match[1]),'title'=>array_reverse($match[2]));
    var_dump($match);exit;
 }
 
@@ -98,12 +98,13 @@ function getmhpageinfo($url = ''){
    $info = getmhserver();
    $PicLlstUrl = decodehhcomic($PicLlstUrl,$info['key']);
    $server = $info['serverlist'][$server - 1];
+//var_dump($server);exit;
    return array('page' => $PicLlstUrl,'server' => $server);
 }
 
 function getmhserver(){
    global $mhcurl;
-   $mhcurl->config['url'] = 'http://hhcomic.com/h/js.js';
+   $mhcurl->config['url'] = 'http://hhcomic.com/hh/fks.js';
    $html = $mhcurl->getHtml();
    $html = iconv('GBK','UTF-8',$html);
    preg_match_all('#ServerList\[\d+\]="([^"]+)"#Uis',$html,$match);

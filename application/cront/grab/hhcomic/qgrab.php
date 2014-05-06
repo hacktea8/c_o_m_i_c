@@ -22,7 +22,7 @@ $model = new Model();
 $lastpage = ROOTPATH.'/hhcomic/config/lastpage_';
 
 /*********** Start *****************/
-$q = 4;
+$q = 0;
 //0,4,8,12,16
 $catelist = $model->getAllcate();
 foreach($catelist as $k => $cate){
@@ -54,7 +54,7 @@ foreach($catelist as $k => $cate){
         $ocomicid = $match[1];
         getmhdetail($mhurl);
         if(!$comicdata['detail']){
-           var_dump($comicdata);exit;
+           var_dump($comicdata);//exit;
         }
         $comicid = $model->getComic($comicdata);
         if(!$comicid){
@@ -69,20 +69,27 @@ foreach($catelist as $k => $cate){
         if(44 == $cover){
            die('Token 失效!');
         }
+        if(strlen($cover)<10){
+           die("Cover:$cover ourl:$postimgdata[url] 失效!\n");
+        }
         $comicdata['isimg'] = $comicdata['cover'] ? 1 : 0;
 //var_dump($comicdata);exit;
         $comicid = $model->addComic($comicdata);
         }
         $volsinfo = getmhvols($mhurl);
+        if(empty($volsinfo['vols'])){
+          die("Url:$mhurl get volsinfo failed!\n");
+        }
 //var_dump($volsinfo);exit;
-        foreach($volsinfo as $kv => $vol){
-           $pageurl = sprintf('%s'.$siteinfo['volurl'],$siteinfo['domain'],$ocomicid,$vol);
-//echo $pageurl,"\n";           
+        foreach($volsinfo['vols'] as $kv => $vol){
+           $pageurl = sprintf('http://paga.hhcomic.net/%s',$vol);
+//echo $pageurl,"\n"; 
            $info = getmhpageinfo($pageurl);
 //var_dump($info);exit;
            $pages = explode('|',$info['page']);
            $voldata['vnum'] = $kv + 1;
            $voldata['cid'] = $comicid;
+           $voldata['title'] = $volsinfo['title'][$kv];
            $voldata['rtime'] = time();
            $voldata['firstpid'] = 0;
 //var_dump($voldata);
@@ -92,6 +99,7 @@ foreach($catelist as $k => $cate){
            }
            $vid = $model->addVol($voldata);
            $model->setcomicvol($voldata);
+echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
            if(!$vid){
               die("Null Vid!\n");
            }

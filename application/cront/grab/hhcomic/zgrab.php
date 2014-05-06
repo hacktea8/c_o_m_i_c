@@ -22,7 +22,7 @@ $model = new Model();
 $lastpage = ROOTPATH.'/hhcomic/config/lastpage_';
 
 /*********** Start *****************/
-$q = 19;
+$q = 3;
 //3,7,11,15,19
 $catelist = $model->getAllcate();
 foreach($catelist as $k => $cate){
@@ -54,7 +54,7 @@ foreach($catelist as $k => $cate){
         $ocomicid = $match[1];
         getmhdetail($mhurl);
         if(!$comicdata['detail']){
-           var_dump($comicdata);exit;
+           var_dump($comicdata);//exit;
         }
         $comicid = $model->getComic($comicdata);
         if(!$comicid){
@@ -68,6 +68,9 @@ foreach($catelist as $k => $cate){
         $comicdata['cover'] = $cover;
         if(44 == $cover){
            die('Token 失效!');
+        }
+        if(strlen($cover)<10){
+           die("Cover:$cover ourl:$postimgdata[url] 失效!\n");
         }
         $comicdata['isimg'] = $comicdata['cover'] ? 1 : 0;
 //var_dump($comicdata);exit;

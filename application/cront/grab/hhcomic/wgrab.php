@@ -23,7 +23,7 @@ $model = new Model();
 $lastpage = ROOTPATH.'/hhcomic/config/lastpage_';
 
 /*********** Start *****************/
-$q = 18;
+$q = 14;
 //2,6,10,14,18
 $catelist = $model->getAllcate();
 foreach($catelist as $k => $cate){
@@ -43,6 +43,7 @@ foreach($catelist as $k => $cate){
      $cateurl = sprintf('%s'.$siteinfo['listurl'],$siteinfo['domain'],$comicdata['cid'],$page);
      $mhlist = getmhlist($cateurl);
      if(!$mhlist){
+echo "Get mhlist failed $cateurl\n";
         break;
      }
 //var_dump($mhlist);exit;
@@ -55,7 +56,7 @@ foreach($catelist as $k => $cate){
         $ocomicid = $match[1];
         getmhdetail($mhurl);
         if(!$comicdata['detail']){
-           var_dump($comicdata);exit;
+           var_dump($comicdata);//exit;
         }
         $comicid = $model->getComic($comicdata);
         if(!$comicid){
@@ -64,26 +65,39 @@ foreach($catelist as $k => $cate){
 //var_dump($postimgdata);exit;
         $imgcurl->config['url'] = $postimgdata['url'];
         $imgcurl->postval = $postimgdata;
+    for($cii=0;$cii<3;$cii++){
         $cover = substr($imgcurl->getHtml(),3);
 //$cover = 22;
         $comicdata['cover'] = $cover;
         if(44 == $cover){
            die('Token 失效!');
         }
+        if(strlen($cover)>10){
+           break;
+        }
+        sleep(6);
+     }
+        if(strlen($cover)<10){
+           die("Cover:$cover ourl:$postimgdata[url] 失效!\n");
+        }
         $comicdata['isimg'] = $comicdata['cover'] ? 1 : 0;
 //var_dump($comicdata);exit;
         $comicid = $model->addComic($comicdata);
         }
         $volsinfo = getmhvols($mhurl);
+        if(empty($volsinfo)){
+          die("Url:$mhurl volsinfo empty!\n");
+        }
 //var_dump($volsinfo);exit;
-        foreach($volsinfo as $kv => $vol){
-           $pageurl = sprintf('%s'.$siteinfo['volurl'],$siteinfo['domain'],$ocomicid,$vol);
-//echo $pageurl,"\n";           
+        foreach($volsinfo['vols'] as $kv => $vol){
+           $pageurl = sprintf('http://paga.hhcomic.net/%s',$vol);
+//echo $pageurl,"\n";
            $info = getmhpageinfo($pageurl);
 //var_dump($info);exit;
            $pages = explode('|',$info['page']);
            $voldata['vnum'] = $kv + 1;
            $voldata['cid'] = $comicid;
+           $voldata['title'] = $volsinfo['title'][$kv];
            $voldata['rtime'] = time();
            $voldata['firstpid'] = 0;
 //var_dump($voldata);
@@ -92,6 +106,7 @@ foreach($catelist as $k => $cate){
               echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";continue;
            }
            $vid = $model->addVol($voldata);
+echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
            $model->setcomicvol($voldata);
            if(!$vid){
               die("Null Vid!\n");
@@ -110,14 +125,18 @@ foreach($catelist as $k => $cate){
               $postimgdata['referer'] = $siteinfo['domain'];
               $imgcurl->config['url'] = $postimgdata['url'];
               $imgcurl->postval = $postimgdata;
+           for($cii=0;$cii<3;$cii++){
               $img = substr($imgcurl->getHtml(),3);
               $pagedata['img'] = $img;
-              if(strlen($img) > 30){
-                 continue;
-              }
+              
               if(44 == $img){
                  die('Token 失效!');
               }
+              if(strlen($img)>10){
+                 break;
+              }
+              sleep(6);
+           }
               $pagedata['isimg'] = $pagedata['img'] ? 1 : 0;
               $pagedata['rtime'] = time();
               $model->addPage($pagedata);
@@ -133,9 +152,9 @@ foreach($catelist as $k => $cate){
            }
         }
 //exit;
-        sleep(1);
+        sleep(4);
      }
-sleep(1);
+sleep(3);
   }
 }
 //var_dump($catelist);exit;

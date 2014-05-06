@@ -91,7 +91,7 @@ class Model{
     if(!$data['cid']){
       return false;
     }
-    $sql = sprintf("UPDATE `comic` SET `vol`='%s' WHERE `id`=%d LIMIT 1",$this->db->escape($data['volnum']),$data['cid']);
+    $sql = sprintf("UPDATE `comic` SET `vol`='%s' WHERE `id`=%d LIMIT 1",$this->db->escape($data['vnum']),$data['cid']);
     $this->db->query($sql);
     return 1;
   }
