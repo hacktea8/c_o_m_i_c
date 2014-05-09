@@ -106,7 +106,7 @@ echo "Get mhlist failed $cateurl\n";
               echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";continue;
            }
            $vid = $model->addVol($voldata);
-echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
+echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
            $model->setcomicvol($voldata);
            if(!$vid){
               die("Null Vid!\n");
@@ -137,6 +137,10 @@ echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
               }
               sleep(6);
            }
+              if(strlen($img) < 10 || (strlen($img)> 20){
+                 $pagedata['img'] = '';
+                 $pagedata['ourl'] = $postimgdata['imgurl']
+              }
               $pagedata['isimg'] = $pagedata['img'] ? 1 : 0;
               $pagedata['rtime'] = time();
               $model->addPage($pagedata);

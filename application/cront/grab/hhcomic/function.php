@@ -77,7 +77,7 @@ function getmhvols($url = ''){
    $html = iconv('GBK','UTF-8',$html);
 //var_dump($mhcurl);
 //file_put_contents('hhvol.html',$html);exit;
-   preg_match_all('#<li><a href=http:\/\/paga\.hhcomic\.net/(\d+/hh\d+\.htm\?s=\d+) target=_blank>([^<]+)</a>&nbsp;<a href="javascript:ShowA[^"]+" class="Showa">[^<]+</a></li>#Uis',$html,$match);
+   preg_match_all('#<li><a href=http:\/\/paga\.hhcomic\.net/(\d+/hh\d+\.htm\?s=\d+) target=_blank>([^<]+)</a>.*</li>#Uis',$html,$match);
    return array('vols'=>array_reverse($match[1]),'title'=>array_reverse($match[2]));
    var_dump($match);exit;
 }

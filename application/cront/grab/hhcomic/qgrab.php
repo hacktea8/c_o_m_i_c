@@ -99,7 +99,7 @@ foreach($catelist as $k => $cate){
            }
            $vid = $model->addVol($voldata);
            $model->setcomicvol($voldata);
-echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
+echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
            if(!$vid){
               die("Null Vid!\n");
            }
@@ -117,13 +117,20 @@ echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
               $postimgdata['referer'] = $siteinfo['domain'];
               $imgcurl->config['url'] = $postimgdata['url'];
               $imgcurl->postval = $postimgdata;
+          for($cii=0;$cii<3;$cii++){
               $img = substr($imgcurl->getHtml(),3);
               $pagedata['img'] = $img;
-              if(strlen($img) > 30){
-                 continue;
-              }
               if(44 == $img){
                  die('Token 失效!');
+              }
+              if(strlen($img) > 10 && (strlen($img)< 20)){
+                 break;
+              }
+              sleep(5);
+           }
+              if(strlen($img) < 10 || (strlen($img)> 20)){
+                 $pagedata['img'] = '';
+                 $pagedata['ourl'] = $postimgdata['imgurl'];
               }
               $pagedata['isimg'] = $pagedata['img'] ? 1 : 0;
               $pagedata['rtime'] = time();

@@ -77,8 +77,11 @@ foreach($catelist as $k => $cate){
         $comicid = $model->addComic($comicdata);
         }
         $volsinfo = getmhvols($mhurl);
+        if(empty($volsinfo['vols'])){
+           die("Url:$mhurl volsinfo failed!\n");
+        }
 //var_dump($volsinfo);exit;
-        foreach($volsinfo as $kv => $vol){
+        foreach($volsinfo['vols'] as $kv => $vol){
            $pageurl = sprintf('%s'.$siteinfo['volurl'],$siteinfo['domain'],$ocomicid,$vol);
 //echo $pageurl,"\n";           
            $info = getmhpageinfo($pageurl);
@@ -86,6 +89,7 @@ foreach($catelist as $k => $cate){
            $pages = explode('|',$info['page']);
            $voldata['vnum'] = $kv + 1;
            $voldata['cid'] = $comicid;
+           $voldata['title'] = $volsinfo['title'][$kv];
            $voldata['rtime'] = time();
            $voldata['firstpid'] = 0;
 //var_dump($voldata);
@@ -95,6 +99,7 @@ foreach($catelist as $k => $cate){
            }
            $vid = $model->addVol($voldata);
            $model->setcomicvol($voldata);
+echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
            if(!$vid){
               die("Null Vid!\n");
            }
@@ -111,6 +116,7 @@ foreach($catelist as $k => $cate){
               $postimgdata['imgurl'] = $info['server'].$pval;
               $postimgdata['referer'] = $siteinfo['domain'];
               $imgcurl->config['url'] = $postimgdata['url'];
+           for($cii=0;$cii<3;$cii++){
               $imgcurl->postval = $postimgdata;
               $img = substr($imgcurl->getHtml(),3);
               $pagedata['img'] = $img;
@@ -119,6 +125,15 @@ foreach($catelist as $k => $cate){
               }
               if(44 == $img){
                  die('Token 失效!');
+              }
+              if(strlen($img) >10 && strlen($img) < 20){
+                 break;
+              }
+              sleep(6);
+           }
+              if(strlen($img) < 10 || (strlen($img)> 20){
+                 $pagedata['img'] = '';
+                 $pagedata['ourl'] = $postimgdata['imgurl']
               }
               $pagedata['isimg'] = $pagedata['img'] ? 1 : 0;
               $pagedata['rtime'] = time();
