@@ -70,7 +70,7 @@ class Model{
     $sql = sprintf('SELECT `vid` FROM `vols` WHERE `vnum`=%d AND `cid`=%d LIMIT 1',$data['vnum'],$data['cid']);
     $row = $this->db->row_array($sql);
     if(isset($row['vid'])){
-       return $row['vid'];
+       return $row;
     }
     return false;
   }
@@ -78,7 +78,7 @@ class Model{
     if(!isset($data['vnum'])){
        return false;
     }
-    $sql = sprintf('SELECT `vid` FROM `vols` WHERE `vnum`=%d AND `cid`=%d LIMIT 1',$data['vnum'],$data['cid']);
+    $sql = sprintf('SELECT `vid`,`done` FROM `vols` WHERE `vnum`=%d AND `cid`=%d LIMIT 1',$data['vnum'],$data['cid']);
     $row = $this->db->row_array($sql);
     if(isset($row['vid'])){
        return $row['vid'];
@@ -86,6 +86,11 @@ class Model{
     $sql = $this->db->insert_string('`vols`',$data);
     $this->db->query($sql);
     return $this->db->insert_id();
+  }
+  public function setvoldone($vid = 0,$flag = 1){
+    $sql = sprintf("UPDATE `vols` SET `done`=%d WHERE `vid`=%d LIMIT 1",$flag,$vid);
+    $this->db->query($sql);
+    return 1;
   }
   public function setcomicvol($data = array()){
     if(!$data['cid']){
@@ -112,7 +117,8 @@ class Model{
        return false;
     }
     $ptable = $this->getpagestablename($data['vid']);
-    $setdata = array('img'=>$data['img']);
+    $data['isimg'] = $data['isimg']?$data['isimg']:1;
+    $setdata = array('img'=>$data['img'],'isimg'=>$data['isimg']);
     $where = array('pid'=>$data['pid'],'vid'=>$data['vid'],'cid'=>$data['cid']);
     $sql = $this->db->update_string($ptable,$setdata,$where);
     $this->db->query($sql);

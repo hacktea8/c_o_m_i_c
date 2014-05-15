@@ -12,10 +12,10 @@ class CurlModel{
 //    'proxy' => '192.168.1.254:9993',
     'header' => 0
     );
-    $this->ch = curl_init();
 
   }
   public function getHtml(){
+    $this->ch = curl_init();
     $url = $this->config['url'];
     unset($this->config['url']);
     curl_setopt($this->ch, CURLOPT_URL, $url);
@@ -61,9 +61,11 @@ class CurlModel{
     if(!$this->html){
        echo curl_error($this->ch),"\n";
     }
+     curl_close($this->ch);
     return $this->html;
   }
   public function download(){
+    $this->ch = curl_init();
     $this->config['savefile'] = isset($this->config['savefile']) ? $this->config['savefile'] :basename($this->config['url']) ;
     $h_file = fopen($this->config['savefile'], 'wb');
     curl_setopt($this->ch, CURLOPT_HEADER, 0);  
@@ -90,10 +92,10 @@ class CurlModel{
     //curl_setopt($h_curl, CURLOPT_RETURNTRANSFER, true);  
     $curl_success = curl_exec($this->ch);  
     fclose($h_file);
+     curl_close($this->ch);
     return $curl_success;  
   }
   public function __destruct(){
-     curl_close($this->ch);
   }
 
 }

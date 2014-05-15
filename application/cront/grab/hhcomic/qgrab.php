@@ -69,7 +69,7 @@ foreach($catelist as $k => $cate){
         if(44 == $cover){
            die('Token 失效!');
         }
-        if(strlen($cover)<10){
+        if(strlen($cover)<12){
            die("Cover:$cover ourl:$postimgdata[url] 失效!\n");
         }
         $comicdata['isimg'] = $comicdata['cover'] ? 1 : 0;
@@ -93,12 +93,15 @@ foreach($catelist as $k => $cate){
            $voldata['rtime'] = time();
            $voldata['firstpid'] = 0;
 //var_dump($voldata);
-           $vid = $model->getVol($voldata);
-           if($vid){
+           $vinfo = $model->getVol($voldata);
+           $vid = $vinfo['vid'];
+           if($vinfo['done'] == 1){
               echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";continue;
            }
-           $vid = $model->addVol($voldata);
-           $model->setcomicvol($voldata);
+           if(!$vid){
+             $vid = $model->addVol($voldata);
+             $model->setcomicvol($voldata);
+           }
 echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
            if(!$vid){
               die("Null Vid!\n");
@@ -110,36 +113,42 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
               if(1 == $pagedata['pid']){
                  $voldata['firstpid'] = $pagedata['vid'].'_'.$pagedata['pid'];
               }
-              $pid = $model->getPage($pagedata);
-              if(!$pid){
+              $pinfo = $model->getPage($pagedata);
+              $pid = $pinfo['pid'];
+              if(!$pid || $pinfo['isimg']!= 1){
               //转图
+          for($cii=0;$cii<3;$cii++){
               $postimgdata['imgurl'] = $info['server'].$pval;
               $postimgdata['referer'] = $siteinfo['domain'];
               $imgcurl->config['url'] = $postimgdata['url'];
               $imgcurl->postval = $postimgdata;
-          for($cii=0;$cii<3;$cii++){
               $img = substr($imgcurl->getHtml(),3);
               $pagedata['img'] = $img;
               if(44 == $img){
                  die('Token 失效!');
               }
-              if(strlen($img) > 10 && (strlen($img)< 20)){
+              if(strpos($img,'.')!=false){
                  break;
               }
               sleep(5);
            }
-              if(strlen($img) < 10 || (strlen($img)> 20)){
+              if(strpos($img,'.')==false){
                  $pagedata['img'] = '';
                  $pagedata['ourl'] = $postimgdata['imgurl'];
+                 die("\n+++ cid:$comicid Vid:$vid Pid:$pid ImgUrl: $img Ourl: $postimgdata[imgurl] ++++\n");
               }
               $pagedata['isimg'] = $pagedata['img'] ? 1 : 0;
               $pagedata['rtime'] = time();
-              $model->addPage($pagedata);
-              sleep(1);
+              if(!$pid){
+                $model->addPage($pagedata);
               }else{
-                 sleep(1);
+                $model->setPageImg($pagedata);
               }
+              echo "\n+++ cid:$comicid Vid:$vid Pid:$pid ImgUrl: $img ++++\n";
+                sleep(5);
+              }// end add_set pagesdata
            }
+           $model->setvoldone($vid);
            if($voldata['vnum'] > 1){
               $voldata['vid'] = $vid;
               $model->setPreAndNextVol($voldata);
@@ -152,4 +161,3 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
 sleep(1);
   }
 }
-//var_dump($catelist);exit;
