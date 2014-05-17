@@ -9,22 +9,21 @@ require_once ROOTPATH.'/phpcurl.php';
 require_once ROOTPATH.'/model.php';
 
 $pattern = '/hhcomic/'.basename(__FILE__);
-//echo $pattern;exit;
 require_once ROOTPATH.'/hhcomic/singleProcess.php';
 
 $mhcurl = new CurlModel();
-$mhcurl->config['cookie'] = 'cookiehhcomic';
+$mhcurl->config['cookie'] = 'cookiehhcomicw';
 
 $imgcurl = new CurlModel();
-$imgcurl->config['cookie'] = 'cookieimg';
+$imgcurl->config['cookie'] = 'cookieimgw';
 
 $model = new Model();
 
 $lastpage = ROOTPATH.'/hhcomic/config/lastpage_';
 
 /*********** Start *****************/
-$q = 14;
-//2,6,10,14,18
+$q = 3;
+//3,7,11,15,19
 $catelist = $model->getAllcate();
 foreach($catelist as $k => $cate){
   if($k < $q){
@@ -43,7 +42,6 @@ foreach($catelist as $k => $cate){
      $cateurl = sprintf('%s'.$siteinfo['listurl'],$siteinfo['domain'],$comicdata['cid'],$page);
      $mhlist = getmhlist($cateurl);
      if(!$mhlist){
-echo "Get mhlist failed $cateurl\n";
         break;
      }
 //var_dump($mhlist);exit;
@@ -65,19 +63,13 @@ echo "Get mhlist failed $cateurl\n";
 //var_dump($postimgdata);exit;
         $imgcurl->config['url'] = $postimgdata['url'];
         $imgcurl->postval = $postimgdata;
-    for($cii=0;$cii<3;$cii++){
         $cover = substr($imgcurl->getHtml(),3);
 //$cover = 22;
         $comicdata['cover'] = $cover;
         if(44 == $cover){
            die('Token 失效!');
         }
-        if(strlen($cover)>10){
-           break;
-        }
-        sleep(6);
-     }
-        if(strlen($cover)<10){
+        if(strlen($cover)<12){
            die("Cover:$cover ourl:$postimgdata[url] 失效!\n");
         }
         $comicdata['isimg'] = $comicdata['cover'] ? 1 : 0;
@@ -85,13 +77,13 @@ echo "Get mhlist failed $cateurl\n";
         $comicid = $model->addComic($comicdata);
         }
         $volsinfo = getmhvols($mhurl);
-        if(empty($volsinfo)){
-          die("Url:$mhurl volsinfo empty!\n");
+        if(empty($volsinfo['vols'])){
+          die("Url:$mhurl get volsinfo failed!\n");
         }
 //var_dump($volsinfo);exit;
         foreach($volsinfo['vols'] as $kv => $vol){
            $pageurl = sprintf('http://paga.hhcomic.net/%s',$vol);
-//echo $pageurl,"\n";
+//echo $pageurl,"\n"; 
            $info = getmhpageinfo($pageurl);
 //var_dump($info);exit;
            $pages = explode('|',$info['page']);
@@ -101,13 +93,16 @@ echo "Get mhlist failed $cateurl\n";
            $voldata['rtime'] = time();
            $voldata['firstpid'] = 0;
 //var_dump($voldata);
-           $vid = $model->getVol($voldata);
-           if($vid){
+           $vinfo = $model->getVol($voldata);
+           $vid = $vinfo['vid'];
+           if($vinfo['done'] == 1){
               echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";continue;
            }
-           $vid = $model->addVol($voldata);
+           if(!$vid){
+             $vid = $model->addVol($voldata);
+             $model->setcomicvol($voldata);
+           }
 echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
-           $model->setcomicvol($voldata);
            if(!$vid){
               die("Null Vid!\n");
            }
@@ -118,37 +113,42 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
               if(1 == $pagedata['pid']){
                  $voldata['firstpid'] = $pagedata['vid'].'_'.$pagedata['pid'];
               }
-              $pid = $model->getPage($pagedata);
-              if(!$pid){
+              $pinfo = $model->getPage($pagedata);
+              $pid = $pinfo['pid'];
+              if(!$pid || $pinfo['isimg']!= 1){
               //转图
+          for($cii=0;$cii<3;$cii++){
               $postimgdata['imgurl'] = $info['server'].$pval;
               $postimgdata['referer'] = $siteinfo['domain'];
               $imgcurl->config['url'] = $postimgdata['url'];
               $imgcurl->postval = $postimgdata;
-           for($cii=0;$cii<3;$cii++){
               $img = substr($imgcurl->getHtml(),3);
               $pagedata['img'] = $img;
-              
               if(44 == $img){
                  die('Token 失效!');
               }
-              if(strlen($img)>10){
+              if(strpos($img,'.')!=false){
                  break;
               }
-              sleep(6);
+              sleep(10);
            }
-              if(strlen($img) < 10 || (strlen($img)> 20){
+              if(strpos($img,'.')==false){
                  $pagedata['img'] = '';
-                 $pagedata['ourl'] = $postimgdata['imgurl']
+                 $pagedata['ourl'] = $postimgdata['imgurl'];
+                 die("\n+++ cid:$comicid Vid:$vid Pid:$pid ImgUrl: $img Ourl: $postimgdata[imgurl] ++++\n");
               }
               $pagedata['isimg'] = $pagedata['img'] ? 1 : 0;
               $pagedata['rtime'] = time();
-              $model->addPage($pagedata);
-              sleep(1);
+              if(!$pid){
+                $model->addPage($pagedata);
               }else{
-                 sleep(1);
+                $model->setPageImg($pagedata);
               }
+              echo "\n+++ cid:$comicid Vid:$vid Pid:$pid ImgUrl: $img ++++\n";
+                sleep(9);
+              }// end add_set pagesdata
            }
+           $model->setvoldone($vid);
            if($voldata['vnum'] > 1){
               $voldata['vid'] = $vid;
               $model->setPreAndNextVol($voldata);
@@ -156,9 +156,6 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
            }
         }
 //exit;
-        sleep(4);
      }
-sleep(3);
   }
 }
-//var_dump($catelist);exit;
