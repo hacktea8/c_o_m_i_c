@@ -66,7 +66,8 @@ foreach($catelist as $k => $cate){
         $cover = substr($imgcurl->getHtml(),3);
 //$cover = 22;
         $comicdata['cover'] = $cover;
-        if(44 == $cover){
+        $status = preg_replace('#^\d#','',$img);
+        if(44 == $status){
            die('Token 失效!');
         }
         if(strlen($cover)<12){
@@ -96,13 +97,14 @@ foreach($catelist as $k => $cate){
            $vinfo = $model->getVol($voldata);
            $vid = $vinfo['vid'];
            if($vinfo['done'] == 1){
-              echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";continue;
+              //echo "comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
+              continue;
            }
            if(!$vid){
+echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
              $vid = $model->addVol($voldata);
              $model->setcomicvol($voldata);
            }
-echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $voldata[vnum]\n";
            if(!$vid){
               die("Null Vid!\n");
            }
@@ -124,7 +126,8 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
               $imgcurl->postval = $postimgdata;
               $img = substr($imgcurl->getHtml(),3);
               $pagedata['img'] = $img;
-              if(44 == $img){
+              $status = preg_replace('#^\d#','',$img);
+              if(44 == $status){
                  die('Token 失效!');
               }
               if(strpos($img,'.')!=false){
@@ -135,7 +138,12 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
               if(strpos($img,'.')==false){
                  $pagedata['img'] = '';
                  $pagedata['ourl'] = $postimgdata['imgurl'];
-                 die("\n+++ cid:$comicid Vid:$vid Pid:$pid ImgUrl: $img Ourl: $postimgdata[imgurl] ++++\n");
+                 $err = preg_replace('#^\d+#','',$img);
+                 $err = intval($err);
+                 if(20 != $err && $err){
+                   var_dump($err);
+                   die("\n+++ cid:$comicid Vid:$vid Pid:$pid ImgUrl: $img Ourl: $postimgdata[imgurl] ++++\n");
+                 }
               }
               $pagedata['isimg'] = $pagedata['img'] ? 1 : 0;
               $pagedata['rtime'] = time();

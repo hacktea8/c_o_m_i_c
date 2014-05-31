@@ -7,6 +7,11 @@ class Model{
   public function __construct(){
     $this->db = new DB_MYSQL();
   }
+  public function getPostErrorComicPagePic($q=0,$limit=30){
+    $sql = sprintf("SELECT `pid`, `vid`, `cid`,`ourl` FROM `page%d` WHERE `isimg`=0 LIMIT %d",$q,$limit);
+    $list = $this->db->result_array($sql);
+    return $list;
+  }
   public function updateCatemhTotal($cid=0){
     if(!$cid)
       return false;
@@ -105,7 +110,7 @@ class Model{
        return false;
     }
     $ptable = $this->getpagestablename($data['vid']);
-    $sql = sprintf('SELECT `pid`,`img` FROM %s WHERE `pid`=%d AND `vid`=%d AND `cid`=%d LIMIT 1',$ptable,$data['pid'],$data['vid'],$data['cid']);
+    $sql = sprintf('SELECT `pid`,`isimg` FROM %s WHERE `pid`=%d AND `vid`=%d AND `cid`=%d LIMIT 1',$ptable,$data['pid'],$data['vid'],$data['cid']);
     $row = $this->db->row_array($sql);
     if(isset($row['pid'])){
        return $row;
@@ -117,8 +122,11 @@ class Model{
        return false;
     }
     $ptable = $this->getpagestablename($data['vid']);
-    $data['isimg'] = $data['isimg']?$data['isimg']:1;
+    $data['isimg'] = isset($data['isimg'])?$data['isimg']:1;
     $setdata = array('img'=>$data['img'],'isimg'=>$data['isimg']);
+    if($data['img']){
+      $setdata['ourl'] = '';
+    }
     $where = array('pid'=>$data['pid'],'vid'=>$data['vid'],'cid'=>$data['cid']);
     $sql = $this->db->update_string($ptable,$setdata,$where);
     $this->db->query($sql);

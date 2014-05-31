@@ -20,6 +20,7 @@ $imgcurl->config['cookie'] = 'cookieimgw';
 $model = new Model();
 
 $lastpage = ROOTPATH.'/hhcomic/config/lastpage_';
+$postimgdata['url'] = 'http://img.hacktea8.com/mhwapi/uploadurl?seq=';
 
 /*********** Start *****************/
 $q = 3;
@@ -66,7 +67,8 @@ foreach($catelist as $k => $cate){
         $cover = substr($imgcurl->getHtml(),3);
 //$cover = 22;
         $comicdata['cover'] = $cover;
-        if(44 == $cover){
+        $status = preg_replace('#^\d#','',$cover);
+        if(44 == $status){
            die('Token 失效!');
         }
         if(strlen($cover)<12){
@@ -115,6 +117,7 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
               }
               $pinfo = $model->getPage($pagedata);
               $pid = $pinfo['pid'];
+//var_dump($pinfo);exit;
               if(!$pid || $pinfo['isimg']!= 1){
               //转图
           for($cii=0;$cii<3;$cii++){
@@ -124,7 +127,8 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
               $imgcurl->postval = $postimgdata;
               $img = substr($imgcurl->getHtml(),3);
               $pagedata['img'] = $img;
-              if(44 == $img){
+              $status = preg_replace('#^\d#','',$img);
+              if(44 == $status){
                  die('Token 失效!');
               }
               if(strpos($img,'.')!=false){

@@ -18,6 +18,7 @@ $imgcurl = new CurlModel();
 $imgcurl->config['cookie'] = 'cookieimg';
 
 $model = new Model();
+$postimgdata['url'] = 'http://img.hacktea8.com/mhqapi/uploadurl?seq=';
 
 $lastpage = ROOTPATH.'/hhcomic/config/lastpage_';
 
@@ -66,7 +67,8 @@ foreach($catelist as $k => $cate){
         $cover = substr($imgcurl->getHtml(),3);
 //$cover = 22;
         $comicdata['cover'] = $cover;
-        if(44 == $cover){
+        $status = preg_replace('#^\d#','',$cover);
+        if(44 == $status){
            die('Token 失效!');
         }
         if(strlen($cover)<12){
@@ -116,6 +118,10 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
               $pinfo = $model->getPage($pagedata);
               $pid = $pinfo['pid'];
               if(!$pid || $pinfo['isimg']!= 1){
+              $perror = '/ok-comic08/l/lsj/Vol_04/109.jp';
+              if($pval == $perror){
+                $pval .= 'g';
+              }
               //转图
           for($cii=0;$cii<3;$cii++){
               $postimgdata['imgurl'] = $info['server'].$pval;
@@ -124,7 +130,8 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
               $imgcurl->postval = $postimgdata;
               $img = substr($imgcurl->getHtml(),3);
               $pagedata['img'] = $img;
-              if(44 == $img){
+              $status = preg_replace('#^\d#','',$img);
+              if(44 == $status){
                  die('Token 失效!');
               }
               if(strpos($img,'.')!=false){
@@ -135,7 +142,7 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
               if(strpos($img,'.')==false){
                  $pagedata['img'] = '';
                  $pagedata['ourl'] = $postimgdata['imgurl'];
-                 die("\n+++ cid:$comicid Vid:$vid Pid:$pid ImgUrl: $img Ourl: $postimgdata[imgurl] ++++\n");
+                 echo ("\n+++ cid:$comicid Vid:$vid Pid:$pid ImgUrl: $img Ourl: $postimgdata[imgurl] ++++\n");
               }
               $pagedata['isimg'] = $pagedata['img'] ? 1 : 0;
               $pagedata['rtime'] = time();
@@ -156,8 +163,9 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
            }
         }
 //exit;
-        sleep(1);
+        sleep(9);
      }
-sleep(1);
-  }
-}
+echo "\nGrab Cid:$cate[id] Cname:$cate[name] Page:$page \n";
+sleep(10);
+  }// foreach page end
+}// foreach cate end

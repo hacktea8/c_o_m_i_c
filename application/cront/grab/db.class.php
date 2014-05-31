@@ -30,7 +30,7 @@ class DB_MYSQL{
     global $usepconnect;
     // connect to db server
 
-    $usepconnect = 1;
+    $usepconnect = 0;
     if ( 0 == $this->link_id ) {
       if ($password=="") {
         if ($usepconnect==1) {
@@ -79,7 +79,11 @@ class DB_MYSQL{
     }
 
   }
-
+  function __destruct(){
+    if(is_resource($this->link_id)){
+       mysql_close($this->link_id);
+    }
+  }
 function query($query_string, $type= '') {
     // do query
 
