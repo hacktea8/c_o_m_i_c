@@ -12,10 +12,10 @@ $pattern = '/hhcomic/'.basename(__FILE__);
 require_once ROOTPATH.'/hhcomic/singleProcess.php';
 
 $mhcurl = new CurlModel();
-$mhcurl->config['cookie'] = 'cookiehhcomic';
+$mhcurl->config['cookie'] = 'cookieqhhcomic';
 
 $imgcurl = new CurlModel();
-$imgcurl->config['cookie'] = 'cookieimg';
+$imgcurl->config['cookie'] = 'cookieqimg';
 
 $model = new Model();
 $postimgdata['url'] = 'http://img.hacktea8.com/mhqapi/uploadurl?seq=';
@@ -67,7 +67,7 @@ foreach($catelist as $k => $cate){
         $cover = substr($imgcurl->getHtml(),3);
 //$cover = 22;
         $comicdata['cover'] = $cover;
-        $status = preg_replace('#^\d#','',$cover);
+        $status = preg_replace('#[^\d]+#','',$cover);
         if(44 == $status){
            die('Token 失效!');
         }
@@ -130,7 +130,7 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
               $imgcurl->postval = $postimgdata;
               $img = substr($imgcurl->getHtml(),3);
               $pagedata['img'] = $img;
-              $status = preg_replace('#^\d#','',$img);
+              $status = preg_replace('#[^\d]+#','',$img);
               if(44 == $status){
                  die('Token 失效!');
               }

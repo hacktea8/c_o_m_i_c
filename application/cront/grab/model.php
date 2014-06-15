@@ -123,10 +123,7 @@ class Model{
     }
     $ptable = $this->getpagestablename($data['vid']);
     $data['isimg'] = isset($data['isimg'])?$data['isimg']:1;
-    $setdata = array('img'=>$data['img'],'isimg'=>$data['isimg']);
-    if($data['img']){
-      $setdata['ourl'] = '';
-    }
+    $setdata = array('ourl'=>$data['ourl'],'img'=>$data['img'],'isimg'=>$data['isimg']);
     $where = array('pid'=>$data['pid'],'vid'=>$data['vid'],'cid'=>$data['cid']);
     $sql = $this->db->update_string($ptable,$setdata,$where);
     $this->db->query($sql);

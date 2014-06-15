@@ -66,7 +66,7 @@ foreach($catelist as $k => $cate){
         $cover = substr($imgcurl->getHtml(),3);
 //$cover = 22;
         $comicdata['cover'] = $cover;
-        $status = preg_replace('#^\d#','',$img);
+        $status = preg_replace('#[^\d]+#','',$img);
         if(44 == $status){
            die('Token 失效!');
         }
@@ -126,7 +126,7 @@ echo "date: ".date('Y-m-d H:i:s')." comicid: $voldata[cid] Vid: $vid Vol: $volda
               $imgcurl->postval = $postimgdata;
               $img = substr($imgcurl->getHtml(),3);
               $pagedata['img'] = $img;
-              $status = preg_replace('#^\d#','',$img);
+              $status = preg_replace('#[^\d]+#','',$img);
               if(44 == $status){
                  die('Token 失效!');
               }

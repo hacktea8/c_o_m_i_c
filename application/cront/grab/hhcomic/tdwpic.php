@@ -12,30 +12,18 @@ $pattern = '/hhcomic/'.basename(__FILE__);
 require_once ROOTPATH.'/hhcomic/singleProcess.php';
 
 $mhcurl = new CurlModel();
-$mhcurl->config['cookie'] = 'cookiehhcomic';
+$mhcurl->config['cookie'] = 'cookietdwhhcomic';
 
 $imgcurl = new CurlModel();
-$imgcurl->config['cookie'] = 'cookieqdwimg';
+$imgcurl->config['cookie'] = 'cookietdwimg';
 
 $model = new Model();
 $postimgdata['url'] = 'http://img.hacktea8.com/mhqapi/uploadurl?seq=';
 
 
 /*********** Start *****************/
-$q = date('w');
-$h = date('H');
-$base = 0;
-if($h>=0 && $h<=6){
-  $base = 1;
-}elseif($h>=7 && $h<=12){
-  $base = 2;
-}elseif($h>=13 && $h<=18){
-  $base = 3;
-}
-$q = $q+$base;
-
-//$q = 8;
-//0,2,4,6,8
+$q = 1;
+//1,3,5,7,9
 $lists = $model->getPostErrorComicPagePic($q,$limit=30);
 if(empty($lists)){
  echo "\nGrab Table: page$q Limit: $limit Is Empty!\n";
