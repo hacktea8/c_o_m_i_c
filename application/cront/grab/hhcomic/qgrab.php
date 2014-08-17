@@ -23,7 +23,7 @@ $postimgdata['url'] = 'http://img.hacktea8.com/mhqapi/uploadurl?seq=';
 $lastpage = ROOTPATH.'/hhcomic/config/lastpage_';
 
 /*********** Start *****************/
-$q = 0;
+$q = 4;
 //0,4,8,12,16
 $catelist = $model->getAllcate();
 foreach($catelist as $k => $cate){
