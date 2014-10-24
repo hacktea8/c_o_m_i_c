@@ -15,11 +15,11 @@
 |
 */
 $config['base_url']	= '';
-$config['domain']='mh.hacktea8.com';
+$config['domain']='mh.emubt.com';
 $config['login_url']='http://www.hacktea8.com/login.php?jumpurl=';
-$config['js_url']='http://mh.hacktea8.com/public/js/';
-$config['css_url']='http://mh.hacktea8.com/public/css/';
-$config['img_url']='http://mh.hacktea8.com/public/images/';
+$config['js_url']='http://'.$config['domain'].'/public/js/';
+$config['css_url']='http://'.$config['domain'].'/public/css/';
+$config['img_url']='http://'.$config['domain'].'/public/images/';
 $config['toptips']='<a class="close" href="javascript:;" onclick="document.getElementById(\'toptips\').style.display=\'none\';">关闭</a>        
 <strong style="color: red;">紧急通告：</strong>
 近日有网友反映，访问爱漫画会跳转到其它网站，甚至界面也与爱漫画相同。在此郑重提醒各位漫友，

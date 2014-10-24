@@ -72,7 +72,7 @@ foreach($catelist as $k => $cate){
            die('Token 失效!');
         }
         if(strlen($cover)<12){
-           die("Cover:$cover ourl:$postimgdata[url] 失效!\n");
+           echo("Cover: $cover imgurl: $postimgdata[imgurl] ourl: $postimgdata[url] 失效!\n");
         }
         $comicdata['isimg'] = $comicdata['cover'] ? 1 : 0;
 //var_dump($comicdata);exit;
@@ -84,10 +84,11 @@ foreach($catelist as $k => $cate){
         }
 //var_dump($volsinfo);exit;
         foreach($volsinfo['vols'] as $kv => $vol){
-           $pageurl = sprintf('http://paga.hhcomic.net/%s',$vol);
+           #$pageurl = sprintf('http://paga.hhcomic.net/%s',$vol);
+           $pageurl = $vol;
 //echo $pageurl,"\n"; 
            $info = getmhpageinfo($pageurl);
-//var_dump($info);exit;
+#var_dump($info);exit;
            $pages = explode('|',$info['page']);
            $voldata['vnum'] = $kv + 1;
            $voldata['cid'] = $comicid;
