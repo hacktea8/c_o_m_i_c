@@ -8,7 +8,6 @@ class Webbase extends CI_Controller {
     protected $isadmin=0;	
     public function __construct(){
     	parent::__construct();
-echo 8888;exit;
 	$this->load->library('basecommon');	
 	$this->load->model('usermodel');	
         $this->load->helper('url');
