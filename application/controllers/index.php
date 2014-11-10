@@ -1,7 +1,7 @@
 <?php 
-require_once 'usrbase.php';
+require_once 'viewbase.php';
 
-class Index extends Usrbase {
+class Index extends Viewbase {
   public $_per = 24;
 
   public function __construct(){

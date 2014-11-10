@@ -1,7 +1,7 @@
 <?php
 require_once 'webbase.php';
 
-class Usrbase extends Webbase {
+class Viewbase extends Webbase {
    public $_channel = '';
 
    public function __construct(){

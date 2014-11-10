@@ -5,7 +5,7 @@
 	href="javascript:window.open('http://cang.baidu.com/do/add?it='+encodeURIComponent(document.title.substring(0,76))+'&iu='+encodeURIComponent(location.href)+'&fr=ien#nw=1','_blank','scrollbars=no,width=600,height=450,left=75,top=20,status=no,resizable=yes');void(0)"
 	title="添加到百度搜藏"><span>添加到百度搜藏</span></a> <a class="qqFav"
 	href="javascript:window.open('http://shuqian.qq.com/post?title='+encodeURIComponent(document.title)+'&uri='+encodeURIComponent(document.location.href)+'&jumpback=2&noui=1','favit','width=960,height=600,left=50,top=50,toolbar=no,menubar=no,location=no,scrollbars=yes,status=yes,resizable=yes');void(0)"
-	title="收藏到QQ书签"><span>收藏到QQ书签</span></a> </span>您当前的位置 ：<em><a href="/">爱漫画首页</a>
+ title="收藏到QQ书签"><span>收藏到QQ书签</span></a> </span>您当前的位置 ：<em><a href="/"><?php echo $web_title;?>首页</a>
 &gt;&gt; <a href="javascript:void(0);"><?php echo $channel[$cid]['name'];?>漫画</a></em></strong></h2>
 </div>
 <div class="blank8"></div>
@@ -45,7 +45,8 @@
 </div>
 </div>
 <div class="rightPart">
-<h2 class="bar"><span><a href="/recent.html" class="red">&gt;&gt;更多</a></span><strong><?php echo $channel[$cid]['name'];?>最近更新</strong></h2>
+<h2 class="bar"><span><a href="/recent.html" class="red">&gt;&gt;更多</a></span>
+<strong><?php echo $channel[$cid]['name'];?>最近更新</strong></h2>
 <ul class="newUpdate">
 <?php foreach($cateTopData['newRenew'] as &$row){ ?>
 <li><em class="red"><?php echo $row['rtime'];?></em>

@@ -1,6 +1,6 @@
 var pVars = pVars || {
     'servs': [
-        { 'name': '电信①', 'host': 'img.hacktea8.com/showpic.php?key=' },
+        { 'name': '电信①', 'host': 'i1.hacktea8.com/showpic.php?key=' },
         { 'name': '电信②', 'host': 'img.hacktea8.com/showpic.php?key=' },
         { 'name': '电信③', 'host': 'img.hacktea8.com/showpic.php?key=' },
         { 'name': '广东电信', 'host': 'img.hacktea8.com/showpic.php?key=' },
@@ -8,7 +8,7 @@ var pVars = pVars || {
         { 'name': '联通', 'host': 'img.hacktea8.com/showpic.php?key=' }
     ],
 	'servsLen': 6,
-    'root': 'http://mh.hacktea8.com',
+    'root': 'http://mh.emubt.com',
     'page': 1,
     'curServ': 0,
     'defServ': 0,

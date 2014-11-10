@@ -1,7 +1,7 @@
 <?php
-require_once 'usrbase.php';
+require_once 'viewbase.php';
 
-class Support extends Usrbase {
+class Support extends Viewbase {
 
   public function __construct(){
     parent::__construct();

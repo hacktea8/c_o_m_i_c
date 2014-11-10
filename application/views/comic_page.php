@@ -13,8 +13,7 @@
 <div class="w980 pr">
 <div class="main-nav"><a href="/" title="返回首页" class="logo"></a>
 <?php if(0){ ?>
-<a
-	href="/recent.html" class="pr new-update">最新更新<i></i></a><a
+<a href="/recent.html" class="pr new-update">最新更新<i></i></a><a
 	href="/all.html">所有漫画</a><a href="/wanjie.html">完结</a><a
 	href="/lianzai.html">连载</a><a href="/top.html">风云榜</a>
 <?php } ?>
