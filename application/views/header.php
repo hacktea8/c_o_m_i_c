@@ -18,6 +18,13 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-43439571-3', 'auto');
 ga('send', 'pageview');
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?bb20855f8f88890af93964c61f152421";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 </head>
 <body>
@@ -29,7 +36,9 @@ ga('send', 'pageview');
 <div class="logo"><a href="/" title="<?php echo $web_title;?>为您提供漫画、在线漫画、最新漫画免费观看"><?php echo $web_title;?>网专为您提供漫画、在线漫画、火影忍者漫画、火影漫画 ，并提供死神、海贼王漫画、网球王子、灌蓝高手、七龙珠等漫画在线观看</a></div>
 <div class="top_right" style="width: 720px;">
 <div class="hotListText">热门漫画：
-<a href="/comic/54/" target="_blank" title="火影忍者漫画"><strong>火影忍者漫画</strong></a> 
+<?php foreach($hotComic as $v){?>
+ <a href="<?php echo $v['url'];?>" target="_blank" title="<?php echo $v['name'];?>"><strong><?php echo $v['name'];?></strong></a> 
+<?php }?>
 </div>
 <div class="search" id="search" style="width: 720px;">
 诚聘技术精英，广纳动漫人才加盟！ <span id="searchTip">标题或作者：</span><input

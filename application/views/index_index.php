@@ -130,6 +130,7 @@
 <div class="indexRight">
 <div class="indexRightIn">
 <div class="lr1px">
+<?php if(0){?>
 <h2 class="bar"><strong>热门漫画更新提醒-敬请留意</strong></h2>
 <ul class="Advices">
 	<li><a href="/comic/201/" target="_blank" title="妖精的尾巴368 1月24日更新"><b
@@ -148,11 +149,9 @@
 	<li class="dm"><a href='http://www.dm456.com/donghua/9/'
 		target='_blank' title="海贼王628"><strong>海贼王628</strong>集 1月19日更新</a></li>
 </ul>
-<div
-	style="width: 206px; margin: 0 auto; text-align: center; height: 32px;"><iframe
-	marginwidth="0" marginheight="0" scrolling="no" framespacing="0"
-	vspace="0" hspace="0" frameborder="0" width="100%" height="30"
-	src="/v2.1/nmoneys/baidu/baidu_search.html?v=0719"></iframe></div>
+<?php }?>
+<div style="width: 206px; margin: 0 auto; text-align: center; height: 32px;">
+</div>
 </div>
 <div class="blank8 lineGray"></div>
 <div class="lr1px">

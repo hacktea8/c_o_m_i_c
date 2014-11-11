@@ -3,9 +3,9 @@ require_once 'modelbase.php';
 
 class Pagemodel extends Modelbase{
         public $_table = 'page';
-        public $_pagecol = '`pid`, `vid`, `cid`, `img`, `isimg`, `isadult`, `hits`, `rtime`';
+        public $_pagecol = '`pid`, `vid`, `cid`, `img`,host,ext, `isimg`, `isadult`, `hits`, `rtime`';
 	public $_volcol = '`vid`, `cid`, `vnum`, `pageset`, `isimg`, `firstpid`, `prepid`, `nextpid`, `isadult`, `hits`, `rtime` ';
-        public $_pagesetcol = '`pid`, `img`, `isadult`, `hits`, `rtime`';
+        public $_pagesetcol = '`pid`, `img`,host,ext, `isadult`, `hits`, `rtime`';
         public $_comiccol = '`name`,`letter`,`state`';
 
 	public function __construct(){
@@ -22,7 +22,7 @@ class Pagemodel extends Modelbase{
                 $table = $this->getTable($vid);
 		$sql=sprintf('SELECT %s FROM %s WHERE `pid`=%d AND `vid`=%d AND `cid`=%d LIMIT 1', $this->_pagecol, $table, $pid, $vid, $cid);
 		$row = $this->db->query($sql)->row_array();
-                $row['cover'] = $this->getPicUrl($row['img']);
+                $row['cover'] = $this->getPicUrl($row['img'],$row['host'],$row['ext']);
 	}
 
 	public function getPagesetInfoByid($cid, $vid){
@@ -33,7 +33,7 @@ class Pagemodel extends Modelbase{
 		$sql=sprintf('SELECT %s FROM %s WHERE `vid`=%d AND `cid`=%d LIMIT 200',$this->_pagesetcol, $table, $vid, $cid);
 		$list = $this->db->query($sql)->result_array();
                 foreach($list as &$val){
-                  $val['cover'] = $this->getPicUrl($val['img']);
+                  $val['cover'] = $this->getPicUrl($val['img'],$val['host'],$val['ext']);
                 }
                 return $list;
 	}

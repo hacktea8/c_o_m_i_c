@@ -8,8 +8,13 @@ class Modelbase extends CI_Model{
   parent::__construct();
   $this->db = $this->load->database('default',true);
  }
- public function getPicUrl($key){              
-  return 'http://img.hacktea8.com/showpic.php?key='.$key;
+ public function getPicUrl($key,$host = 0,$ext = 0){              
+  if($host){
+   $url = sprintf('http://%s.tietuku.com/%s.%s',$host,$key,$ext);
+  }else{
+   $url = 'http://img.hacktea8.com/showpic.php?key='.$key;
+  }
+  return $url;
  }
  public function getComicinfoByid($cid){
   if(!$cid){
@@ -20,7 +25,7 @@ class Modelbase extends CI_Model{
   if($info){
    $info['id'] = $cid;
    $info['vols'] = $this->getComicVols($cid);
-   $info['cover'] = $this->getPicUrl($info['cover']);
+   $info['cover'] = $this->getPicUrl($info['cover'],$info['host'],$info['ext']);
    $info['atime'] = date('Y-m-d', $info['atime']);
    $info['rtime'] = date('Y-m-d', $info['rtime']);
    $info['relate'] = $this->getComicRelateByCid($info['cid'],$limit = 16);

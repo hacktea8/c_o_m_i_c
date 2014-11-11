@@ -15,7 +15,11 @@ class Viewbase extends Webbase {
   $this->_channel = $this->mhmodel->getNavList();
   $letterList = $this->mhmodel->getLetterList();
   $friendLink = $this->mhmodel->getFriendLinks();
-  $this->assign(array('friendLink'=>$friendLink,'letterList'=>$letterList,'channel'=>$this->_channel));
+  $hotComic = $this->mhmodel->getComicListByCid($cid = 0, $order = 'hits', $page = 1, $per = 10);
+  $initData = array('friendLink'=>$friendLink,'letterList'=>$letterList
+  ,'channel'=>$this->_channel,'hotComic'=>$hotComic
+  );
+  $this->assign($initData);
  }
  protected function setseo($title = '',$keyword = '',$description = ''){
   $title = $title?$title:'首页';

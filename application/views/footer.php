@@ -9,21 +9,12 @@
 <div class="blank8"></div>
 </div>
 <div class="blank4"></div>
-<div style="text-align: center; line-height: 1.8em;">热门漫画：<a
-	href="/comic/54/" title="火影忍者漫画"><strong><font
-	color="#FF0000">火影忍者漫画</font></strong></a> <a href="http://www.imanhua.com/"
-	title="海贼王漫画">海贼王漫画</a> <a href="/comic/696/" target="_blank"
-	title="食梦者">食梦者</a> <a href="/comic/619/" target="_blank" title="滑头鬼之孙">滑头鬼之孙</a>
-<a href="/comic/120/" target="_blank" title="死神">死神漫画</a> <a
-	href="/comic/201/" target="_blank" title="妖精的尾巴">妖精的尾巴</a> <a
-	href="/comic/1998/" target="_blank" title="进击的巨人">进击的巨人</a> <a
-	href="/comic/1110/" target="_blank" title="新网球王子">新网球王子</a> <a
-	href="/comic/177/" target="_blank" title="名侦探柯南">名侦探柯南</a> <a
-	href="/comic/205/" target="_blank" title="家庭教师">家庭教师</a> <a
-	href="/comic/76/" target="_blank" title="猎人">猎人</a> <a
-	href="/comic/46/" target="_blank" title="灌篮高手">灌篮高手</a> <a
-	href="/comic/108/" target="_blank" title="七龙珠">七龙珠</a> <a
-	href="/comic/54/" title="火影忍者662"><strong>火影忍者662</strong></a></div>
+<div style="text-align: center; line-height: 1.8em;">热门漫画：
+<?php foreach($hotComic as $v){?>
+<a href="<?php echo $v['url'];?>" title="<?php echo $v['name'];?>" target="_blank"><strong>
+<font color="#FF0000"><?php echo $v['name'];?></font></strong></a>
+<?php }?>
+</div>
 <div class="blank4"></div>
 <div class="main" style=""><script language="javascript">show(2);</script></div>
 <div class="footer">
