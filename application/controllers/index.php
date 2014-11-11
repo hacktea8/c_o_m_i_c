@@ -93,7 +93,7 @@ var_dump($comicinfo);exit;
   $volinfo['pageinfo'] = $volinfo['pageset'][$p - 1];
   $volinfo['pagesetimg'] = array();
   foreach($volinfo['pageset'] as $val){
-   $volinfo['pagesetimg'][] = '"'.$val['img'].'"';
+   $volinfo['pagesetimg'][] = '"'.$val['cover'].'"';
   }
   $tmp = explode('_', $volinfo['nextpid']);
   $volinfo['n'] = array_shift($tmp);

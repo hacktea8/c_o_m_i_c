@@ -4,11 +4,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><?php echo $comicinfo['volinfo']['title'],' - ',$web_title;?></title>
 <link href="<?php echo $css_url;?>detail.min.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
-<?php if(0){?>
-<script type="text/javascript">var cInfo={"cid":<?php echo $comicinfo['volinfo']['vid'];?>,"p":"<?php echo $comicinfo['volinfo']['p'];?>","n":"<?php echo $comicinfo['volinfo']['n'];?>","cname":"<?php echo $comicinfo['volinfo']['name'];?>","burl":"/index/vol/<?php echo $comicinfo['volinfo']['cid'];?>/<?php echo $comicinfo['volinfo']['vid'];?>","files":[<?php echo $comicinfo['volinfo']['pagesetimg'];?>],"bid":<?php echo $comicinfo['volinfo']['cid'];?>,"len":<?php echo $comicinfo['volinfo']['pagesize'];?>,"bname":"<?php echo $comicinfo['name'];?>","finished":<?php echo $comicinfo['state'];?>};</script>
-<?php }?>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
 <script src="/index/volinfo/<?php echo $comicid,'/',$volid;?>.js?v=<?php echo $version;?>"></script>
 <!--[if IE 6]> <script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script> <![endif]-->
+<script>
+var site_url = '<?php echo $base_url;?>';
+var site_name = '<?php echo $web_title;?>';
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-43439571-3', 'auto');
+ga('send', 'pageview');
+</script>
 </head>
 <body>
 <div class="nav">
@@ -39,7 +47,7 @@
 </div>
 </div>
 </div>
-<div class="w980 imh-vvv" id="imh-0"></div>
+<div class="w980 imh-vvv"></div>
 <div class="title w980" id="title">
 <div class="page-number fr">第<strong id="pageCurrent"></strong>页 /
 共<strong><?php echo $comicinfo['volinfo']['pagesize'];?></strong>页</div>
@@ -103,11 +111,11 @@
 	</tr>
 </table>
 </div>
-<div class="w980 imh-vvv" id="imh-1"></div>
+<div class="w980 imh-vvv"></div>
 <div class="w980 tc">
-<div class="pager" id="pagination"></div>
+ <div class="pager" id="pagination"></div>
 </div>
-<div class="w980 imh-vvv" id="imh-2"></div>
+<div class="w980 imh-vvv"></div>
 </div>
 <div class="sidebar" id="sidebar">
 <ul>
@@ -121,14 +129,14 @@
 	<i></i> </a></li>
 </ul>
 </div>
-<script type="text/javascript" src="<?php echo $js_url;?>jquery.js"></script>
-<script type="text/javascript" src="<?php echo $js_url;?>main.min.js?v=<?php echo $version;?>"></script>
-<script type="text/javascript" src="<?php echo $js_url;?>chapter.js?v=<?php echo $version;?>"></script>
+<script type="text/javascript" src="<?php echo $js_url;?>main.js?v=<?php echo $version;?>"></script>
 <div id="bd_160x600">
 </div>
 <div class="footer">
 <div class="footer-main">
-<div class="w980 tc"><script charset="utf-8" type="text/javascript" src="<?php echo $js_url;?>foot_chapter.js"></script></div>
+<div class="w980 tc">
+ <script charset="utf-8" type="text/javascript" src="<?php echo $js_url;?>foot_chapter.js"></script>
+</div>
 </div>
 </div>
 </body>
