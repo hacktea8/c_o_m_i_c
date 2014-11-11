@@ -41,51 +41,34 @@
     <div class="blank8">
     </div>
     <div class="updateList">
+<?php foreach($list as $vk => $vv){?>
       <ul>
+ <?php foreach($vv as $k => $v){?>
         <li>
           <span class="red">
-            2014/11/10
+           <?php echo date('Y/md',$v['rtime']);?>
           </span>
           <em>
-            1
+          <?php echo $vk*50 + $k+1;?>
           </em>
-          <a href="/comic/540/" title="足球骑士">
-            足球骑士
+          <a href="<?php echo $v['url'];?>" title="<?php echo $v['name'];?>">
+          <?php echo $v['name'];?>
           </a>
           [
-          <a class="red" href="/comic/540/list_111429.html" title="第344话">
-            第344话
+          <a class="red" href="<?php echo $v['volurl'];?>" title="<?php echo $v['volname'];?>">
+           <?php echo $v['volname'];?>
           </a>
           ]
           <acronym>
-            伊贺大晃×月山可也
+          <?php echo $v['author'];?>
           </acronym>
         </li>
-        
+ <?php }?>
       </ul>
-      <ul>
-        <li>
-          <span>
-            2014/11/7
-          </span>
-          <em>
-            126
-          </em>
-          <a href="/comic/1864/" title="妄想学生会">
-            妄想学生会
-          </a>
-          [
-          <a class="red" href="/comic/1864/list_111267.html" title="第301话">
-            第301话
-          </a>
-          ]
-          <acronym>
-            氏家卜全
-          </acronym>
-        </li>
-       
-      </ul>
+ <?php if(0 != $vk%2){?>
       <div class="dot-line"></div>
+ <?php }?>
+<?php }?>
     </div>
     <div class="blank8">
     </div>

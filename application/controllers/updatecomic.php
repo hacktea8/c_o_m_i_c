@@ -7,6 +7,10 @@ class Updatecomic extends Viewbase {
   parent::__construct();
  }
  public function recent(){
+  $this->setseo('最新更新的漫画');
+  $list = $this->mhmodel->getComicUpdateRecentBlock();
+  $this->assign(compact('list'));
+//$this->debug($this->viewData);
   $this->view('upcomic_recent');
  }
  public function top(){

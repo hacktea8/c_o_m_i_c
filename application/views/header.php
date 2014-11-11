@@ -2,11 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo $seo['title'],'-',$web_title;?></title>
-<meta name="Keywords"
-	content="火影忍者漫画,漫画,火影忍者662,在线漫画,火影漫画,死神,海贼王漫画,网球王子,灌蓝高手,七龙珠" />
-<meta name="Description"
-	content="火影忍者662于1月22日更新，爱漫画是国内更新火影忍者漫画速度最快、画质最好的火影忍者漫画网，同时每周三以最快速度更新海贼王漫画、死神漫画等热门在线漫画。" />
+<title><?php echo $seo['title'];?></title>
+<meta name="keywords" content="<?php echo $seo['keyword'];?>" />
+<meta name="description" content="<?php echo $seo['description'];?>" />
 <link href="<?php echo $css_url;?>global.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $css_url,$_a;?>.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="favicon.ico">

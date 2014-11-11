@@ -2,10 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title><?php echo $comicinfo['title'],' - ',$web_title;?></title>
+<title><?php echo $comicinfo['volinfo']['title'],' - ',$web_title;?></title>
 <link href="<?php echo $css_url;?>detail.min.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
+<?php if(0){?>
 <script type="text/javascript">var cInfo={"cid":<?php echo $comicinfo['volinfo']['vid'];?>,"p":"<?php echo $comicinfo['volinfo']['p'];?>","n":"<?php echo $comicinfo['volinfo']['n'];?>","cname":"<?php echo $comicinfo['volinfo']['name'];?>","burl":"/index/vol/<?php echo $comicinfo['volinfo']['cid'];?>/<?php echo $comicinfo['volinfo']['vid'];?>","files":[<?php echo $comicinfo['volinfo']['pagesetimg'];?>],"bid":<?php echo $comicinfo['volinfo']['cid'];?>,"len":<?php echo $comicinfo['volinfo']['pagesize'];?>,"bname":"<?php echo $comicinfo['name'];?>","finished":<?php echo $comicinfo['state'];?>};</script>
-<script src="<?php echo $js_url;?>configs.js?v=<?php echo $version;?>"></script>
+<?php }?>
+<script src="/index/volinfo/<?php echo $comicid,'/',$volid;?>.js?v=<?php echo $version;?>"></script>
 <!--[if IE 6]> <script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script> <![endif]-->
 </head>
 <body>

@@ -25,7 +25,7 @@ $config['toptips'] = '<a class="close" href="javascript:;" onclick="document.get
 近日有网友反映，访问爱漫画会跳转到其它网站，甚至界面也与爱漫画相同。在此郑重提醒各位漫友，
 <strong>爱漫画无任何更改域名的计划！请牢记爱漫画唯一网址'.$config['domain'].'。</strong>        访问爱漫画域名被跳转行为均为非法DNS劫持。经排查这是由于用户路由器DNS解析被劫持造成的。如碰到这种问题
 <a href="/xiufudns.html" target="_blank" class="red">点击此处查看修复方法</a>，也可以<a href="/xiufudns.html#feedback" class="red" target="_blank">给我们留言</a>。';
-$config['web_title'] = '漫画巴士';
+$config['web_title'] = '巴士漫画';
 $config['email'] = 'comic8s@163.com';
 
 /*
