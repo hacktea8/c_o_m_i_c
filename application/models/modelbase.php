@@ -8,9 +8,9 @@ class Modelbase extends CI_Model{
   parent::__construct();
   $this->db = $this->load->database('default',true);
  }
- public function getPicUrl($key,$host = 0,$ext = 0){              
+ public function getPicUrl($key,$host = 0){              
   if($host){
-   $url = sprintf('http://%s.tietuku.com/%s.%s',$host,$key,$ext);
+   $url = sprintf('http://%s.tietuku.com/%s.jpg',$host,$key);
   }else{
    $url = 'http://img.hacktea8.com/showpic.php?key='.$key;
   }

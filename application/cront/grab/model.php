@@ -2,11 +2,22 @@
 
 require_once ROOTPATH.'/db.class.php';
 class Model{
-  public $db = '';
-  
-  public function __construct(){
-    $this->db = new DB_MYSQL();
-  }
+ public $db = '';
+ 
+ public function __construct(){
+  $this->db = new DB_MYSQL();
+ }
+/**** start fix cover******/
+ public function getNoneCoverList($flag = 4,$limit = 60){
+  $sql = sprintf('SELECT id,ourl FROM `comic` where isimg=%d LIMIT %d',$flag,$limit);
+  $list = $this->db->result_array($sql);
+  return $list;
+ }
+ public function updateComicInfo($data,$id){
+  $sql = $this->db->update_string('comic',$data, array('id'=>$id));
+  return $this->db->query($sql);
+ }
+/**** end fix cover ******/
   public function getPostErrorComicPagePic($q=0,$limit=30){
     $sql = sprintf("SELECT `pid`, `vid`, `cid`,`ourl` FROM `page%d` WHERE `isimg`=0 LIMIT %d",$q,$limit);
     $list = $this->db->result_array($sql);

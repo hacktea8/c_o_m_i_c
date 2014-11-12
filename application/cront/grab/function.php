@@ -1,14 +1,14 @@
 <?php
 
 $APPPATH = dirname(__FILE__).'/';
-include_once($APPPATH.'../db.class.php');
+//include_once($APPPATH.'../db.class.php');
 require_once $APPPATH.'../../libraries/Tietuku.php';
-require_once $APPPATH.'../../libraries/gickimg.php.php';
+require_once $APPPATH.'../../libraries/gickimg.php';
 
 $gickimg = new Gickimg();
 $tietuku = new Tietuku();
 
-$db = new DB_MYSQL();
+//$db = new DB_MYSQL();
 
 $data = array('url' => 'http://img.hacktea8.com/imgapi/uploadurl?seq=', 'imgurl'=>'');
 $task = 600;
@@ -44,25 +44,42 @@ function upload2Ttk($data = array()){
  $imginfo['ext'] = getextname($filename);
 /**/
  $dwdata = array('url'=>$imgurl,'referer'=>$referer);
- $html = getHtml($dwdata);;
- $imgurl = ROOTPATH.'../cache_images/ttk'.$imginfo['title'];
+ $html = getHtml($dwdata);
+ $imgurl = ROOTPATH.'cache_images/ttk'.$imginfo['title'];
  @file_put_contents($imgurl, $html);
  @chmod($imgurl, 0777);
- if(!file_exists($imgurl) || filesize($imgurl) <2000){
+ if(!file_exists($imgurl)){
   @unlink($imgurl);
-  $err['msg'] = 'file Down err Or size too small';
+  $err['msg'] = 'file Down err '.$imgurl;
+  return $err;
+ }
+ if( filesize($imgurl) <2000){
+  @unlink($imgurl);
+  $err['msg'] = 'file size too small';
   return $err;
  }
  if(in_array($imginfo['ext'], $allowext)){
-  $imgurl_w = ROOTPATH.'../cache_images/ttkw'.$imginfo['title'];
-  $cmd = "convert {$imgurl} {$imgurl}";
+  $dst_ext = '';
+  if('.jpg' != $imginfo['ext']){
+   $dst_ext = '.jpg';
+  }
+  $imgurl_w = ROOTPATH.'cache_images/ttkw'.$imginfo['title'].$dst_ext;
+  $out_imgurl = $imgurl.$dst_ext;
+  
+  $cmd = "convert {$imgurl} {$out_imgurl}";
+  //echo "$cmd\n";
   @exec($cmd);
-  $water = ROOTPATH.'../water/mhwater.png';
-  $gickimg->waterMark($imgurl,$water,$imgurl_w);
+  if( !file_exists($out_imgurl)){
+   @unlink($imgurl);
+   $err['msg'] = 'file Convert err '.$imgurl;
+   return $err;
+  }
+  $water = ROOTPATH.'water/mhwater.png';
+  $gickimg->waterMark($out_imgurl,$water,$imgurl_w);
   @chmod($imgurl_w, 0777);
   $upFile = &$imgurl_w;
   if( !file_exists($imgurl_w) || filesize($imgurl_w) <2000){
-   $upFile = &$imgurl;
+   $upFile = &$out_imgurl;
    @unlink($imgurl_w);
   }
  }else{
@@ -72,13 +89,14 @@ function upload2Ttk($data = array()){
  $tietuku->init($curKey);
  $json = $tietuku->uploadFile($albumid,$upFile);
  @unlink($imgurl);
+ @unlink($out_imgurl);
  @unlink($upFile);
  $iurl = @$json['linkurl'];
  if( !$iurl){
   $err['msg'] = 'save file failed';
   return $err;
  }
- $r = arse_info($iurl);
+ $r = parse_info($iurl);
  if( !$r){
   $err['msg'] = 'parse url failed';
   return $err;
@@ -139,6 +157,9 @@ function getHtml(&$data){
   }
   curl_close($curl);
   $data['url'] = $url;
+  if(defined('S_CHARSET') && S_CHARSET != DST_CHARSET && stripos($tmpInfo,'</head>')>0){
+   $tmpInfo = mb_convert_encoding($tmpInfo, DST_CHARSET,S_CHARSET);
+  }
   return $tmpInfo;
 }
 
