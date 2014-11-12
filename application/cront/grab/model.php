@@ -152,14 +152,14 @@ class Model{
     }
     $sql = $this->db->insert_string($ptable,$data);
     $this->db->query($sql);
-    $this->db->insert_id();
+    $pid = $this->db->insert_id();
 //var_dump($data['pid'].'  '.$pid);exit;
     if(1 == $data['pid']){
        $sql = sprintf('UPDATE `vols` SET `firstpid`=\'%s\' WHERE `vid`=%d LIMIT 1',$data['vid'].'_'.$data['pid'],$data['vid']);
        echo $sql,"\n";
        $this->db->query($sql);
     }
-//    return $pid;
+    return $pid;
   }
   public function setPreAndNextVol($datas){
     if(!$datas)

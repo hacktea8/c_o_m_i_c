@@ -1,7 +1,8 @@
 *.swp
 *.swo
 *.bak
-*/cookie/*
+cookie/
+cache_images/
 *.sql*
 application/cront/grab/cookie/
 application/cache/compile_dir

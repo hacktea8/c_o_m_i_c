@@ -148,7 +148,7 @@ function getHtml(&$data){
   curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
  }
   curl_setopt($curl, CURLOPT_HEADER, 0);
- curl_setopt($curl, CURLOPT_TIMEOUT, 10);
+ curl_setopt($curl, CURLOPT_TIMEOUT, 35);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
   $tmpInfo = curl_exec($curl);
   if(curl_errno($curl)){
