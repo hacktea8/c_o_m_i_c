@@ -25,7 +25,7 @@ class Modelbase extends CI_Model{
   if($info){
    $info['id'] = $cid;
    $info['vols'] = $this->getComicVols($cid);
-   $info['cover'] = $this->getPicUrl($info['cover'],$info['host'],$info['ext']);
+   $info['cover'] = $this->getPicUrl($info['cover'],$info['host']);
    $info['atime'] = date('Y-m-d', $info['atime']);
    $info['rtime'] = date('Y-m-d', $info['rtime']);
    $info['relate'] = $this->getComicRelateByCid($info['cid'],$limit = 16);

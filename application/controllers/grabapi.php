@@ -8,9 +8,11 @@ class Grabapi extends CI_Controller {
  */
  public function __construct(){
   parent::__construct();
+echo 11119;exit;
   $this->load->model('grabapimodel');
  }
  public function getNonePagePicList(){
+echo 9999;exit;
   $index = $_POST['index'];
   $limit = $_POST['limit'];
   $data = $this->grabapimodel->getNonePagePicList($index, $limit);

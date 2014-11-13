@@ -3,10 +3,10 @@ require_once 'modelbase.php';
 
 class Mhmodel extends Modelbase{
  public $_table = 'page';
- public $_pagecol = '`pid`, `vid`, `cid`, `img`,host,ext, `isimg`, `isadult`, `hits`, `rtime`';
+ public $_pagecol = '`pid`, `vid`, `cid`, `img`,host, `isimg`, `isadult`, `hits`, `rtime`';
  public $_volcol = 'title,`vid`, `cid`, `vnum`, `pageset`, `isimg`, `firstpid`, `prepid`, `nextpid`, `isadult`, `hits`, `rtime` ';
- public $_pagesetcol = '`pid`, `img`,host,ext, `isadult`, `hits`, `rtime`';
- public $_comiccol = ' `cid`,`name`,`cover`,host,ext,`author`,`detail`,`letter`,`relatecomic`,`state`,`hits`,`volset`,`atime`,`rtime` ';
+ public $_pagesetcol = '`pid`, `img`,host, `isadult`, `hits`, `rtime`';
+ public $_comiccol = ' `cid`,`name`,`cover`,host,`author`,`detail`,`letter`,`relatecomic`,`state`,`hits`,`volset`,`atime`,`rtime` ';
  public $_cacheType = array('hotcomic' =>1);
  public function __construct(){
   parent::__construct();
@@ -59,7 +59,7 @@ class Mhmodel extends Modelbase{
   $sql = sprintf('SELECT %s FROM %s WHERE `vid`=%d AND `cid`=%d LIMIT 200',$this->_pagesetcol, $table, $vid, $cid);
   $list = $this->db->query($sql)->result_array();
   foreach($list as &$val){
-   $val['cover'] = $this->getPicUrl($val['img'],$val['host'],$val['ext']);
+   $val['cover'] = $this->getPicUrl($val['img'],$val['host']);
   }
   return $list;
  }
@@ -124,7 +124,7 @@ class Mhmodel extends Modelbase{
   $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`,host,ext, `vol`,rtime,atime,author FROM `comic` %s ORDER BY %s LIMIT %d,%d",$where,$order,$p,$per);
   $list = $this->db->query($sql)->result_array();
   foreach($list as &$v){
-   $v['cover'] = $this->getPicUrl($v['cover'],$v['host'],$v['ext']);
+   $v['cover'] = $this->getPicUrl($v['cover'],$v['host']);
    $v['url'] = $this->getUrl('comic', $v['id']);
    $v['volurl'] = $this->getUrl('vol', $v['id'], $v['vol']);
    $v['volname'] = $v['vol'].'话';
@@ -139,7 +139,7 @@ class Mhmodel extends Modelbase{
   $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`,host,ext, `vol` FROM `comic`  %s ORDER BY `hits` DESC LIMIT %d", $where, $limit);
   $list = $this->db->query($sql)->result_array();
   foreach($list as &$v){
-   $v['cover'] = $this->getPicUrl($v['cover'],$v['host'],$v['ext']);
+   $v['cover'] = $this->getPicUrl($v['cover'],$v['host']);
    $v['url'] = $this->getUrl('comic', $v['id']);
    $v['volurl'] = $this->getUrl('vol', $v['id'], $v['vol']);
    $v['volname'] = $v['vol'].'话';
@@ -152,7 +152,7 @@ class Mhmodel extends Modelbase{
   $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`,host,ext, `vol` FROM `comic` WHERE `state` = 1 %s ORDER BY `hits` DESC LIMIT %d", $where, $limit);
   $list = $this->db->query($sql)->result_array();
   foreach($list as &$v){
-   $v['cover'] = $this->getPicUrl($v['cover'],$v['host'],$v['ext']);
+   $v['cover'] = $this->getPicUrl($v['cover'],$v['host']);
    $v['url'] = $this->getUrl('comic', $v['id']);
    $v['volurl'] = $this->getUrl('vol', $v['id'], $v['vol']);
    $v['volname'] = $v['vol'].'话';
@@ -166,7 +166,7 @@ class Mhmodel extends Modelbase{
   $list = $this->db->query($sql)->result_array();
   foreach($list as &$v){
    $v['atime'] = date('Y/m/d',$v['atime']);
-   $v['cover'] = $this->getPicUrl($v['cover'],$v['host'],$v['ext']);
+   $v['cover'] = $this->getPicUrl($v['cover'],$v['host']);
    $v['url'] = $this->getUrl('comic', $v['id']);
    $v['volurl'] = $this->getUrl('vol', $v['id'], $v['vol']);
    $v['volname'] = $v['vol'].'话';
@@ -178,7 +178,7 @@ class Mhmodel extends Modelbase{
   $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`,host,ext, `vol` FROM `comic` WHERE `ishot`=2 LIMIT %d",$limit);
   $list = $this->db->query($sql)->result_array();
   foreach($list as &$v){
-   $v['cover'] = $this->getPicUrl($v['cover'],$v['host'],$v['ext']);
+   $v['cover'] = $this->getPicUrl($v['cover'],$v['host']);
    $v['url'] = $this->getUrl('comic', $v['id']);
    $v['volurl'] = $this->getUrl('vol', $v['id'], $v['vol']);
    $v['volname'] = $v['vol'].'话';

@@ -30,9 +30,11 @@ class phpCurl{
    //如果你想把一个头包含在输出中，设置这个选项为一个非零值。
     curl_setopt($this->ch,CURLOPT_RETURNTRANSFER, 1); ///设置不输出在浏览器上
     if(count($this->postVal) > 0){
-       curl_setopt($this->ch,CURLOPT_POST,count($this->postVal));
+       curl_setopt($this->ch,CURLOPT_POST,1);
+     curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, 'POST'); 
     /////如果你想PHP去做一个正规的HTTP POST，设置这个选  项为一个非零值。这个POST是普通的 application/x-www-from-urlencoded 类型，多数被HTML表单使用。
-       curl_setopt($this->ch,CURLOPT_POSTFIELDS, $this->postVal);
+     $pd = http_build_query($this->postVal);
+       curl_setopt($this->ch,CURLOPT_POSTFIELDS, $pd);
     }
     ////传递一个作为HTTP "POST"操作的所有数据的字符串。
 //    $url_path = parse_url($url);
@@ -61,6 +63,8 @@ class phpCurl{
     if(!$this->html){
        echo curl_error($this->ch),"\n";
     }
+    $d = curl_getinfo($this->ch);
+var_dump($d);
     curl_close($this->ch);
     return $this->html;
   }
