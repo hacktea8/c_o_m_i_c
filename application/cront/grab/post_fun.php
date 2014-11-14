@@ -13,10 +13,8 @@ function getNonePagePicList($index = 0,$limit = 10){
   'index' => $index
   ,'limit' => $limit
   );
-  $apicurl->config['header'] = 1;
-var_dump($apicurl);
   $html = $apicurl->getHtml();
-var_dump($html);exit;
+//var_dump($html);exit;
   $return = json_decode($html,1);
 //var_dump($return);exit;
   return $return;

@@ -22,20 +22,22 @@ define('S_CHARSET','GBK');
 
 $volList = getNonePagePicList(0,10);
 $volList = $volList?$volList:array();
-var_dump($volList);exit;
+//var_dump($volList);exit;
 foreach($volList as $vinfo){
  //Vol Pages List
  $cid = &$vinfo['cid'];
  $vid = &$vinfo['vid'];
- $comicurl = sprintf($curSite['domain'].$curSite['comicurl'], $cid);
- $dwdata = array('url'=>$comicurl,'referer'=>$curSite['domain']);
- $html = getHtml($dwdata);
- preg_match('#<li><a href=http://page\.hhcomic\.net/\d+/\d+\.htm\?s=(\d+) target=_blank>[^<]*</a>#Uis', $html, $match);
- $sid = @$match[1];
- if( !$sid){
-  die("+++ ComicId: $cid Vid: $vid Get Sid Failed! +++\n");
+ $ocid = &$vinfo['ourl'];
+ $vol = &$vinfo['vol'];
+ $comicurl = sprintf($curSite['domain'].$curSite['comicurl'], $ocid);
+echo $comicurl,"\n";
+ $volsinfo = getmhvols($comicurl);
+ if(empty($volsinfo['vols'])){
+   die("Url:$comicurl get volsinfo failed!\n");
  }
- $purl = sprintf('http://page.hhcomic.net/%d/%d.htm?s=%d',$cid, $vid, $sid);
+ $purl = $volsinfo['vols'][$vol-1];
+echo $purl," Vol: $vol \n";
+//exit;
  $info = getmhpageinfo($purl);
  var_dump($info);exit;
  $pages = explode('|',$info['page']);

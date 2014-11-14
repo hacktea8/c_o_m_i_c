@@ -63,8 +63,6 @@ class phpCurl{
     if(!$this->html){
        echo curl_error($this->ch),"\n";
     }
-    $d = curl_getinfo($this->ch);
-var_dump($d);
     curl_close($this->ch);
     return $this->html;
   }

@@ -92,7 +92,11 @@ function getmhpageinfo($url = ''){
    $html = iconv('GBK','UTF-8',$html);
 //file_put_contents('hh.html',$html);
    preg_match('#var PicLlstUrl = "([^"]+)"#is',$html,$match);
-   $PicLlstUrl = $match[1];
+   $PicLlstUrl = @$match[1];
+ if(empty($PicLlstUrl)){
+  file_put_contents('page_pic_failed.html',$html);
+  echo "Get Page Pics failed Ourl: $url \n";exit;
+ }
    preg_match('#s=(\d+)#is',$url,$match);
    $server = $match[1];
    $info = getmhserver();
