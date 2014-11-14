@@ -10,21 +10,20 @@ class grabapiModel extends CI_Model{
  }
  public function getNonePageList($cid,$vid){
   $table = $this->get_page_table($vid);
-  $sql = sprintf("SELECT pid FROM %s WHERE isimg=0 AND vid=%d AND cid=%d LIMIT %d",$table,$vid,$cid, $limit);
+  $sql = sprintf("SELECT pid FROM %s WHERE isimg=0 AND vid=%d AND cid=%d ",$table,$vid,$cid);
   $list = $this->db->query($sql)->result_array();
   $list = $list? $list: array();
   return $list;
  }
  public function getNonePagePicList($index = 0, $limit = 30){
   $table = $this->get_page_table($index);
-  $sql = sprintf("SELECT vid,cid FROM %s WHERE isimg=0 GROUP BY vid LIMIT %d",$table, $limit);
-echo $sql;exit;
+  $sql = sprintf("SELECT v.vid,v.cid,c.ourl,vl.vnum FROM %s as v INNER JOIN comic as c INNER JOIN vols as vl WHERE v.cid=c.id AND v.vid=vl.vid AND v.isimg=0 GROUP BY v.vid LIMIT %d",$table, $limit);
   $list = $this->db->query($sql)->result_array();
   $list = $list?$list:array();
   $r = array();
   foreach($list as $vf){
    $vl = $this->getNonePageList($vf['cid'], $vf['vid']);
-   $r[] = array('vid'=>$vf['vid'],'cid'=>$vf['cid'],'list'=>$vl);
+   $r[] = array('vid'=>$vf['vid'],'cid'=>$vf['cid'],'ourl'=>$vf['ourl'],'vol'=>$vf['vnum'],'list'=>$vl);
   }
   return $r;
  }
