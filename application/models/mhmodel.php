@@ -175,7 +175,7 @@ class Mhmodel extends Modelbase{
  }
 //全彩精选
  public function getFullcolorChoiceComics($limit = 10){
-  $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`,host,ext, `vol` FROM `comic` WHERE `ishot`=2 LIMIT %d",$limit);
+  $sql = sprintf("SELECT `id`, `cid`, `name`, `cover`,host,ext, `vol` FROM `comic` ORDER BY hits DESC LIMIT %d",$limit);
   $list = $this->db->query($sql)->result_array();
   foreach($list as &$v){
    $v['cover'] = $this->getPicUrl($v['cover'],$v['host']);

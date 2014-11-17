@@ -1,5 +1,6 @@
 <?php
 
+redirect();
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
@@ -202,7 +203,52 @@ if (defined('ENVIRONMENT'))
  * And away we go...
  *
  */
+/* cache html  */
+define('CACHEDIR',APPPATH.'cache/webhtmlcache/');
+webhtmlcache();
+
 require_once BASEPATH.'core/CodeIgniter.php';
 
-/* End of file index.php */
-/* Location: ./index.php */
+function redirect(){
+$domain = $_SERVER['HTTP_HOST'];// 获得当前输入的 url
+$root = 'mh.emubt.com';
+if($root == $domain){
+  return false;
+}
+$uri = $_SERVER['REQUEST_URI'];
+$jumpUrl = 'Location: http://'.$root.$uri;
+
+header('HTTP/1.1 301 Moved Permanently');
+header($jumpUrl);// 301 跳转到设置的 url
+exit(0);
+}
+function webhtmlcache(){
+ $param = explode('/',$_SERVER['REQUEST_URI']);
+ $cid = intval($param[3]);
+ $cache_file = '';
+ if( stripos($_SERVER['REQUEST_URI'],'/comic/') >0){
+ $cache_file = CACHEDIR.($cid%10).'/'.$cid.'.html';
+  $expire = 86400;
+ }elseif( stripos($_SERVER['REQUEST_URI'],'/vol/') >0){
+  $vid = intval($param[4]);
+  $cache_file = CACHEDIR.($cid%10)."/{$cid}_{$vid}.html";
+  $expire = 566400;
+ }
+ if( $cache_file && file_exists($cache_file) && (time() - filemtime($cache_file)) < $expire){
+  $html = file_get_contents($cache_file);
+  echo $html;exit;
+ }
+//走PHP路由
+#echo $cache_file;exit;
+}
+function makedir($dir,$mod = 0777,$mkindex = true){
+if(!is_dir($dir)) {
+ makedir(dirname($dir), $mod, $mkindex);
+ @mkdir($dir, $mod);
+ @chmod($dir, 0777);
+ if(!empty($mkindex)) {
+   @touch($dir.'/index.htm'); @chmod($dir.'/index.htm', 0777);
+ }
+}
+return true;
+}

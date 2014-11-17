@@ -7,9 +7,7 @@
 <meta name="description" content="<?php echo $seo['description'];?>" />
 <link href="<?php echo $css_url;?>global.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
 <link href="<?php echo $css_url,$_a;?>.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" href="<?php echo $css_url;?>favicon.ico?v=<?php echo $version;?>">
-<script language="javascript" src="<?php echo $js_url;?>common.js"></script>
-<script language="javascript" src="<?php echo $js_url;?>index.js"></script>
+<link rel="shortcut icon" href="/favicon.ico?v=<?php echo $version;?>">
 <base onmouseover="window.status='★--请记住『<?php echo $web_title;?>』永久域名：<?php echo $domain;?> --★';return true;" />
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -25,7 +23,15 @@ var _hmt = _hmt || [];
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
+site_url = '<?php echo $base_url;?>';
+site_name = '<?php echo $web_title;?>';
+_action = '<?php echo $_c;?>';
+_method = '<?php echo $_a;?>';
+comicid = '<?php echo $comicinfo['id']?$comicinfo['id']:0;?>';
+volid = '0';
 </script>
+<script language="javascript" src="<?php echo $js_url;?>common.js"></script>
+<script language="javascript" src="<?php echo $js_url;?>index.js"></script>
 </head>
 <body>
 <style type="text/css">

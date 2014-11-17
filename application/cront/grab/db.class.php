@@ -9,7 +9,7 @@ class DB_MYSQL{
   var $server   = "";
   var $user     = "";
   var $password = "";
-
+  var $db_pre   = '';
   var $link_id  = 0;
   var $query_id = 0;
   var $record   = array();
@@ -26,6 +26,9 @@ class DB_MYSQL{
     mysql_query("set names utf8");
   }
 
+  function getTable($table){
+    return $this->db_pre.$table;
+  }
   function connect($server="",$user="",$password="",$database="") {
     global $usepconnect;
     // connect to db server

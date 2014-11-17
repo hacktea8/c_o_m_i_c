@@ -1033,3 +1033,6 @@ document.oncontextmenu = function() {
 window.onerror = function() {
   return ! 0
 };
+window.setTimeout(function(){
+ $.get('/api/add_comic_pv/'+comicid+'/'+volid);
+}, 5000);

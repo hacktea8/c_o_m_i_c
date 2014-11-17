@@ -1,5 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Webbase extends CI_Controller {
+ static public $ttl = array('5m'=>300,'15m'=>900,'30m'=>1800,'1h'=>3600,'3h'=>10800,'6h'=>21600,'9h'=>32400,'12h'=>43200,'1d'=>86400,'3d'=>253200,'5d'=>432000,'7d'=>604800);
  public $viewData = array();
  protected $userInfo = array('uid'=>0,'uname'=>'','isvip'=>0);
  public $adminList = array(3);

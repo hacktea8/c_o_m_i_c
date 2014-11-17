@@ -16,7 +16,11 @@ class Index extends Viewbase {
   $this->assign(array('indexData'=>$indexData,'comicinfo' => $comicinfo,'indexColdBlock' => $indexColdBlock));
   $this->setseo();
 //var_dump($this->viewData);exit;
-  $this->view('index_index');	
+  $this->view('index_index');
+  if(self::$static_html){
+   $view = APPPATH.'../index.html';
+   $this->html_file($view);
+  }
  }
 	
  public function comicletter($char = 'A',$order = 'new',$page = 1){   
@@ -29,12 +33,17 @@ class Index extends Viewbase {
   $this->view('index_comicletter'); 
  }
   
- public function cate($cid,$order='atime',$page=1){
+ public function cate($cid = 0,$order='atime',$page=1){
   $cid = intval($cid);
   $page = intval($page);
   $lists = $this->mhmodel->getComicListByCid($cid, $order, $page, $this->_per);
   $key = 'cate'.$cid.'topdata';
-  $cateTopData = $this->mhmodel->getCateTopData($cid);
+  $mk = 'site_cate_topdata'.$cid;
+  $cateTopData = $this->mem->get($mk);
+  if( empty($cateTopData)){
+   $cateTopData = $this->mhmodel->getCateTopData($cid);
+   $this->mem->set($mk,$cateTopData,self::$ttl['1h']);
+  }
   $this->load->library('pagination');
   $config['cur_page'] = $page;
   $config['base_url'] = sprintf('/index/cate/%d/%s/',$cid,$page);
@@ -49,12 +58,17 @@ class Index extends Viewbase {
   $this->view('index_cate');
  }
 
- public function comic($comicid){
-  if(!$comicid)
+ public function comic($comicid = 0){
+  if( !$comicid)
    return false;
 
   $comicinfo = $this->mhmodel->getComicinfoByid($comicid);
-  $newUpdateData = $this->mhmodel->getComicRenewData($comicinfo['cid']);
+  $mk = 'site_comic_newupdate'.$comicinfo['cid'];
+  $newUpdateData = $this->mem->get($mk);
+  if( empty($newUpdateData)){
+   $newUpdateData = $this->mhmodel->getComicRenewData($comicinfo['cid']);
+   $this->mem->set($mk,$newUpdateData,self::$ttl['1h']);
+  }
   $comicinfo['status'] = $comicinfo['status'] ? '已完结': '连载中';
 /*/
 echo '<pre>';
@@ -67,6 +81,10 @@ var_dump($comicinfo);exit;
   $intro = mb_substr($intro,0,180,'UTF-8');
   $this->setseo($title,$keyword,$intro);
   $this->view('index_comic');
+  if(self::$static_html){
+   $view = CACHEDIR.($comicid%10).'/'.$comicid.'.html';;
+   $this->html_file($view);
+  }
  }
  public function volinfo($cid = 0,$vid = 0){
   if( !$cid || !$vid){
@@ -112,6 +130,10 @@ exit;
 /**/
   $this->assign(array('comicinfo' => $comicinfo,'comicid'=>$cid,'volid'=>$vid)); 
   $this->load->view('comic_page', $this->viewData);
+  if(self::$static_html){
+   $view = CACHEDIR.($cid%10)."/{$cid}_{$vid}.html";
+   $this->html_file($view);
+  }
  }
  static protected function js_encode($code = '',$a = 62){
   $code = preg_replace('#[\r\n]+#','',$code);
