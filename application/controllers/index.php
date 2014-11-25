@@ -17,7 +17,7 @@ class Index extends Viewbase {
   $this->setseo();
 //var_dump($this->viewData);exit;
   $this->view('index_index');
-  if(self::$static_html){
+  if(self::$robot && self::$static_html){
    $view = APPPATH.'../index.html';
    $this->html_file($view);
   }
@@ -81,7 +81,7 @@ var_dump($comicinfo);exit;
   $intro = mb_substr($intro,0,180,'UTF-8');
   $this->setseo($title,$keyword,$intro);
   $this->view('index_comic');
-  if(self::$static_html){
+  if(self::$robot && self::$static_html){
    $view = CACHEDIR.($comicid%10).'/'.$comicid.'.html';;
    $this->html_file($view);
   }
@@ -130,7 +130,7 @@ exit;
 /**/
   $this->assign(array('comicinfo' => $comicinfo,'comicid'=>$cid,'volid'=>$vid)); 
   $this->load->view('comic_page', $this->viewData);
-  if(self::$static_html){
+  if(self::$robot && self::$static_html){
    $view = CACHEDIR.($cid%10)."/{$cid}_{$vid}.html";
    $this->html_file($view);
   }

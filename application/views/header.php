@@ -5,8 +5,8 @@
 <title><?php echo $seo['title'];?></title>
 <meta name="keywords" content="<?php echo $seo['keyword'];?>" />
 <meta name="description" content="<?php echo $seo['description'];?>" />
-<link href="<?php echo $css_url;?>global.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
-<link href="<?php echo $css_url,$_a;?>.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
+<link href="<?php echo $cdn_url;?>/public/css/global.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
+<link href="<?php echo $cdn_url,'/public/css/',$_a;?>.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="/favicon.ico?v=<?php echo $version;?>">
 <base onmouseover="window.status='★--请记住『<?php echo $web_title;?>』永久域名：<?php echo $domain;?> --★';return true;" />
 <script>
@@ -27,11 +27,12 @@ site_url = '<?php echo $base_url;?>';
 site_name = '<?php echo $web_title;?>';
 _action = '<?php echo $_c;?>';
 _method = '<?php echo $_a;?>';
+_cdn_url = '<?php echo $cdn_url;?>';
 comicid = '<?php echo $comicinfo['id']?$comicinfo['id']:0;?>';
 volid = '0';
 </script>
-<script language="javascript" src="<?php echo $js_url;?>common.js"></script>
-<script language="javascript" src="<?php echo $js_url;?>index.js"></script>
+<script language="javascript" src="<?php echo $cdn_url;?>/public/js/common.js?v=<?php echo $version;?>"></script>
+<script language="javascript" src="<?php echo $cdn_url;?>/public/js/index.js?v=<?php echo $version;?>"></script>
 </head>
 <body>
 <style type="text/css">

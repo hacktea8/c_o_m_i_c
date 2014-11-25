@@ -5,7 +5,8 @@ class Viewbase extends Webbase {
  public $_channel = '';
  static public $seo = array('title'=>'','keyword'=>'','description'=>'');
  static public $static_html = '1';
- 
+ static public $robot = 1;
+
  public function __construct(){
   parent::__construct();
   $this->load->model('mhmodel');
@@ -26,6 +27,7 @@ class Viewbase extends Webbase {
    $this->mem->set($k,$initData,self::$ttl['1h']);
   }
   $this->_channel = $this->_channel?$this->_channel:$initData['channel'];
+  $this->checkIsrobot();
   $this->assign($initData);
  }
  protected function setseo($title = '',$keyword = '',$description = ''){
@@ -54,5 +56,10 @@ class Viewbase extends Webbase {
   $this->load->view('header',$this->viewData);
   $this->load->view($view);
   $this->load->view('footer');
+ }
+ protected function checkIsrobot(){
+  if( isset($_SERVER['HTTP_USER_AGENT']) && false !== stripos($_SERVER['HTTP_USER_AGENT'],'spider')){
+   self::$robot = 0;
+  }
  }
 }

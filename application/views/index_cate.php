@@ -29,14 +29,14 @@
 <div class="comicList" id="comicList">
 <ul style="display: block;">
 <?php foreach($cateTopData['hotSerial'] as &$row){ ?>
-<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><img src="<?php echo $row['cover'];?>" alt="<?php echo $row['name'];?>"></a>
+<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><img src="<?php echo $row['cover'];?>" onerror="errimg(this);" alt="<?php echo $row['name'];?>"></a>
 <a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
 [<a class="red" href="<?php echo $row['volurl'];?>" target="_blank" title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
 <?php } ?>
 </ul>
 <ul style="display: none;">
 <?php foreach($cateTopData['classicEnd'] as &$row){ ?>
-<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><img src="<?php echo $row['cover'];?>" alt="<?php echo $row['name'];?>"></a>
+<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><img src="<?php echo $row['cover'];?>" onerror="errimg(this);" alt="<?php echo $row['name'];?>"></a>
 <a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
 [<a class="red" href="<?php echo $row['volurl'];?>" target="_blank" title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
 <?php } ?>
@@ -75,7 +75,7 @@
 <ul class="bookList">
 <?php foreach($lists as &$row){ ?>
 <li><a title="<?php echo $row['name'];?>" href="<?php echo $row['url'];?>" target="_blank">
-<img alt="<?php echo $row['name'];?>" src="<?php echo $row['cover'];?>"><?php echo $row['name'];?></a><em>
+<img alt="<?php echo $row['name'];?>" src="<?php echo $row['cover'];?>" onerror="errimg(this);"><?php echo $row['name'];?></a><em>
 「更新到：<a class="red" href="<?php echo $row['volurl'];?>" target="_blank" title="最近更新时间:<?php echo $row['rtime'];?>"><?php echo $row['volname'];?></a> 」</em></li>
 <?php } ?>
 </ul>

@@ -95,7 +95,12 @@ function getmhpageinfo($url = ''){
    $PicLlstUrl = @$match[1];
  if(empty($PicLlstUrl)){
   file_put_contents('page_pic_failed.html',$html);
-  echo "Get Page Pics failed Ourl: $url \n";exit;
+  echo "Get Page Pics failed Ourl: $url \n";
+  if(false !== stripos($html,'找不到文件或目录')){
+   $PicLlstUrl = array();
+  }else{
+   exit;
+  }
  }
    preg_match('#s=(\d+)#is',$url,$match);
    $server = $match[1];

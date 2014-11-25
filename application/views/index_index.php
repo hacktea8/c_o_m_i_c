@@ -20,7 +20,7 @@
 <ul style="display: block;">
 <?php foreach($indexData['hotSerial'] as &$row){?>
 	<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>">
-<img src="<?php echo $row['cover'];?>" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
+<img src="<?php echo $row['cover'];?>" onerror="errimg(this);" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
 [<a class="red" href="<?php echo $row['volurl'];?>" target="_blank"
 		title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
 <?php } ?>
@@ -28,7 +28,7 @@
 <ul>
 <?php foreach($indexData['classicEnd'] as &$row){?>
 	<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>">
-<img src="<?php echo $row['cover'];?>" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
+<img src="<?php echo $row['cover'];?>" onerror="errimg(this);" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
 [<a class="red" href="<?php echo $row['volurl'];?>" target="_blank"
 		title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
 <?php } ?>
@@ -36,7 +36,7 @@
 <ul>
 <?php foreach($indexData['newGround'] as &$row){?>
 	<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>">
-<img src="<?php echo $row['cover'];?>" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
+<img src="<?php echo $row['cover'];?>" onerror="errimg(this);" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
 [<a class="red" href="<?php echo $row['volurl'];?>" target="_blank"
 		title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
 <?php } ?>
@@ -44,7 +44,7 @@
 <ul>
 <?php foreach($indexData['fullcolorChoice'] as &$row){?>
 	<li><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>">
-<img src="<?php echo $row['cover'];?>" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
+<img src="<?php echo $row['cover'];?>" onerror="errimg(this);" alt="<?php echo $row['name'];?>" /></a><a href="<?php echo $row['url'];?>" target="_blank" title="<?php echo $row['name'];?>"><?php echo $row['name'];?></a>
 [<a class="red" href="<?php echo $row['volurl'];?>" target="_blank"
 		title="<?php echo $row['volname'];?>"><?php echo $row['volname'];?></a>]</li>
 <?php } ?>
@@ -82,6 +82,7 @@
 <div>
 <div class="hotChapter">
 <div style="border: 1px solid #FFFFFF;">
+<?php if(0){?>
 <h2><span><strong>火影忍者662</strong> + <strong>海贼王735</strong>
 + <strong>死神565</strong> 预计1月22日更新!</span> 热门漫画更新</h2>
 <ul>
@@ -106,6 +107,7 @@
 		target="_blank">死神561</a><a href="/comic/120/sishen560.shtml"
 		target="_blank">死神560</a></li>
 </ul>
+<?php }?>
 <div class="blank2"></div>
 </div>
 </div>

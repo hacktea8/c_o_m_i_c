@@ -16,9 +16,10 @@ function addBookmarkDelay(){
   alert( "对不起！添加到收藏夹失败，请使用Ctrl+D进行添加！" );  
  }  
 }
-var local = document.location.href.toLowerCase();
-if(local.indexOf("fav")>0) Cookie.create('addfav','addfavcookies',365);
-window.setTimeout(bookMark,5000);
+function errimg(obj){
+ obj.src = _cdn_root+'/public/images/comic_404.png';
+ return true;
+}
 function toFav(){
  document.writeln("<a class='baiduFav' href=\"javascript:window.open(\'http:\/\/cang.baidu.com\/do\/add?it=\'+encodeURIComponent(document.title.substring(0,76))+\'&iu=\'+encodeURIComponent(location.href)+\'&fr=ien#nw=1\',\'_blank\',\'scrollbars=no,width=600,height=450,left=75,top=20,status=no,resizable=yes\');void(0)\" title='添加到百度搜藏'><span>添加到百度搜藏</span><\/a>");
  document.writeln("<a class='qqFav' href=\"javascript:window.open(\'http:\/\/shuqian.qq.com\/post?title=\'+encodeURIComponent(document.title)+\'&uri=\'+encodeURIComponent(document.location.href)+\'&jumpback=2&noui=1\',\'favit\',\'width=960,height=600,left=50,top=50,toolbar=no,menubar=no,location=no,scrollbars=yes,status=yes,resizable=yes\');void(0)\" title='收藏到QQ书签'><span>收藏到QQ书签</span><\/a>");

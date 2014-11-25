@@ -18,6 +18,7 @@ $config['base_url'] = '';
 $config['domain'] = 'mh.emubt.com';
 $config['login_url'] = 'http://www.hacktea8.com/login.php?jumpurl=';
 $config['js_url'] = '/public/js/';
+$config['cdn_url'] = '';
 $config['css_url'] = '/public/css/';
 $config['img_url'] = '/public/images/';
 $config['toptips'] = '<a class="close" href="javascript:;" onclick="document.getElementById(\'toptips\').style.display=\'none\';">关闭</a>        

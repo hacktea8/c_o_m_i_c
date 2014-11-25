@@ -13,6 +13,21 @@
 <style type="text/css">
 em{color:red;}
 </style>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-43439571-3', 'auto');
+ga('send', 'pageview');
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?bb20855f8f88890af93964c61f152421";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 <script type="text/javascript" src="<?php echo $js_url;?>jquery-1.7.2.js?v=<?php echo $version;?>"></script>
 </head>
 <body>
@@ -106,7 +121,7 @@ $row['update_timestamp']=date('Y-m-d',$row['update_timestamp']);
                       </p>
                   </div>
                   <div class="li-contnet">
-                      <a href="/index/comic/<?php echo $row['url'];?>" class="pic"><img onerror="javascript:this.src='<?php echo $error_img;?>';" src="<?php echo $row['thumbnail'];?>" title="<?php echo strip_tags($row['title']); ?>" alt="<?php echo strip_tags($row['title']);?>" /></a>
+                      <a href="/index/comic/<?php echo $row['url'];?>" class="pic"><img onerror="javascript:this.src='/public/images/comic_404.png';" src="<?php echo $row['thumbnail'];?>" title="<?php echo strip_tags($row['title']); ?>" alt="<?php echo strip_tags($row['title']);?>" /></a>
 <!--
                       <p class="soft-info ext">
                           <span class="item"><span class="til">语言：</span>简体中文</span>

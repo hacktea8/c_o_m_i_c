@@ -60,7 +60,7 @@
 <div class="blank4"></div>
 </div>
 <div class="bookCover"><img
-	src="<?php echo $comicinfo['cover'];;?>" alt="<?php echo $comicinfo['name'];?>漫画" /></div>
+	src="<?php echo $comicinfo['cover'];?>" onerror="errimg(this);" alt="<?php echo $comicinfo['name'];?>漫画" /></div>
 </div>
 <div
 	style="background-color: #FFFFFF; border-top: 1px solid #999999; clear: both;">
