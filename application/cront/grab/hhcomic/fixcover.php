@@ -24,29 +24,44 @@ $curSite = $sitetype[2];
 define('S_CHARSET','GBK');
 
 $list = $model->getNoneCoverList(4,30);
+
 foreach($list as $v){
- $imgurl = sprintf($curSite['domain'].$curSite['comicurl'],$v['ourl']);
-//echo $imgurl,"\n";exit;
+ $origin_cover = $imgurl = sprintf($curSite['domain'].$curSite['comicurl'],$v['ourl']);
+ echo $imgurl,"\n";
  $dwdata = array('url'=>$imgurl,'referer'=>$curSite['domain']);
  $html = getHtml($dwdata);;
  preg_match('# <td width="176" rowspan="2" ><img src="([^"]+)" alt="[^"]+"[^>]* width="165" height="225" style="[^"]*" /></td>#Uis',$html,$match);
  //var_dump($match);exit;
  $imgurl = @$match[1];
- $updata = array('imgurl'=>$imgurl
- ,'referer'=>$curSite['domain']
- );
- $r = upload2Ttk($updata);
+ if( empty($imgurl)){
+  echo "Get cover Failed! \n";exit;
+ }
+ echo "== Origin cover_url $imgurl ====\n";
+ for($ii = 0;$ii<4;$ii++){
+  $updata = array('imgurl'=>$imgurl
+  ,'referer'=>$curSite['domain']
+  );
+  $r = upload2Ttk($updata);
+  if( isset($r['key'])){
+   break;
+  }
+  sleep(8);
+ }
  $setdata = array('isimg'=>14);
  if(1 == $r['flag']){
   $setdata['isimg'] = 1;
   $setdata['host'] = $r['host'];
   $setdata['cover'] = $r['key'];
  }else{
-  echo $imgurl,"\n";
-  //var_dump($r);exit;
+  echo "Cover upload failed ",$imgurl,"\n";
+  $finfo = get_headers($origin_cover,1);
+  $size = $finfo["Content-Length"];
+  if($size < 1000){
+   var_dump($r);exit;
+  }
  }
  echo "Current Fix Comic id $v[id] \n";
+exit;
  $model->updateComicInfo($setdata,$v['id']);
-//exit;
  sleep(6);
 }

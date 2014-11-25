@@ -9,6 +9,9 @@ class Modelbase extends CI_Model{
   $this->db = $this->load->database('default',true);
  }
  public function getPicUrl($key,$host = 0){              
+  if( !$key){
+   return '/public/images/comic_404.png';
+  }
   if($host){
    $url = sprintf('http://%s.tietuku.com/%s.jpg',$host,$key);
   }else{

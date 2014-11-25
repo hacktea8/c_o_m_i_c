@@ -1,13 +1,13 @@
 .tabList li{width:287px; float:left; text-align:center; background-color:#CCCCCC; line-height:2.0em; font-size:14px; background-color:#F0F0F0; border-left:1px solid #FFFFFF; border-right:1px solid #999; border-bottom:1px solid #999;}
 .tabList li strong{ border-top:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF; display:block; cursor:pointer;}
 .tabList li.on{ background-color:#FFFFFF; border-bottom:1px solid #FFFFFF; color:#FF0000;}
-.tabList li.on strong{ background:url(/template/default/images/bar_bg.gif) 0 0 repeat-x;}
+.tabList li.on strong{ background:url(/public/images/bar_bg.gif) 0 0 repeat-x;}
 .tabList li.end{border-right:none; width:288px;}
 
 .comicList {width:580px; padding-left:10px; overflow:hidden; }
 .comicList ul{display:none;}
-.comicList li{float:left; background:url(/template/default/images/cover_bg.gif) center 0 no-repeat; width:140px; height:194px; text-align:center; line-height:2.0em;overflow:hidden;}
-.comicList li a img{border:0; width:120px; height:160px; display:block; background:url(/template/default/images/sloading.gif) center no-repeat; margin:1px auto 8px; margin-right:13px;}
+.comicList li{float:left; background:url(/public/images/cover_bg.gif) center 0 no-repeat; width:140px; height:194px; text-align:center; line-height:2.0em;overflow:hidden;}
+.comicList li a img{border:0; width:120px; height:160px; display:block; background:url(/public/images/sloading.gif) center no-repeat; margin:1px auto 8px; margin-right:13px;}
 
 .leftPart{border:1px solid #999; float:left; width:154px; height:430px; overflow:hidden; margin-right:8px;}
 .middlePart{border:1px solid #999; float:left; width:580px; height:430px; overflow:hidden;}

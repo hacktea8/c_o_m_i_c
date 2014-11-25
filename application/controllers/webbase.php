@@ -28,7 +28,7 @@ class Webbase extends CI_Controller {
   ,'cdn_url'=>$this->config->item('cdn_url')
   ,'img_url'=>$this->config->item('img_url'),'js_url'=>$this->config->item('js_url'),
   'toptips'=>$this->config->item('toptips'),'web_title'=>$this->config->item('web_title')
-  ,'version'=>20141124,'login_url'=>$this->config->item('login_url'),'uinfo'=>$this->userInfo
+  ,'version'=>20141125,'login_url'=>$this->config->item('login_url'),'uinfo'=>$this->userInfo
   
   ));
   //  var_dump($uinfo);//exit;

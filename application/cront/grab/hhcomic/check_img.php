@@ -13,17 +13,24 @@ $mhcurl->config['cookie'] = 'cookiehhcomic';
 
 $m = new Model();
 
-$list = $m->getNoneCoverList($flag = 4,$limit = 60);
+$list = $m->getCheckCoverList($flag = 0,$limit = 60);
 foreach($list as $v){
- $updata = array('isimg'=>14);
- 
+ if($v['host']){
+  echo "=== check cover is OK ====\n";break;
+ }
+ $img = sprintf('http://img.hacktea8.com/showpic.php?key=%s',$v['cover']);
+ $finfo = get_headers($img,1);
+print_r($finfo);
+ $size = $finfo["Content-Length"];
+ $updata = array('check_img'=>1);
  if($size < 1000){
   $updata['cover'] = '';
   $updata['isimg'] = 4;
  }
- $isimg = $updata['isimg'];
+echo $size," $v[cover] \n";
+ $isimg = isset($updata['isimg'])?4:1;
  echo "=== Cover url $img Is img $isimg ===\n";
- //var_dump($updata);exit;
+ var_dump($updata);exit;
  $m->updateComicInfo($updata,$v['id']);
 sleep(16);
  

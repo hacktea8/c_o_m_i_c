@@ -11,11 +11,18 @@ class Model{
  public function getNoneCoverList($flag = 4,$limit = 60){
   $sql = sprintf('SELECT id,ourl FROM `comic` where isimg=%d LIMIT %d',$flag,$limit);
   $list = $this->db->result_array($sql);
+  $list = $list?$list:array();
   return $list;
  }
  public function updateComicInfo($data,$id){
   $sql = $this->db->update_string('comic',$data, array('id'=>$id));
   return $this->db->query($sql);
+ }
+ public function getCheckCoverList($flag = 0,$limit = 60){
+  $sql = sprintf('SELECT id,host,cover,ourl FROM `comic` where check_img=%d LIMIT %d',$flag,$limit);
+  $list = $this->db->result_array($sql);
+  $list = $list?$list:array();
+  return $list;
  }
 /**** end fix cover ******/
   public function getPostErrorComicPagePic($q=0,$limit=30){
