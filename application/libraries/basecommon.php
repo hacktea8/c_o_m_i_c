@@ -43,6 +43,7 @@ class Basecommon{
     $groups[] = $uinfo['groupid'];
     $groups = array_unique($groups);
     $uinfo['groups'] = $groups;
+    $uinfo['name'] = mb_convert_encoding($uinfo['name'],'UTF-8','GBK');
     return $uinfo;
   }
   public function strtrip($request,$uckey){

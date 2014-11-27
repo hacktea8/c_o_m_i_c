@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "index";
 $route['404_override'] = '';
+$route['comic/(\d+)'] = 'index/comic/$1';
 
 
 /* End of file routes.php */

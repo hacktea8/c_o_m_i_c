@@ -95,7 +95,7 @@ var_dump($comicinfo);exit;
   $comicinfo = $this->vol($cid, $vid);
   $this->_self = 0;
   $code = 'var cInfo={"cid":'.$comicinfo['volinfo']['vid'].',"p":"'.$comicinfo['volinfo']['p'].'","n":"'.$comicinfo['volinfo']['n'].'","cname":"'.$comicinfo['volinfo']['name'].'","burl":"/index/vol/'.$comicinfo['volinfo']['cid'].'/'.$comicinfo['volinfo']['vid'].'","files":['.$comicinfo['volinfo']['pagesetimg'].'],"bid":'.$comicinfo['volinfo']['cid'].',"len":'.$comicinfo['volinfo']['pagesize'].',"bname":"'.$comicinfo['name'].'","finished":"'.$comicinfo['state'].'"};';
-  $arand = mt_rand(62,100);
+  $arand = 62;//mt_rand(62,100);
   $volinfo = self::js_encode($code,$arand);
   $this->load->view('index_volinfo', compact('volinfo'));
  }
@@ -136,6 +136,7 @@ exit;
   }
  }
  static protected function js_encode($code = '',$a = 62){
+return $code;
   $code = preg_replace('#[\r\n]+#','',$code);
   $code = preg_replace("#'#","\\'",$code);
   preg_match_all('#\b(\w+)\b#',$code,$tmp);
@@ -151,7 +152,11 @@ exit;
   }
   $len = count($dict);
   for($i=0; $i<$len; $i++){
+try{
   $ch = self::num($i,$a);
+}catch(Exception $e){
+  var_dump( $e->getMessage());exit;
+ }
   $code = preg_replace('#\b'.$dict[$i].'\b#U',$ch,$code);
   if($ch == $dict[$i])
    $dict[$i]='';

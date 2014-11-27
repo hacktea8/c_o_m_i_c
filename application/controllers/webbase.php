@@ -55,7 +55,7 @@ class Webbase extends CI_Controller {
   return false;
  }
  protected function segment($i, $default = 'maindex'){
-  $q = $this->uri->segment($i, $default);
+  $q = $this->uri->rsegment($i, $default);
   $q = str_replace('.','',$q);
   return $q ? $q: $default;
  }

@@ -58,7 +58,7 @@ ga('send', 'pageview');
 <h2><?php echo $comicinfo['volinfo']['name'];?></h2>
 </div>
 <div class="w980 tc" style="padding: 10px 0 0;">
-<div class="main-btn"><a href="/comic/<?php echo $comicinfo['volinfo']['cid'];?>/" id="viewList"
+<div class="main-btn"><a href="/index/comic/<?php echo $comicinfo['volinfo']['cid'];?>/" id="viewList"
 	class="btn-red">目录列表</a> <a href="javascript:;" class="prevC btn-red">上一章</a>
 <a href="javascript:;" id="prev" class="prevP btn-red">上一页</a> <select
 	id="pageSelect"
