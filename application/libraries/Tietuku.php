@@ -122,8 +122,19 @@ class Tietuku{
   */
  public function uploadFile($albumid,$filename){
   $r = self::$ttk->uploadFile($albumid, $filename);
+  $r = $this->trimBOM($r);
   $r = json_decode($r, 1);
   return $r;
+ }
+public function trimBOM ($contents) {
+  $charset = array();
+  $charset[1] = substr($contents, 0, 1);
+  $charset[2] = substr($contents, 1, 1);
+  $charset[3] = substr($contents, 2, 1);
+  if (ord($charset[1]) == 239 && ord($charset[2]) == 187 && ord($charset[3]) == 191) {
+   return substr($contents, 3);
+  }
+  return $contents;
  }
  /**
 	 * 上传多个文件到贴图库 

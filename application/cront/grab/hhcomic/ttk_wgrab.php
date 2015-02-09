@@ -42,6 +42,7 @@ foreach($catelist as $k => $cate){
  for($page = $lastp;;$page++){
   file_put_contents($lastpage.$cate['id'].'.php',"<?php\r\n\$lastp = $page;");
   $cateurl = sprintf('%s'.$siteinfo['listurl'],$siteinfo['domain'],$comicdata['cid'],$page);
+  echo "\$cateurl={$cateurl}\n";
   $mhlist = getmhlist($cateurl);
   if(!$mhlist){
    break;
